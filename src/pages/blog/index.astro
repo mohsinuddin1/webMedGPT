@@ -31,15 +31,19 @@ const posts = (await getCollection('blog')).sort(
         {posts.map((post) => (
           <a href={`/blog/${post.id}`} class="blog-card" id={`blog-card-${post.id}`}>
             <div class="blog-card__image">
-              <div class="blog-card__image-placeholder" style={`background: linear-gradient(135deg, var(--color-accent-glow), rgba(14, 165, 233, 0.15));`}>
-                <span class="blog-card__image-icon" style="color: var(--color-accent); display: flex; align-items: center; justify-content: center;" aria-hidden="true">
-                  {post.data.tags.includes('Blood Tests') ? (
-                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
-                  ) : (
-                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"/><path d="m8.5 8.5 7 7"/></svg>
-                  )}
-                </span>
-              </div>
+              {post.data.image ? (
+                <img src={post.data.image} alt={post.data.imageAlt || post.data.title} loading="lazy" />
+              ) : (
+                <div class="blog-card__image-placeholder" style={`background: linear-gradient(135deg, var(--color-accent-glow), rgba(14, 165, 233, 0.15));`}>
+                  <span class="blog-card__image-icon" style="color: var(--color-accent); display: flex; align-items: center; justify-content: center;" aria-hidden="true">
+                    {post.data.tags.includes('Blood Tests') ? (
+                      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                    ) : (
+                      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"/><path d="m8.5 8.5 7 7"/></svg>
+                    )}
+                  </span>
+                </div>
+              )}
             </div>
             <div class="blog-card__body">
               <span class="blog-card__tag">{post.data.tags[0]}</span>
