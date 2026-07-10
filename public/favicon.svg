@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <rect width="64" height="64" rx="14" fill="#000"/>
+  <rect x="1" y="1" width="62" height="62" rx="13" stroke="#222" stroke-width="1"/>
+  <path d="M32 14C22.06 14 14 22.06 14 32s8.06 18 18 18 18-8.06 18-18S41.94 14 32 14z" fill="none" stroke="#00d4aa" stroke-width="2.5"/>
+  <path d="M32 22v10l7 4" stroke="#00d4aa" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="32" cy="32" r="3" fill="#00d4aa"/>
+  <path d="M24 18l-2-3M40 18l2-3M32 13v-2" stroke="#00d4aa" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+  <text x="32" y="56" text-anchor="middle" font-family="Inter, sans-serif" font-size="7" font-weight="700" fill="#ededed">MedGPT</text>
+</svg>

@@ -1,0 +1,16 @@
+{
+  "name": "MedGPT — AI Health Assistant",
+  "short_name": "MedGPT",
+  "description": "AI-powered health companion. Analyze medical reports, understand medications, and get health insights.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#00d4aa",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

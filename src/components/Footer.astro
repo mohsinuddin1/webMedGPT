@@ -1,0 +1,151 @@
+---
+const playStoreUrl = 'https://play.google.com/store/apps/details?id=com.medgptai.app&utm_source=website&utm_medium=footer';
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="footer" id="site-footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a href="/" class="footer__logo" aria-label="MedGPT Home">
+          <img src="/appLogo.png" alt="MedGPT Logo" width="28" height="28" style="border-radius: 6px;" />
+          <span>MedGPT</span>
+        </a>
+        <p class="footer__tagline">AI-powered health companion.<br/>Understand your health with confidence.</p>
+      </div>
+
+      <div class="footer__col">
+        <h4 class="footer__col-title">Product</h4>
+        <ul>
+          <li><a href="/#features">Features</a></li>
+          <li><a href="/#how-it-works">How It Works</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href={playStoreUrl} target="_blank" rel="noopener noreferrer">Google Play</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4 class="footer__col-title">Resources</h4>
+        <ul>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/blog/how-to-read-blood-test-results">Blood Test Guide</a></li>
+          <li><a href="/blog/understanding-medicine-side-effects">Medicine Safety</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4 class="footer__col-title">Legal</h4>
+        <ul>
+          <li><a href="/privacy">Privacy Policy</a></li>
+          <li><a href="/terms">Terms of Service</a></li>
+          <li><a href="mailto:purescanai@outlook.com">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__disclaimer">
+      <p><strong>Medical Disclaimer:</strong> MedGPT is an AI-powered educational tool designed to help you understand health information. It is <strong>not</strong> a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified healthcare provider with any questions about a medical condition. Never disregard professional medical advice because of something you have read or learned through MedGPT.</p>
+    </div>
+
+    <div class="footer__bottom">
+      <p>&copy; {currentYear} PureScan AI. All rights reserved.</p>
+      <p class="footer__built">Built for your health.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: 1px solid var(--color-border);
+    padding-top: var(--space-16);
+    padding-bottom: var(--space-8);
+    background: var(--color-bg-elevated);
+  }
+
+  .footer__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+    margin-bottom: var(--space-12);
+  }
+
+  @media (min-width: 768px) {
+    .footer__grid {
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+    }
+  }
+
+  .footer__logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-weight: 700;
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-4);
+  }
+
+  .footer__tagline {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  .footer__col-title {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-4);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .footer__col ul {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .footer__col a {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    transition: color var(--transition-fast);
+  }
+
+  .footer__col a:hover {
+    color: var(--color-accent);
+  }
+
+  .footer__disclaimer {
+    padding: var(--space-5) var(--space-6);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-8);
+  }
+
+  .footer__disclaimer p {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    line-height: 1.7;
+  }
+
+  .footer__disclaimer strong {
+    color: var(--color-text-secondary);
+  }
+
+  .footer__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--color-border);
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+  }
+
+  .footer__built {
+    color: var(--color-text-muted);
+  }
+</style>

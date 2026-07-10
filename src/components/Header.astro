@@ -1,0 +1,156 @@
+---
+const navLinks = [
+  { href: '/#features', label: 'Features' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/privacy', label: 'Privacy' },
+  { href: '/terms', label: 'Terms' },
+];
+const playStoreUrl = 'https://play.google.com/store/apps/details?id=com.medgptai.app&utm_source=website&utm_medium=header';
+---
+
+<header class="header" id="site-header">
+  <nav class="header__nav container" aria-label="Main navigation">
+    <a href="/" class="header__logo" aria-label="MedGPT Home">
+      <img src="/appLogo.png" alt="MedGPT Logo" width="28" height="28" style="border-radius: 6px;" />
+      <span class="header__logo-text">MedGPT</span>
+    </a>
+
+    <input type="checkbox" id="nav-toggle" class="header__toggle-input" aria-hidden="true" />
+    <label for="nav-toggle" class="header__toggle" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+
+    <div class="header__links">
+      {navLinks.map(link => (
+        <a href={link.href} class="header__link">{link.label}</a>
+      ))}
+      <a href={playStoreUrl} class="btn btn--primary btn--header" target="_blank" rel="noopener noreferrer" id="header-download-btn">
+        Download App
+      </a>
+    </div>
+  </nav>
+</header>
+
+<style>
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: var(--header-height);
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--color-border);
+    transition: background var(--transition-base);
+  }
+
+  .header__nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  .header__logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-weight: 700;
+    font-size: var(--text-lg);
+    z-index: 10;
+  }
+
+  .header__logo-text {
+    letter-spacing: -0.02em;
+  }
+
+  .header__links {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+  }
+
+  .header__link {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    transition: color var(--transition-fast);
+    font-weight: 500;
+  }
+
+  .header__link:hover {
+    color: var(--color-text-primary);
+  }
+
+  .btn--header {
+    padding: var(--space-2) var(--space-5);
+    font-size: var(--text-xs);
+  }
+
+  /* Mobile toggle */
+  .header__toggle-input {
+    display: none;
+  }
+
+  .header__toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    z-index: 10;
+    padding: var(--space-2);
+  }
+
+  .header__toggle span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: var(--color-text-primary);
+    border-radius: 2px;
+    transition: all var(--transition-base);
+  }
+
+  @media (max-width: 768px) {
+    .header__toggle {
+      display: flex;
+    }
+
+    .header__links {
+      position: fixed;
+      inset: 0;
+      flex-direction: column;
+      justify-content: center;
+      gap: var(--space-8);
+      background: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      opacity: 0;
+      visibility: hidden;
+      transition: all var(--transition-base);
+    }
+
+    .header__link {
+      font-size: var(--text-xl);
+    }
+
+    .header__toggle-input:checked ~ .header__links {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .header__toggle-input:checked ~ .header__toggle span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .header__toggle-input:checked ~ .header__toggle span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .header__toggle-input:checked ~ .header__toggle span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+  }
+</style>

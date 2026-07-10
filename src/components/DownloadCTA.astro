@@ -1,0 +1,105 @@
+---
+export interface Props {
+  variant?: 'primary' | 'secondary';
+  size?: 'default' | 'large';
+  utmMedium?: string;
+}
+
+const {
+  variant = 'primary',
+  size = 'default',
+  utmMedium = 'cta',
+} = Astro.props;
+
+const playStoreUrl = `https://play.google.com/store/apps/details?id=com.medgptai.app&utm_source=website&utm_medium=${utmMedium}`;
+---
+
+<a
+  href={playStoreUrl}
+  target="_blank"
+  rel="noopener noreferrer"
+  class:list={['download-cta', `download-cta--${variant}`, size === 'large' && 'download-cta--large']}
+  id={`download-cta-${utmMedium}`}
+  aria-label="Download MedGPT on Google Play"
+>
+  <svg class="download-cta__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zM17.458 8.7L20.29 12l-2.832 3.3L14.799 12l2.66-3.3zM5.864 3.357l10.937 6.334-2.302 2.302-8.635-8.636z" fill="currentColor"/>
+  </svg>
+  <div class="download-cta__text">
+    <span class="download-cta__small">GET IT ON</span>
+    <span class="download-cta__big">Google Play</span>
+  </div>
+</a>
+
+<style>
+  .download-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-5);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-base);
+    text-decoration: none;
+    color: var(--color-text-primary);
+  }
+
+  .download-cta:hover {
+    border-color: var(--color-border-hover);
+    background: var(--color-bg-card-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .download-cta--primary {
+    background: #fff;
+    color: #000;
+    border-color: transparent;
+  }
+
+  .download-cta--primary:hover {
+    background: #f0f0f0;
+    border-color: transparent;
+    box-shadow: 0 8px 30px rgba(255, 255, 255, 0.1);
+  }
+
+  .download-cta--large {
+    padding: var(--space-4) var(--space-8);
+  }
+
+  .download-cta--large .download-cta__icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .download-cta--large .download-cta__big {
+    font-size: var(--text-xl);
+  }
+
+  .download-cta__icon {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+  }
+
+  .download-cta__text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+  }
+
+  .download-cta__small {
+    font-size: 0.55rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.8;
+  }
+
+  .download-cta__big {
+    font-size: var(--text-lg);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+</style>

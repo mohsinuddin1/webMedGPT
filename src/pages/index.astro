@@ -1,0 +1,389 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import DownloadCTA from '../components/DownloadCTA.astro';
+
+const faqs = [
+  {
+    question: 'What is MedGPT?',
+    answer: 'MedGPT is an AI-powered health assistant app that helps you understand medical reports, blood test results, medications, and general health information. It uses advanced AI to translate complex medical jargon into plain, easy-to-understand language. MedGPT is available as a free download on Google Play.',
+  },
+  {
+    question: 'Is MedGPT free to use?',
+    answer: 'Yes, MedGPT is free to download and use. You can analyze medical reports, look up medication information, and ask health questions at no cost. Some premium features may require a subscription for advanced AI-powered analysis and unlimited usage.',
+  },
+  {
+    question: 'Can MedGPT replace my doctor?',
+    answer: 'No. MedGPT is an educational companion designed to help you understand health information. It is not a substitute for professional medical advice, diagnosis, or treatment. Always consult with a qualified healthcare provider for medical decisions, and never disregard professional medical advice based on AI-generated insights.',
+  },
+  {
+    question: 'How does MedGPT analyze blood test results?',
+    answer: 'MedGPT uses advanced AI models to read and interpret your blood test reports. You can upload a photo or PDF of your lab results, and MedGPT will identify key biomarkers (like CBC, metabolic panels, lipid profiles), compare them against standard reference ranges, and explain what each value means in plain English, including potential next steps.',
+  },
+  {
+    question: 'Is my medical data safe with MedGPT?',
+    answer: 'Your privacy is our top priority. MedGPT processes your data securely and does not share your personal health information with third parties. We follow industry-standard encryption protocols to protect your sensitive medical data. You can review our complete privacy policy for detailed information on how your data is handled.',
+  },
+  {
+    question: 'What types of medical reports can MedGPT analyze?',
+    answer: 'MedGPT can analyze a wide range of medical documents including complete blood count (CBC) reports, metabolic panels, lipid profiles, thyroid function tests, liver function tests, kidney function tests, urinalysis results, and general lab reports. Simply upload a clear photo or PDF of your report for instant AI-powered analysis.',
+  },
+  {
+    question: 'What countries is MedGPT available in?',
+    answer: 'MedGPT is available globally on Google Play for Android devices. The app provides health information based on internationally recognized medical standards and reference ranges, making it useful for users in the United States, Europe, and worldwide.',
+  },
+  {
+    question: 'How accurate is MedGPT\'s AI analysis?',
+    answer: 'MedGPT uses state-of-the-art AI models trained on medical literature and health data. While it provides reliable educational insights and explanations, it is designed as an informational tool—not a diagnostic tool. Results should always be discussed with your healthcare provider for clinical accuracy and personalized medical guidance.',
+  },
+];
+
+const features = [
+  {
+    icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>',
+    title: 'Analyze Medical Reports',
+    desc: 'Upload blood tests, lab results, and medical reports for instant AI-powered analysis with clear explanations.',
+  },
+  {
+    icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"/><path d="m8.5 8.5 7 7"/></svg>',
+    title: 'Medicine Information',
+    desc: 'Learn about dosages, side effects, precautions, and drug interactions for thousands of medications.',
+  },
+  {
+    icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>',
+    title: 'Symptom Explorer',
+    desc: 'Describe your symptoms and get possible conditions, next steps, and questions to ask your doctor.',
+  },
+  {
+    icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>',
+    title: 'Doctor Visit Prep',
+    desc: 'Generate personalized questions and symptom summaries to make the most of your doctor appointments.',
+  },
+  {
+    icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/><path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"/><path d="M17.599 6.5a3 3 0 0 0 .399-1.375"/></svg>',
+    title: 'Medical Jargon Simplified',
+    desc: 'Complex medical terms and reports translated into plain, easy-to-understand language anyone can follow.',
+  },
+  {
+    icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>',
+    title: 'Private & Secure',
+    desc: 'Your health data is encrypted and protected. We never share your personal medical information with third parties.',
+  },
+];
+
+const steps = [
+  {
+    num: '1',
+    title: 'Upload or Ask',
+    desc: 'Scan a medical report, upload a lab result, or simply type your health question.',
+  },
+  {
+    num: '2',
+    title: 'AI Analyzes',
+    desc: 'Advanced AI models process your input, cross-referencing medical knowledge bases.',
+  },
+  {
+    num: '3',
+    title: 'Get Insights',
+    desc: 'Receive clear, actionable health information explained in plain English.',
+  },
+];
+---
+
+<BaseLayout
+  title="MedGPT — AI Health Assistant | Analyze Medical Reports & Blood Tests Instantly"
+  description="MedGPT is your AI-powered health companion. Instantly analyze blood tests, understand medications, explore symptoms, and prepare for doctor visits. Download free on Google Play."
+  schemaType="homepage"
+  faqs={faqs}
+>
+  <!-- Hero Section -->
+  <section class="section section--hero dot-grid" id="hero">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="container hero-container">
+      <div class="hero__content">
+        <span class="badge animate-on-scroll">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          AI-Powered Health Assistant
+        </span>
+        <h1 class="heading-hero animate-on-scroll delay-1">
+          Understand Your Health<br/>
+          <span class="text-gradient-shimmer">with AI Confidence</span>
+        </h1>
+        <p class="subtitle animate-on-scroll delay-2">
+          Instantly analyze medical reports, learn about medications, explore symptoms, and get AI-powered health insights — all in one free app.
+        </p>
+        <div class="hero__actions animate-on-scroll delay-3">
+          <DownloadCTA variant="primary" size="large" utmMedium="hero" />
+          <a href="#features" class="btn btn--secondary btn--large">Learn More</a>
+        </div>
+      </div>
+      <div class="hero__visual animate-on-scroll delay-4">
+        <div class="hero__phone">
+          <div class="hero__phone-screen">
+            <div class="hero__phone-header">
+              <div class="hero__phone-dot"></div>
+              <span>MedGPT</span>
+            </div>
+            <div class="hero__phone-content">
+              <div class="hero__chat-bubble hero__chat-bubble--user">
+                <p>Analyze my blood test report</p>
+              </div>
+              <div class="hero__chat-bubble hero__chat-bubble--ai">
+                <p style="display: flex; align-items: center; gap: 6px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg> <strong>Blood Test Analysis</strong></p>
+                <p>Your CBC results show:</p>
+                <p style="display: flex; align-items: center; gap: 6px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00d4aa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Hemoglobin: 14.2 g/dL — Normal</p>
+                <p style="display: flex; align-items: center; gap: 6px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00d4aa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> WBC: 7,500 — Normal range</p>
+                <p style="display: flex; align-items: center; gap: 6px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg> Cholesterol: 215 mg/dL — Slightly elevated</p>
+                <p style="margin-top: 8px; color: #00d4aa; font-size: 0.8em; display: flex; align-items: center; gap: 6px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00d4aa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1.3.5 2.6 1.5 3.5.8.8 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg> Consider dietary changes...</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Proof -->
+  <section class="section" style="padding-block: var(--space-8);">
+    <div class="container">
+      <div class="social-proof animate-on-scroll">
+        <div class="social-proof__item">
+          <div class="stars" aria-label="4.5 out of 5 stars">★★★★★</div>
+          <div class="social-proof__label">App Rating</div>
+        </div>
+        <div class="social-proof__divider" aria-hidden="true"></div>
+        <div class="social-proof__item">
+          <div class="social-proof__value">10K+</div>
+          <div class="social-proof__label">Downloads</div>
+        </div>
+        <div class="social-proof__divider" aria-hidden="true"></div>
+        <div class="social-proof__item">
+          <div class="social-proof__value">100+</div>
+          <div class="social-proof__label">Lab Tests Supported</div>
+        </div>
+        <div class="social-proof__divider" aria-hidden="true"></div>
+        <div class="social-proof__item">
+          <div class="social-proof__value">24/7</div>
+          <div class="social-proof__label">AI Availability</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="section" id="features">
+    <div class="container">
+      <span class="label animate-on-scroll" style="display: block; text-align: center; margin-bottom: var(--space-4);">Features</span>
+      <h2 class="heading-section animate-on-scroll">Everything You Need for<br/><span class="text-gradient">Smarter Health Decisions</span></h2>
+      <p class="subtitle subtitle--centered animate-on-scroll" style="margin-bottom: var(--space-12);">
+        From analyzing blood tests to understanding medications — MedGPT puts health knowledge at your fingertips.
+      </p>
+      <div class="grid-3">
+        {features.map((feature, i) => (
+          <div class={`card card--glass feature-card animate-on-scroll delay-${i + 1}`}>
+            <div class="feature-card__icon" aria-hidden="true" set:html={feature.icon}></div>
+            <h3 class="feature-card__title">{feature.title}</h3>
+            <p class="feature-card__desc">{feature.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section" id="how-it-works" style="background: var(--color-bg-elevated);">
+    <div class="container container--narrow">
+      <span class="label animate-on-scroll" style="display: block; text-align: center; margin-bottom: var(--space-4);">How It Works</span>
+      <h2 class="heading-section animate-on-scroll">Get Health Insights in<br/><span class="text-gradient">Three Simple Steps</span></h2>
+      <p class="subtitle subtitle--centered animate-on-scroll" style="margin-bottom: var(--space-12);">
+        No medical degree needed. MedGPT makes health information accessible to everyone.
+      </p>
+      <div class="steps">
+        {steps.map((step, i) => (
+          <div class={`step animate-on-scroll delay-${i + 1}`}>
+            <div class="step__number">{step.num}</div>
+            <div class="step__content">
+              <h3 class="step__title">{step.title}</h3>
+              <p class="step__desc">{step.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section" id="faq">
+    <div class="container container--narrow">
+      <span class="label animate-on-scroll" style="display: block; text-align: center; margin-bottom: var(--space-4);">FAQ</span>
+      <h2 class="heading-section animate-on-scroll">Frequently Asked<br/><span class="text-gradient">Questions</span></h2>
+      <p class="subtitle subtitle--centered animate-on-scroll" style="margin-bottom: var(--space-12);">
+        Everything you need to know about MedGPT.
+      </p>
+      <div class="faq-list">
+        {faqs.map((faq, i) => (
+          <details class={`faq-item animate-on-scroll delay-${Math.min(i + 1, 6)}`}>
+            <summary>{faq.question}</summary>
+            <div class="faq-item__answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="section cta-section" id="download">
+    <div class="container" style="position: relative; z-index: 1;">
+      <h2 class="heading-section animate-on-scroll">Take Control of Your<br/><span class="text-gradient">Health Today</span></h2>
+      <p class="subtitle subtitle--centered animate-on-scroll" style="margin-bottom: var(--space-8);">
+        Free to download. No account required. Your AI health companion is waiting.
+      </p>
+      <div class="animate-on-scroll" style="display: flex; justify-content: center;">
+        <DownloadCTA variant="primary" size="large" utmMedium="bottom-cta" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Disclaimer -->
+  <section style="padding: var(--space-6) 0;">
+    <div class="container">
+      <div class="disclaimer">
+        <p style="display: flex; gap: 8px; align-items: flex-start;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px;"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg> <span><strong>Important:</strong> MedGPT is an AI-powered educational tool. It is not a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health provider with any questions regarding a medical condition.</span></p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Hero Layout */
+  .hero-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    padding-top: var(--header-height);
+  }
+
+  @media (min-width: 1024px) {
+    .hero-container {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-16);
+    }
+  }
+
+  .hero__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-top: var(--space-4);
+  }
+
+  /* Phone Mockup */
+  .hero__phone {
+    max-width: 320px;
+    margin: 0 auto;
+    perspective: 1000px;
+  }
+
+  .hero__phone-screen {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-4);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 80px var(--color-accent-glow);
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotateY(0deg); }
+    50% { transform: translateY(-15px) rotateY(2deg); }
+  }
+
+  .hero__phone-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    margin-bottom: var(--space-3);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+
+  .hero__phone-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-accent);
+  }
+
+  .hero__phone-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .hero__chat-bubble {
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-md);
+    font-size: 0.78rem;
+    line-height: 1.5;
+  }
+
+  .hero__chat-bubble p {
+    margin-bottom: 2px;
+  }
+
+  .hero__chat-bubble--user {
+    background: var(--color-accent-glow);
+    border: 1px solid rgba(0, 212, 170, 0.2);
+    color: var(--color-accent);
+    align-self: flex-end;
+    max-width: 80%;
+    margin-left: auto;
+  }
+
+  .hero__chat-bubble--ai {
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+    max-width: 95%;
+  }
+
+  .hero__chat-bubble--ai strong {
+    color: var(--color-text-primary);
+  }
+
+  /* Social proof divider */
+  .social-proof__divider {
+    width: 1px;
+    height: 40px;
+    background: var(--color-border);
+  }
+
+  @media (max-width: 640px) {
+    .social-proof__divider {
+      display: none;
+    }
+
+    .social-proof {
+      gap: var(--space-6);
+    }
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .hero__phone-screen {
+      animation: none;
+    }
+  }
+</style>
