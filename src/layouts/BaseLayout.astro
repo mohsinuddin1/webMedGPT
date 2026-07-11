@@ -3,6 +3,7 @@ import SEO from '../components/SEO.astro';
 import SchemaMarkup from '../components/SchemaMarkup.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import Analytics from '@vercel/analytics/astro';
 import '../styles/global.css';
 
 export interface Props {
@@ -91,5 +92,6 @@ const {
       observer.observe(el);
     });
   </script>
+  <Analytics />
 </body>
 </html>
