@@ -1,35 +1,38 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getUITranslation } from '../../utils/uiTranslations';
 import { getCollection } from 'astro:content';
 
-const posts = (await getCollection('blog')).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
+const allPosts = await getCollection('blog');
+const posts = allPosts
+  .filter(post => post.id.startsWith('en/'))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
 <BaseLayout
   title="Health Blog — MedGPT AI Health Assistant"
   description="Expert health guides, medical report tips, and medication safety information. Learn how to read blood tests, understand side effects, and make informed health decisions."
   schemaType="legal"
+  showLanguageSwitcher={true}
 >
   <div class="blog-index">
     <div class="container">
       <!-- Header -->
       <div class="blog-index__header">
         <nav class="blog-index__breadcrumb" aria-label="Breadcrumb">
-          <a href="/">Home</a>
+          <a href="/">{getUITranslation('en', 'home')}</a>
           <span aria-hidden="true">→</span>
-          <span>Blog</span>
+          <span>{getUITranslation('en', 'blog')}</span>
         </nav>
-        <span class="label">Health Resources</span>
-        <h1 class="heading-section" style="text-align: left;">Health Guides &<br/><span class="text-gradient">Expert Insights</span></h1>
-        <p class="subtitle">Evidence-based health articles to help you understand medical reports, medications, and wellness — powered by the MedGPT team.</p>
+        <span class="label">{getUITranslation('en', 'healthResources')}</span>
+        <h1 class="heading-section" style="text-align: left;">{getUITranslation('en', 'healthGuidesTitle1')}<br/><span class="text-gradient">{getUITranslation('en', 'healthGuidesTitle2')}</span></h1>
+        <p class="subtitle">{getUITranslation('en', 'healthGuidesSubtitle')}</p>
       </div>
 
       <!-- Posts Grid -->
       <div class="grid-2">
         {posts.map((post) => (
-          <a href={`/blog/${post.id}`} class="blog-card" id={`blog-card-${post.id}`}>
+          <a href={`/blog/${post.id.replace('en/', '')}`} class="blog-card" id={`blog-card-${post.id.replace('en/', '')}`}>
             <div class="blog-card__image">
               {post.data.image ? (
                 <img src={post.data.image} alt={post.data.imageAlt || post.data.title} loading="lazy" />

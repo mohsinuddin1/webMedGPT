@@ -1,0 +1,184 @@
+---
+import { slugMap, getBaseSlug } from '../utils/slugMap';
+
+const locales = [
+  { code: 'en', label: 'English' },
+  { code: 'fr', label: 'Français' },
+  { code: 'es', label: 'Español' },
+  { code: 'de', label: 'Deutsch' },
+  { code: 'nl', label: 'Nederlands' },
+  { code: 'pt', label: 'Português' },
+  { code: 'ro', label: 'Română' },
+  { code: 'it', label: 'Italiano' },
+  { code: 'sv', label: 'Svenska' },
+  { code: 'da', label: 'Dansk' },
+  { code: 'no', label: 'Norsk' },
+  { code: 'nb', label: 'Norsk Bokmål' },
+  { code: 'pl', label: 'Polski' },
+  { code: 'cs', label: 'Čeština' },
+  { code: 'lt', label: 'Lietuvių' },
+  { code: 'lv', label: 'Latviešu' },
+  { code: 'tr', label: 'Türkçe' },
+  { code: 'bg', label: 'Български' },
+  { code: 'ru', label: 'Русский' },
+  { code: 'el', label: 'Ελληνικά' },
+  { code: 'ar', label: 'العربية' },
+  { code: 'ar-ma', label: 'الدارجة المغربية' },
+  { code: 'ja', label: '日本語' },
+  { code: 'ko', label: '한국어' },
+  { code: 'zh', label: '中文' },
+];
+---
+<div class="language-switcher">
+  <select aria-label="Select Language" class="language-select" id="lang-select" data-slugmap={JSON.stringify(slugMap)}>
+    {locales.map(locale => (
+      <option value={locale.code}>{locale.label}</option>
+    ))}
+  </select>
+</div>
+
+<script>
+  const select = document.getElementById('lang-select') as HTMLSelectElement;
+  if (select) {
+    const locales = ['fr', 'es', 'de', 'nl', 'pt', 'ro', 'it', 'sv', 'da', 'no', 'nb', 'pl', 'cs', 'lt', 'lv', 'tr', 'bg', 'ru', 'el', 'ar', 'ar-ma', 'ja', 'ko', 'zh'];
+    
+    // Set initial value based on URL
+    const pathParts = window.location.pathname.split('/').filter(Boolean);
+    let currentLang = 'en';
+    if (pathParts.length > 0 && locales.includes(pathParts[0])) {
+      currentLang = pathParts[0];
+    }
+    select.value = currentLang;
+
+    // Auto-detect browser language and redirect on first visit
+    const hasRedirected = localStorage.getItem('lang-redirected');
+    if (!hasRedirected) {
+      const browserLangRaw = navigator.language || (navigator as any).userLanguage;
+      if (browserLangRaw) {
+        // e.g. "es-ES" -> "es", "ar-ma" -> "ar-ma" or "ar"
+        const fullLang = browserLangRaw.toLowerCase();
+        let matchedLang = 'en';
+        
+        // Exact match first
+        const exactMatch = locales.find(l => l.toLowerCase() === fullLang);
+        if (exactMatch) {
+          matchedLang = exactMatch;
+        } else {
+          // Base language match
+          const baseLang = browserLangRaw.split('-')[0].toLowerCase();
+          const baseMatch = locales.find(l => l.toLowerCase() === baseLang);
+          if (baseMatch) matchedLang = baseMatch;
+        }
+
+        if (matchedLang !== 'en' && matchedLang !== currentLang) {
+          // Trigger redirect
+          localStorage.setItem('lang-redirected', 'true');
+          select.value = matchedLang;
+          select.dispatchEvent(new Event('change'));
+        } else {
+          localStorage.setItem('lang-redirected', 'true');
+        }
+      }
+    }
+
+    // Handle change
+    select.addEventListener('change', (e) => {
+      // User made an explicit choice, so remember it
+      localStorage.setItem('lang-redirected', 'true');
+      
+      const newLang = (e.target as HTMLSelectElement).value;
+      const parts = window.location.pathname.split('/').filter(Boolean);
+      let isBlog = false;
+      let currentSlug = '';
+
+      if (parts.length >= 1 && parts[0] === 'blog') {
+        isBlog = true;
+        currentSlug = parts.slice(1).join('/');
+      } else if (parts.length >= 2 && locales.includes(parts[0]) && parts[1] === 'blog') {
+        isBlog = true;
+        currentSlug = parts.slice(2).join('/');
+      }
+
+      if (isBlog) {
+        if (!currentSlug) {
+          // We are on the blog index page
+          if (newLang === 'en') {
+            window.location.href = `/blog`;
+          } else {
+            window.location.href = `/${newLang}/blog`;
+          }
+          return;
+        }
+
+        // We are on a specific blog post
+        const slugMapAttr = select.getAttribute('data-slugmap');
+        let baseSlug = currentSlug;
+        let newSlug = currentSlug;
+        
+        if (slugMapAttr) {
+          try {
+            const slugMap = JSON.parse(slugMapAttr);
+            // Reverse lookup to find base slug
+            for (const [key, translations] of Object.entries(slugMap)) {
+              if (Object.values(translations as Record<string, string>).includes(currentSlug)) {
+                baseSlug = key;
+                break;
+              }
+            }
+            // Forward lookup for new language slug
+            if (slugMap[baseSlug] && slugMap[baseSlug][newLang]) {
+              newSlug = slugMap[baseSlug][newLang];
+            } else {
+              // Fallback to base slug if translation not found
+              newSlug = baseSlug;
+            }
+          } catch (err) {
+            console.error("Error parsing slug map", err);
+          }
+        }
+
+        if (newLang === 'en') {
+          window.location.href = `/blog/${newSlug}`;
+        } else {
+          window.location.href = `/${newLang}/blog/${newSlug}`;
+        }
+      } else {
+        // If not on a blog page, just change hash as fallback
+        window.location.hash = newLang;
+      }
+    });
+  }
+</script>
+
+<style>
+  .language-switcher {
+    display: inline-block;
+    position: relative;
+    margin-right: 15px;
+  }
+  
+  .language-select {
+    appearance: none;
+    background-color: transparent;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-primary);
+    padding: 6px 30px 6px 12px;
+    border-radius: 6px;
+    font-size: var(--text-sm);
+    cursor: pointer;
+    outline: none;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23ffffff%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px top 50%;
+    background-size: 10px auto;
+  }
+
+  .language-select:focus {
+    border-color: var(--color-primary);
+  }
+  
+  .language-select option {
+    background-color: #1a1a1a;
+    color: #fff;
+  }
+</style>

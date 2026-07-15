@@ -15,4 +15,11 @@ export default defineConfig({
       cssMinify: true,
     },
   },
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'fr', 'es', 'de', 'nl', 'pt', 'ro', 'it', 'sv', 'da', 'no', 'nb', 'pl', 'cs', 'lt', 'lv', 'tr', 'bg', 'ru', 'el', 'ar', 'ar-MA', 'ja', 'ko', 'zh'],
+    routing: {
+      prefixDefaultLocale: false
+    }
+  }
 });

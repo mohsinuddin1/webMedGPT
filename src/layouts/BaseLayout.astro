@@ -18,6 +18,9 @@ export interface Props {
   faqs?: Array<{ question: string; answer: string }>;
   image?: string;
   noindex?: boolean;
+  lang?: string;
+  dir?: 'ltr' | 'rtl';
+  showLanguageSwitcher?: boolean;
 }
 
 const {
@@ -32,11 +35,16 @@ const {
   faqs,
   image,
   noindex,
+  lang = 'en',
+  dir,
+  showLanguageSwitcher = false,
 } = Astro.props;
+
+const htmlDir = dir || (lang.startsWith('ar') ? 'rtl' : 'ltr');
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang={lang} dir={htmlDir}>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -69,7 +77,7 @@ const {
 </head>
 <body>
   <a href="#main-content" class="skip-to-content">Skip to content</a>
-  <Header />
+  <Header lang={lang} showLanguageSwitcher={showLanguageSwitcher} />
   <main id="main-content">
     <slot />
   </main>

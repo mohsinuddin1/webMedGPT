@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import DownloadCTA from '../components/DownloadCTA.astro';
+import { getUITranslation } from '../utils/uiTranslations';
 
 export interface Props {
   title: string;
@@ -12,9 +13,11 @@ export interface Props {
   imageAlt?: string;
   readingTime: string;
   tags: string[];
+  lang?: string;
+  dir?: 'ltr' | 'rtl';
 }
 
-const { title, description, pubDate, updatedDate, author, image, imageAlt, readingTime, tags } = Astro.props;
+const { title, description, pubDate, updatedDate, author, image, imageAlt, readingTime, tags, lang = 'en', dir } = Astro.props;
 
 const formattedPubDate = pubDate.toLocaleDateString('en-US', {
   year: 'numeric',
@@ -38,14 +41,17 @@ const formattedUpdatedDate = updatedDate?.toLocaleDateString('en-US', {
   author={author}
   schemaType="article"
   image={image}
+  lang={lang}
+  dir={dir}
+  showLanguageSwitcher={true}
 >
   <article class="blog-post">
     <div class="container container--blog">
       <!-- Breadcrumbs -->
       <nav class="blog-post__breadcrumb" aria-label="Breadcrumb">
-        <a href="/">Home</a>
+        <a href="/">{getUITranslation(lang, 'home')}</a>
         <span aria-hidden="true">→</span>
-        <a href="/blog">Blog</a>
+        <a href={`/${lang === 'en' ? '' : lang + '/'}blog`.replace('//', '/')}>{getUITranslation(lang, 'blog')}</a>
         <span aria-hidden="true">→</span>
         <span>{title}</span>
       </nav>
@@ -60,14 +66,14 @@ const formattedUpdatedDate = updatedDate?.toLocaleDateString('en-US', {
         <h1 class="blog-post__title">{title}</h1>
         <p class="blog-post__excerpt">{description}</p>
         <div class="blog-post__meta">
-          <span>By {author}</span>
+          <span>{getUITranslation(lang, 'by')} {author}</span>
           <span>•</span>
           <time datetime={pubDate.toISOString()}>{formattedPubDate}</time>
           <span>•</span>
           <span>{readingTime}</span>
         </div>
         {formattedUpdatedDate && (
-          <p class="blog-post__updated">Updated: {formattedUpdatedDate}</p>
+          <p class="blog-post__updated">{getUITranslation(lang, 'updated')} {formattedUpdatedDate}</p>
         )}
       </header>
       
@@ -84,14 +90,14 @@ const formattedUpdatedDate = updatedDate?.toLocaleDateString('en-US', {
 
       <!-- CTA -->
       <aside class="blog-post__cta">
-        <h3>Try MedGPT Free</h3>
-        <p>Get instant AI-powered analysis of your medical reports and health questions.</p>
+        <h3>{getUITranslation(lang, 'tryMedGPTFree')}</h3>
+        <p>{getUITranslation(lang, 'tryMedGPTDesc')}</p>
         <DownloadCTA variant="primary" utmMedium="blog-post" />
       </aside>
 
       <!-- Back to Blog -->
       <nav class="blog-post__nav">
-        <a href="/blog" class="btn btn--secondary">← Back to Blog</a>
+        <a href={`/${lang === 'en' ? '' : lang + '/'}blog`.replace('//', '/')} class="btn btn--secondary">{getUITranslation(lang, 'backToBlog')}</a>
       </nav>
     </div>
   </article>

@@ -1,7 +1,17 @@
 ---
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import { getUITranslation } from '../utils/uiTranslations';
+
+export interface Props {
+  showLanguageSwitcher?: boolean;
+  lang?: string;
+}
+
+const { showLanguageSwitcher = false, lang = 'en' } = Astro.props;
+
 const navLinks = [
-  { href: '/#features', label: 'Features' },
-  { href: '/blog', label: 'Blog' },
+  { href: '/#features', label: 'Features' }, // For simplicity, keep as Features
+  { href: `/${lang === 'en' ? '' : lang + '/'}blog`.replace('//', '/'), label: getUITranslation(lang, 'blog') },
   { href: '/privacy', label: 'Privacy' },
   { href: '/terms', label: 'Terms' },
 ];
@@ -23,11 +33,12 @@ const playStoreUrl = 'https://play.google.com/store/apps/details?id=com.medgptai
     </label>
 
     <div class="header__links">
+      {showLanguageSwitcher && <LanguageSwitcher />}
       {navLinks.map(link => (
         <a href={link.href} class="header__link">{link.label}</a>
       ))}
       <a href={playStoreUrl} class="btn btn--primary btn--header" target="_blank" rel="noopener noreferrer" id="header-download-btn">
-        Download App
+        {getUITranslation(lang, 'downloadApp')}
       </a>
     </div>
   </nav>
