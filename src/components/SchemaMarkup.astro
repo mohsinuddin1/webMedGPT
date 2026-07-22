@@ -8,9 +8,11 @@ export interface Props {
   author?: string;
   image?: string;
   faqs?: Array<{ question: string; answer: string }>;
+  about?: string[];
+  mentions?: string[];
 }
 
-const { type, title, description, publishedDate, modifiedDate, author, image, faqs } = Astro.props;
+const { type, title, description, publishedDate, modifiedDate, author, image, faqs, about = [], mentions = [] } = Astro.props;
 const siteUrl = 'https://medgptai.droploop.in';
 const pageUrl = new URL(Astro.url.pathname, siteUrl).toString();
 
@@ -60,6 +62,15 @@ const websiteSchema = {
   },
 };
 
+// Helper to parse 'Type: Name' strings (e.g. 'MedicalCondition: Keratosis Pilaris')
+const parseEntity = (item: string) => {
+  const parts = item.split(':');
+  if (parts.length === 2) {
+    return { '@type': parts[0].trim(), name: parts[1].trim() };
+  }
+  return { '@type': 'Thing', name: item };
+};
+
 // Article schema
 const articleSchema = publishedDate ? {
   '@context': 'https://schema.org',
@@ -80,14 +91,17 @@ const articleSchema = publishedDate ? {
       url: `${siteUrl}/favicon.svg`,
     },
   },
+  isAccessibleForFree: true,
   mainEntityOfPage: {
     '@type': 'WebPage',
     '@id': pageUrl,
   },
+  ...(about.length > 0 && { about: about.map(parseEntity) }),
+  ...(mentions.length > 0 && { mentions: mentions.map(parseEntity) }),
   image: image ? `${siteUrl}${image}` : `${siteUrl}/og-image.png`,
   speakable: {
     '@type': 'SpeakableSpecification',
-    cssSelector: ['.prose h1', '.prose h2', '.prose p:first-of-type'],
+    cssSelector: ['.prose h1', '.prose h2', '.blog-post__short-answer', '.prose p:first-of-type'],
   },
 } : null;
 

@@ -12,6 +12,8 @@ export const uiTranslations = {
     tryMedGPTDesc: "Get instant AI-powered analysis of your medical reports and health questions.",
     downloadApp: "Download App",
     backToBlog: "← Back to Blog",
+    similarBlogs: "Similar Blogs",
+    sourcesAndCitations: "Sources & Citations",
   },
   ar: {
     home: "الرئيسية",

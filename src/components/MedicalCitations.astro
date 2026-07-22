@@ -1,0 +1,106 @@
+---
+import { getUITranslation } from '../utils/uiTranslations';
+
+export interface Props {
+  lang?: string;
+  sources?: Array<{ name: string; url: string; description?: string }>;
+}
+
+const { lang = 'en', sources = [] } = Astro.props;
+
+if (sources.length === 0) {
+  return null;
+}
+---
+
+<section class="medical-citations">
+  <div class="medical-citations__header">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="medical-citations__icon"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+    <h2>{getUITranslation(lang, 'sourcesAndCitations')}</h2>
+  </div>
+  <p class="medical-citations__intro">
+    MedGPT relies on internationally recognized medical organizations and research to ensure our content is accurate, trustworthy, and evidence-based.
+  </p>
+  <ul class="medical-citations__list">
+    {sources.map((citation) => (
+      <li>
+        <a href={citation.url} target="_blank" rel="noopener noreferrer nofollow" class="medical-citations__link">
+          {citation.name}
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+        </a>
+        {citation.description && <span class="medical-citations__desc">{citation.description}</span>}
+      </li>
+    ))}
+  </ul>
+</section>
+
+<style>
+  .medical-citations {
+    margin: var(--space-8) 0 var(--space-12) 0;
+    padding: var(--space-6);
+    background: var(--color-bg-subtle);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+  }
+
+  .medical-citations__header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+  }
+
+  .medical-citations__icon {
+    color: var(--color-accent);
+  }
+
+  .medical-citations__header h2 {
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin: 0;
+  }
+
+  .medical-citations__intro {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-6);
+    line-height: 1.5;
+  }
+
+  .medical-citations__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .medical-citations__list li {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .medical-citations__link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-base);
+    font-weight: 600;
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+
+  .medical-citations__link:hover {
+    color: var(--color-accent-dark, var(--color-accent));
+    text-decoration: underline;
+  }
+
+  .medical-citations__desc {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+  }
+</style>

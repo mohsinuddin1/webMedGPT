@@ -17,6 +17,8 @@ export interface Props {
   schemaType?: 'homepage' | 'article' | 'legal';
   faqs?: Array<{ question: string; answer: string }>;
   image?: string;
+  about?: string[];
+  mentions?: string[];
   noindex?: boolean;
   lang?: string;
   dir?: 'ltr' | 'rtl';
@@ -34,6 +36,8 @@ const {
   schemaType = 'homepage',
   faqs,
   image,
+  about,
+  mentions,
   noindex,
   lang = 'en',
   dir,
@@ -73,6 +77,8 @@ const htmlDir = dir || (lang.startsWith('ar') ? 'rtl' : 'ltr');
     author={author}
     faqs={faqs}
     image={image}
+    about={about}
+    mentions={mentions}
   />
 </head>
 <body>

@@ -26,7 +26,12 @@ const {
 const siteName = 'MedGPT';
 const siteUrl = 'https://medgptai.droploop.in';
 const fullTitle = title.includes('MedGPT') ? title : `${title} — ${siteName}`;
-const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).toString();
+
+// Clean pathname: remove trailing slash for consistency (unless it's root)
+const pathname = Astro.url.pathname;
+const cleanPathname = pathname === '/' ? '/' : pathname.replace(/\/$/, '');
+const canonicalUrl = canonical || new URL(cleanPathname, siteUrl).toString();
+
 const ogImageUrl = ogImage.startsWith('http') ? ogImage : new URL(ogImage, siteUrl).toString();
 ---
 
