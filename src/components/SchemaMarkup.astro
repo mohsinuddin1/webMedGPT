@@ -98,10 +98,15 @@ const articleSchema = publishedDate ? {
   },
   ...(about.length > 0 && { about: about.map(parseEntity) }),
   ...(mentions.length > 0 && { mentions: mentions.map(parseEntity) }),
-  image: image ? `${siteUrl}${image}` : `${siteUrl}/og-image.png`,
+  image: image ? (image.startsWith('http') ? image : `${siteUrl}${image}`) : `${siteUrl}/og-image.png`,
   speakable: {
     '@type': 'SpeakableSpecification',
     cssSelector: ['.prose h1', '.prose h2', '.blog-post__short-answer', '.prose p:first-of-type'],
+  },
+  reviewedBy: {
+    '@type': 'Organization',
+    name: 'MedGPT Editorial Team',
+    url: siteUrl,
   },
 } : null;
 

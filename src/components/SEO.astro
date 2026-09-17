@@ -9,6 +9,8 @@ export interface Props {
   modifiedTime?: string;
   author?: string;
   noindex?: boolean;
+  lang?: string;
+  hreflangAlternates?: Array<{ lang: string; href: string }>;
 }
 
 const {
@@ -21,6 +23,8 @@ const {
   modifiedTime,
   author,
   noindex = false,
+  lang = 'en',
+  hreflangAlternates = [],
 } = Astro.props;
 
 const siteName = 'MedGPT';
@@ -33,6 +37,18 @@ const cleanPathname = pathname === '/' ? '/' : pathname.replace(/\/$/, '');
 const canonicalUrl = canonical || new URL(cleanPathname, siteUrl).toString();
 
 const ogImageUrl = ogImage.startsWith('http') ? ogImage : new URL(ogImage, siteUrl).toString();
+
+// Map language codes to og:locale format
+const langToOgLocale: Record<string, string> = {
+  'en': 'en_US', 'fr': 'fr_FR', 'es': 'es_ES', 'de': 'de_DE',
+  'it': 'it_IT', 'pt': 'pt_PT', 'nl': 'nl_NL', 'sv': 'sv_SE',
+  'da': 'da_DK', 'no': 'no_NO', 'nb': 'nb_NO', 'pl': 'pl_PL',
+  'cs': 'cs_CZ', 'ro': 'ro_RO', 'lt': 'lt_LT', 'lv': 'lv_LV',
+  'bg': 'bg_BG', 'el': 'el_GR', 'tr': 'tr_TR', 'ru': 'ru_RU',
+  'ar': 'ar_SA', 'ar-MA': 'ar_MA', 'ja': 'ja_JP', 'ko': 'ko_KR',
+  'zh': 'zh_CN',
+};
+const currentOgLocale = langToOgLocale[lang] || 'en_US';
 ---
 
 <!-- Primary Meta -->
@@ -40,6 +56,14 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : new URL(ogImage, siteU
 <meta name="description" content={description} />
 <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
 <link rel="canonical" href={canonicalUrl} />
+
+<!-- Hreflang Tags for International SEO -->
+{hreflangAlternates.map(alt => (
+  <link rel="alternate" hreflang={alt.lang} href={alt.href} />
+))}
+{hreflangAlternates.length > 0 && (
+  <link rel="alternate" hreflang="x-default" href={hreflangAlternates.find(a => a.lang === 'en')?.href || canonicalUrl} />
+)}
 
 <!-- Open Graph -->
 <meta property="og:type" content={ogType} />
@@ -50,7 +74,10 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : new URL(ogImage, siteU
 <meta property="og:image" content={ogImageUrl} />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:locale" content="en_US" />
+<meta property="og:locale" content={currentOgLocale} />
+{hreflangAlternates.filter(a => a.lang !== lang).map(alt => (
+  <meta property="og:locale:alternate" content={langToOgLocale[alt.lang] || alt.lang} />
+))}
 
 <!-- Twitter/X Card -->
 <meta name="twitter:card" content="summary_large_image" />
@@ -69,3 +96,4 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : new URL(ogImage, siteU
 <meta name="google-site-verification" content="viybWkN34LbYpJIo4S6U45yJ_dyolZ6suvyIlKZgz9U" />
 <link rel="icon" type="image/png" href="/appLogo.png" />
 <link rel="manifest" href="/manifest.json" />
+

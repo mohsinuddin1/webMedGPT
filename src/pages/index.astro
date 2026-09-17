@@ -1,6 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import DownloadCTA from '../components/DownloadCTA.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('blog');
+const latestPosts = allPosts
+  .filter(post => post.id.startsWith('en/'))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 4);
 
 const faqs = [
   {
@@ -228,6 +235,39 @@ const steps = [
             </div>
           </details>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest Health Guides -->
+  <section class="section" id="health-guides" style="background: var(--color-bg-elevated);">
+    <div class="container">
+      <span class="label animate-on-scroll" style="display: block; text-align: center; margin-bottom: var(--space-4);">Health Guides</span>
+      <h2 class="heading-section animate-on-scroll">Latest Health<br/><span class="text-gradient">Insights & Guides</span></h2>
+      <p class="subtitle subtitle--centered animate-on-scroll" style="margin-bottom: var(--space-12);">
+        Evidence-based articles to help you understand your medical reports and make informed health decisions.
+      </p>
+      <div class="grid-2">
+        {latestPosts.map((post, i) => (
+          <a href={`/blog/${post.id.replace('en/', '')}`} class={`blog-card animate-on-scroll delay-${Math.min(i + 1, 4)}`}>
+            <div class="blog-card__image">
+              {post.data.image && (
+                <img src={post.data.image} alt={post.data.imageAlt || post.data.title} loading="lazy" />
+              )}
+            </div>
+            <div class="blog-card__body">
+              <span class="blog-card__tag">{post.data.tags[0]}</span>
+              <h3 class="blog-card__title" style="font-size: var(--text-lg);">{post.data.title}</h3>
+              <p class="blog-card__excerpt">{post.data.description}</p>
+              <div class="blog-card__meta">
+                <span>{post.data.readingTime}</span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+      <div class="animate-on-scroll" style="display: flex; justify-content: center; margin-top: var(--space-8);">
+        <a href="/blog" class="btn btn--secondary">View All Health Guides →</a>
       </div>
     </div>
   </section>

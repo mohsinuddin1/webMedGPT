@@ -1,6 +1,9 @@
 ---
 import BlogLayout from '../../layouts/BlogLayout.astro';
 import { getCollection, render } from 'astro:content';
+import { slugMap } from '../../utils/slugMap';
+
+const siteUrl = 'https://medgptai.droploop.in';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -13,6 +16,23 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+const enSlug = post.id.replace('en/', '');
+
+// Build hreflang alternates from the slug map
+const hreflangAlternates: Array<{ lang: string; href: string }> = [];
+const slugTranslations = slugMap[enSlug];
+if (slugTranslations) {
+  for (const [lang, localizedSlug] of Object.entries(slugTranslations)) {
+    if (lang === 'en') {
+      hreflangAlternates.push({ lang: 'en', href: `${siteUrl}/blog/${localizedSlug}` });
+    } else {
+      hreflangAlternates.push({ lang: lang.toLowerCase(), href: `${siteUrl}/${lang.toLowerCase()}/blog/${localizedSlug}` });
+    }
+  }
+} else {
+  // Fallback: at least add the English version
+  hreflangAlternates.push({ lang: 'en', href: `${siteUrl}/blog/${enSlug}` });
+}
 ---
 
 <BlogLayout
@@ -29,6 +49,7 @@ const { Content } = await render(post);
   about={post.data.about}
   mentions={post.data.mentions}
   sources={post.data.sources}
+  hreflangAlternates={hreflangAlternates}
 >
   <Content />
 </BlogLayout>

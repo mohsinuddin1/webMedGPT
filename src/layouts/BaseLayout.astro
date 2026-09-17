@@ -23,6 +23,7 @@ export interface Props {
   lang?: string;
   dir?: 'ltr' | 'rtl';
   showLanguageSwitcher?: boolean;
+  hreflangAlternates?: Array<{ lang: string; href: string }>;
 }
 
 const {
@@ -42,6 +43,7 @@ const {
   lang = 'en',
   dir,
   showLanguageSwitcher = false,
+  hreflangAlternates = [],
 } = Astro.props;
 
 const htmlDir = dir || (lang.startsWith('ar') ? 'rtl' : 'ltr');
@@ -67,6 +69,8 @@ const htmlDir = dir || (lang.startsWith('ar') ? 'rtl' : 'ltr');
     modifiedTime={modifiedTime}
     author={author}
     noindex={noindex}
+    lang={lang}
+    hreflangAlternates={hreflangAlternates}
   />
   <SchemaMarkup
     type={schemaType}

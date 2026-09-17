@@ -21,9 +21,10 @@ export interface Props {
   sources?: Array<{ name: string; url: string; description?: string }>;
   lang?: string;
   dir?: 'ltr' | 'rtl';
+  hreflangAlternates?: Array<{ lang: string; href: string }>;
 }
 
-const { title, description, pubDate, updatedDate, author, image, imageAlt, readingTime, tags, shortAnswer, about, mentions, sources = [], lang = 'en', dir } = Astro.props;
+const { title, description, pubDate, updatedDate, author, image, imageAlt, readingTime, tags, shortAnswer, about, mentions, sources = [], lang = 'en', dir, hreflangAlternates = [] } = Astro.props;
 
 const formattedPubDate = pubDate.toLocaleDateString('en-US', {
   year: 'numeric',
@@ -42,6 +43,7 @@ const formattedUpdatedDate = updatedDate?.toLocaleDateString('en-US', {
   title={title}
   description={description}
   ogType="article"
+  ogImage={image}
   publishedTime={pubDate.toISOString()}
   modifiedTime={updatedDate?.toISOString() || pubDate.toISOString()}
   author={author}
@@ -52,6 +54,7 @@ const formattedUpdatedDate = updatedDate?.toLocaleDateString('en-US', {
   lang={lang}
   dir={dir}
   showLanguageSwitcher={true}
+  hreflangAlternates={hreflangAlternates}
 >
   <article class="blog-post">
     <div class="container container--blog">
