@@ -1,0 +1,85 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schemas/server-card/v1.json",
+  "serverInfo": {
+    "name": "medgpt-server",
+    "version": "1.0.0",
+    "description": "MedGPT Model Context Protocol server for medical report analysis, lab result interpretation, and health information lookup."
+  },
+  "transport": {
+    "type": "http",
+    "endpoint": "https://medgptai.droploop.in/api/mcp"
+  },
+  "capabilities": {
+    "tools": {
+      "listChanged": false
+    },
+    "resources": {
+      "subscribe": false,
+      "listChanged": false
+    },
+    "prompts": {
+      "listChanged": false
+    }
+  },
+  "tools": [
+    {
+      "name": "analyze_blood_test",
+      "description": "Analyze blood test biomarkers against standard clinical reference ranges and provide plain-English explanations.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "biomarkers": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "Biomarker name, e.g., Hemoglobin, Fasting Blood Glucose, TSH, eGFR"
+                },
+                "value": {
+                  "type": "number",
+                  "description": "Numeric measurement from lab report"
+                },
+                "unit": {
+                  "type": "string",
+                  "description": "Measurement unit, e.g., mg/dL, g/dL, mIU/L"
+                }
+              },
+              "required": ["name", "value"]
+            }
+          }
+        },
+        "required": ["biomarkers"]
+      }
+    },
+    {
+      "name": "lookup_medication",
+      "description": "Look up comprehensive medication details including dosage guidelines, indications, contraindications, and drug interactions.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "medicationName": {
+            "type": "string",
+            "description": "Generic or brand name of medication, e.g., Metformin, Lisinopril, Amoxicillin"
+          }
+        },
+        "required": ["medicationName"]
+      }
+    },
+    {
+      "name": "explain_medical_term",
+      "description": "Translate complex medical jargon or clinical diagnoses into clear, patient-friendly explanations.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "term": {
+            "type": "string",
+            "description": "Medical terminology or diagnostic phrase, e.g., Thrombocytopenia, Dyslipidemia, Hepatomegaly"
+          }
+        },
+        "required": ["term"]
+      }
+    }
+  ]
+}

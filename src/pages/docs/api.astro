@@ -1,0 +1,203 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="MedGPT API Documentation — Automated Agent & Developer Guide"
+  description="Official API reference for MedGPT. Discover endpoints for blood test analysis, medication insights, MCP integration, and agent registration."
+  schemaType="article"
+>
+  <div class="legal-content api-docs">
+    <div class="container container--blog">
+      <div class="api-hero">
+        <span class="badge">API Reference v1.0.0</span>
+        <h1>MedGPT Developer & Agent API</h1>
+        <p class="updated-date">Published for Autonomous Agents & Developers · RFC 9727 Discovery Compliant</p>
+      </div>
+
+      <p class="lead-text">
+        MedGPT offers high-precision medical document parsing, biomarker interpretation, medication database lookups, and Model Context Protocol (MCP) server endpoints.
+      </p>
+
+      <div class="card-grid">
+        <div class="info-card">
+          <h3>OpenAPI 3.1 Spec</h3>
+          <p>Machine-readable JSON schema for client generation.</p>
+          <a href="/openapi.json" class="api-link" target="_blank" rel="noopener">View openapi.json &rarr;</a>
+        </div>
+        <div class="info-card">
+          <h3>RFC 9727 Catalog</h3>
+          <p>Standardized Linkset for automated crawler discovery.</p>
+          <a href="/.well-known/api-catalog" class="api-link" target="_blank" rel="noopener">View api-catalog &rarr;</a>
+        </div>
+        <div class="info-card">
+          <h3>MCP Server Card</h3>
+          <p>Model Context Protocol capabilities and tools.</p>
+          <a href="/.well-known/mcp/server-card.json" class="api-link" target="_blank" rel="noopener">View server-card.json &rarr;</a>
+        </div>
+      </div>
+
+      <h2>1. Authentication</h2>
+      <p>
+        Requests to protected endpoints require an OAuth 2.0 Bearer token or registered Agent API key sent via the <code>Authorization</code> header:
+      </p>
+      <pre><code>Authorization: Bearer &lt;access_token&gt;</code></pre>
+      <p>
+        For autonomous agent registration flows, please consult <a href="/auth.md">auth.md</a> and our <a href="/.well-known/oauth-authorization-server">OAuth Authorization Server Discovery</a> endpoint.
+      </p>
+
+      <h2>2. Core Endpoints</h2>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="method get">GET</span>
+          <span class="path">/api/health</span>
+        </div>
+        <p>Operational health check returning system status.</p>
+        <h4>Response (200 OK)</h4>
+        <pre><code>&#123;
+  "status": "ok",
+  "service": "medgpt-api",
+  "version": "1.0.0",
+  "timestamp": "2026-09-28T00:00:00Z"
+&#125;</code></pre>
+      </div>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="method post">POST</span>
+          <span class="path">/api/v1/analyze-report</span>
+        </div>
+        <p>Submit laboratory biomarker values for clinical range evaluation and layman-readable analysis.</p>
+        <h4>Request Body</h4>
+        <pre><code>&#123;
+  "biomarkers": [
+    &#123; "name": "Hemoglobin", "value": 11.2, "unit": "g/dL" &#125;,
+    &#123; "name": "Fasting Blood Glucose", "value": 105, "unit": "mg/dL" &#125;
+  ]
+&#125;</code></pre>
+      </div>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="method get">GET</span>
+          <span class="path">/api/v1/medications/:name</span>
+        </div>
+        <p>Retrieve medication indication, typical dosage, contraindications, and potential interactions.</p>
+      </div>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="method post">POST</span>
+          <span class="path">/api/mcp</span>
+        </div>
+        <p>Standard Model Context Protocol (Streamable HTTP / SSE) endpoint for agentic LLM orchestration.</p>
+      </div>
+
+      <h2>3. Clinical & Safety Disclaimers</h2>
+      <p>
+        The MedGPT API provides informational summaries only. It is not approved as a medical device or diagnostic instrument. Automated agent integrations must include explicit notices instructing human end users to consult licensed medical professionals for diagnosis and treatment.
+      </p>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .api-docs {
+    padding: 3rem 0;
+  }
+  .api-hero {
+    margin-bottom: 2rem;
+  }
+  .badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    background: rgba(16, 185, 129, 0.12);
+    color: #10b981;
+    border-radius: 9999px;
+    margin-bottom: 0.75rem;
+  }
+  .lead-text {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: #4b5563;
+    margin-bottom: 2rem;
+  }
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+  .info-card {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .info-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+  .info-card h3 {
+    margin-top: 0;
+    font-size: 1.1rem;
+  }
+  .info-card p {
+    font-size: 0.9rem;
+    color: #6b7280;
+    margin-bottom: 0.75rem;
+  }
+  .api-link {
+    color: #2563eb;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+  }
+  .endpoint-block {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .endpoint-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+  .method {
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.375rem;
+    text-transform: uppercase;
+  }
+  .method.get {
+    background: #e0f2fe;
+    color: #0369a1;
+  }
+  .method.post {
+    background: #dcfce7;
+    color: #15803d;
+  }
+  .path {
+    font-family: monospace;
+    font-weight: 600;
+    font-size: 1.05rem;
+  }
+  pre {
+    background: #1e293b;
+    color: #f8fafc;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+  }
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+</style>

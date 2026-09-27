@@ -1,0 +1,103 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "MedGPT Health Assistant API",
+    "version": "1.0.0",
+    "description": "API for laboratory report analysis, blood test interpretation, medication lookup, and clinical jargon translation."
+  },
+  "servers": [
+    {
+      "url": "https://medgptai.droploop.in",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/api/health": {
+      "get": {
+        "summary": "Health Check",
+        "description": "Returns operational status of MedGPT API services.",
+        "responses": {
+          "200": {
+            "description": "System healthy",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "string", "example": "ok" },
+                    "timestamp": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/analyze-report": {
+      "post": {
+        "summary": "Analyze Laboratory Report",
+        "description": "Parse blood test biomarkers against clinical standard ranges.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "biomarkers": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "name": { "type": "string" },
+                        "value": { "type": "number" },
+                        "unit": { "type": "string" }
+                      },
+                      "required": ["name", "value"]
+                    }
+                  }
+                },
+                "required": ["biomarkers"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Analysis results",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "summary": { "type": "string" },
+                    "findings": { "type": "array" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/medications/{name}": {
+      "get": {
+        "summary": "Medication Monograph",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Medication information"
+          }
+        }
+      }
+    }
+  }
+}

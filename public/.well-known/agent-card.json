@@ -1,0 +1,15 @@
+{
+  "$schema": "https://raw.githubusercontent.com/google/A2A/main/specification/agent-card-schema.json",
+  "name": "MedGPT Health Assistant",
+  "description": "AI-powered clinical health assistant for medical report analysis, lab result interpretation, and health education.",
+  "url": "https://medgptai.droploop.in",
+  "version": "1.0.0",
+  "capabilities": {
+    "streaming": true,
+    "pushNotifications": false
+  },
+  "endpoints": {
+    "a2a": "https://medgptai.droploop.in/api/a2a",
+    "mcp": "https://medgptai.droploop.in/api/mcp"
+  }
+}

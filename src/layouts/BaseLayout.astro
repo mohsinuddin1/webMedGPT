@@ -84,6 +84,112 @@ const htmlDir = dir || (lang.startsWith('ar') ? 'rtl' : 'ltr');
     about={about}
     mentions={mentions}
   />
+
+  <!-- AI Agent Discovery Links (RFC 8288 / RFC 9727 / ARD / MCP) -->
+  <link rel="api-catalog" href="/.well-known/api-catalog" type="application/linkset+json" />
+  <link rel="service-doc" href="/docs/api" />
+  <link rel="service-desc" href="/openapi.json" type="application/vnd.oai.openapi+json" />
+  <link rel="oauth-authorization-server" href="/.well-known/oauth-authorization-server" />
+  <link rel="oauth-protected-resource" href="/.well-known/oauth-protected-resource" />
+  <link rel="mcp-server-card" href="/.well-known/mcp/server-card.json" type="application/mcp-server-card+json" />
+  <link rel="agent-skills" href="/.well-known/agent-skills/index.json" />
+  <link rel="ai-catalog" href="/.well-known/ai-catalog.json" type="application/json" />
+  <link rel="alternate" type="text/markdown" href="/index.md" title="Markdown Content" />
+
+  <!-- WebMCP (Web Model Context Protocol) for Agent Tools Discovery -->
+  <script is:inline>
+    (function initWebMCP() {
+      const webMcpTools = [
+        {
+          name: 'search_health_topics',
+          description: 'Search MedGPT medical guides, blood test biomarkers, and clinical topics.',
+          inputSchema: {
+            type: 'object',
+            properties: {
+              query: { type: 'string', description: 'Medical keyword, blood test name, or health topic' }
+            },
+            required: ['query']
+          },
+          execute: async function(params) {
+            const query = (params && params.query) ? encodeURIComponent(params.query) : '';
+            if (typeof window !== 'undefined') {
+              window.location.href = '/blog?q=' + query;
+            }
+            return { status: 'success', message: 'Navigating to search results for ' + (params?.query || '') };
+          }
+        },
+        {
+          name: 'get_medical_faq',
+          description: 'Retrieve frequently asked questions about medical reports, blood tests, and MedGPT app capabilities.',
+          inputSchema: {
+            type: 'object',
+            properties: {
+              topic: { type: 'string', description: 'Filter FAQs by keyword or leave empty for all' }
+            }
+          },
+          execute: async function(params) {
+            const faqNodes = document.querySelectorAll('.faq-item');
+            const items = [];
+            faqNodes.forEach(function(el) {
+              const q = el.querySelector('h3, summary, .faq-question');
+              const a = el.querySelector('p, .faq-answer');
+              if (q && a) {
+                items.push({ question: q.textContent.trim(), answer: a.textContent.trim() });
+              }
+            });
+            return {
+              count: items.length,
+              faqs: items.length > 0 ? items : 'FAQ list available on homepage'
+            };
+          }
+        },
+        {
+          name: 'get_app_info',
+          description: 'Get MedGPT app capabilities, clinical reference scope, and download link on Google Play.',
+          inputSchema: {
+            type: 'object',
+            properties: {}
+          },
+          execute: async function() {
+            return {
+              appName: 'MedGPT',
+              tagline: 'AI Health Assistant for Medical Reports & Lab Results',
+              playStoreUrl: 'https://play.google.com/store/apps/details?id=com.droploop.medgpt',
+              supportedPanels: ['Complete Blood Count (CBC)', 'Lipid Profile', 'Comprehensive Metabolic Panel (CMP)', 'Thyroid Panel (TSH, T3, T4)', 'Urinalysis'],
+              disclaimer: 'Informational only. Not a substitute for professional medical diagnosis or clinical treatment.'
+            };
+          }
+        }
+      ];
+
+      function registerTools() {
+        if (typeof navigator !== 'undefined' && navigator.modelContext) {
+          if (typeof navigator.modelContext.registerTool === 'function') {
+            webMcpTools.forEach(function(tool) {
+              try {
+                navigator.modelContext.registerTool(tool);
+              } catch (e) {
+                console.debug('WebMCP registerTool:', e);
+              }
+            });
+          }
+          if (typeof navigator.modelContext.provideContext === 'function') {
+            try {
+              navigator.modelContext.provideContext({ tools: webMcpTools });
+            } catch (e) {
+              console.debug('WebMCP provideContext:', e);
+            }
+          }
+        }
+      }
+
+      registerTools();
+      if (typeof window !== 'undefined') {
+        window.addEventListener('DOMContentLoaded', registerTools);
+        window.addEventListener('load', registerTools);
+      }
+    })();
+  </script>
 </head>
 <body>
   <a href="#main-content" class="skip-to-content">Skip to content</a>

@@ -1,0 +1,15 @@
+{
+  "resource": "https://medgptai.droploop.in",
+  "authorization_servers": [
+    "https://medgptai.droploop.in"
+  ],
+  "scopes_supported": [
+    "read",
+    "analyze",
+    "reports"
+  ],
+  "bearer_methods_supported": [
+    "header"
+  ],
+  "resource_documentation": "https://medgptai.droploop.in/docs/api"
+}

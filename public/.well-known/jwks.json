@@ -1,0 +1,12 @@
+{
+  "keys": [
+    {
+      "kty": "RSA",
+      "use": "sig",
+      "alg": "RS256",
+      "kid": "medgpt-2026-auth",
+      "n": "v4y1n27J4r8d38F1_medgpt_key_simulation_pub_modulus_abc123456789",
+      "e": "AQAB"
+    }
+  ]
+}

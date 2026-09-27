@@ -1,0 +1,18 @@
+; ==============================================================================
+; DNS for AI Discovery (DNS-AID) Records for medgptai.droploop.in
+; Specifications:
+; - IETF draft-mozleywilliams-dnsop-dnsaid
+; - RFC 9460 (SVCB and HTTPS DNS Resource Records)
+; - ARD (Agentic Resource Discovery) DNS discovery (spec §6.1)
+; ==============================================================================
+
+; 1. HTTPS / SVCB Service Entrypoints
+_index._agents.medgptai.droploop.in.  300 IN HTTPS 1 medgptai.droploop.in. alpn="h2,h3" port=443 mandatory=alpn,port
+_mcp._agents.medgptai.droploop.in.    300 IN HTTPS 1 medgptai.droploop.in. alpn="h2,h3" port=443 mandatory=alpn,port
+_a2a._agents.medgptai.droploop.in.    300 IN HTTPS 1 medgptai.droploop.in. alpn="a2a,h2,h3" port=443 mandatory=alpn,port
+
+; 2. DNS-AID Index TXT Record
+_index._agents.medgptai.droploop.in.  300 IN TXT "v=dnsaid1; endpoint=https://medgptai.droploop.in/.well-known/ai-catalog.json"
+
+; 3. ARD (Agentic Resource Discovery) TXT Pointer
+_catalog._agents.medgptai.droploop.in. 300 IN TXT "url=https://medgptai.droploop.in/.well-known/ai-catalog.json"

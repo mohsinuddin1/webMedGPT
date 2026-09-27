@@ -1,0 +1,26 @@
+{
+  "$schema": "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
+  "skills": [
+    {
+      "name": "blood-test-analysis",
+      "type": "skill-md",
+      "description": "Analyze blood test biomarkers and laboratory report panels against clinical reference ranges with plain-English insights.",
+      "url": "https://medgptai.droploop.in/.well-known/agent-skills/blood-test-analysis/SKILL.md",
+      "digest": "sha256:9c806624a95daad3e4bd27e9f681825781a29bbb6a9f6e224f9dfba4dca18cb8"
+    },
+    {
+      "name": "medication-information",
+      "type": "skill-md",
+      "description": "Look up prescription and OTC drug dosages, mechanism of action, side effects, precautions, and potential drug interactions.",
+      "url": "https://medgptai.droploop.in/.well-known/agent-skills/medication-information/SKILL.md",
+      "digest": "sha256:159db82d5165f529f9618713b4b223ca2e6a995e02291065d88921f57308dafd"
+    },
+    {
+      "name": "medical-jargon-simplifier",
+      "type": "skill-md",
+      "description": "Translate complex clinical abbreviations, anatomical terms, diagnostic codes, and medical jargon into plain, compassionate language.",
+      "url": "https://medgptai.droploop.in/.well-known/agent-skills/medical-jargon-simplifier/SKILL.md",
+      "digest": "sha256:b91fb229d3ff6e5edaa1e9f386ff483cb5a2550312dbc0e72d9d884936b74ace"
+    }
+  ]
+}
