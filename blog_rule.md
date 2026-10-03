@@ -352,22 +352,68 @@ Every blog **must** be translated into all 25 supported locales. Translations ar
 - **Image**: `https://images.unsplash.com/photo-1543362906-acfc16c67564?q=80&w=1200&auto=format&fit=crop`
 - **Topics Covered**: Sodium, Potassium, Calcium, Magnesium, hydration, heart rhythm, muscle cramps, metabolic panel, electrolyte imbalance, MedGPT isolation.
 
+### Blog 15 — How to Read Coagulation Test Results: PT, INR, and aPTT Explained
+- **Slug**: `how-to-read-coagulation-test-results-pt-inr-aptt`
+- **Tags**: Blood Clotting, Anticoagulants, Lab Tests, Health Guide
+- **Image**: `https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1200&auto=format&fit=crop`
+- **Topics Covered**: PT (Prothrombin Time), INR (International Normalized Ratio), aPTT (Activated Partial Thromboplastin Time), extrinsic and intrinsic pathways, target INR ranges on warfarin/anticoagulants, high vs low INR risks, vitamin K food interactions, emergency bleeding vs clotting warning signs, MedGPT therapeutic range matching.
+
+### Blog 16 — Hormone Blood Tests Explained: Estrogen, Testosterone, Cortisol, and Progesterone
+- **Slug**: `hormone-blood-test-results-explained`
+- **Tags**: Hormones, Endocrinology, Lab Tests, Women's Health, Men's Health
+- **Image**: `https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?q=80&w=1200&auto=format&fit=crop`
+- **Topics Covered**: Estradiol (E2) cycle phases and men's levels, Total vs Free Testosterone and SHBG, morning circadian Cortisol rhythm, Cushing's vs Addison's, Progesterone ovulation confirmation, 5 preparation rules (8 AM draw, fasting, cycle days, biotin washout), Addisonian crisis and pituitary apoplexy red flags, MedGPT hormone analysis.
+
+### Blog 17 — What Does an Abnormal Blood Test Result Mean? When to Worry and When Not To
+- **Slug**: `abnormal-blood-test-results-when-to-worry`
+- **Tags**: Blood Tests, Health Anxiety, Lab Results, Primary Care, Patient Guide
+- **Image**: `https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=1200&auto=format&fit=crop`
+- **Topics Covered**: 95% bell curve Gaussian statistical rule (5% of healthy people naturally outside reference range, >64% chance of false flag on 25-test panel), 5 benign causes of abnormal labs (dehydration/hemoconcentration, intense workout/CK, recent viral infection, biotin assay interference, specimen hemolysis/pseudohyperkalemia), deviation categorization table (mild/borderline 1–15%, moderate 20–100%, critical panic values), doctor holistic review (isolated vs organ panel like Gilbert's syndrome, longitudinal trend, treating patient not paper), red flag emergency indicators (potassium >6.0 or <2.5, Hb <7.0, platelets <20k, glucose >400), 4-step action plan, doctor discussion questions, MedGPT AI interpretation.
+
+### Blog 18 — Understanding Inflammatory Markers: CRP, ESR, and Ferritin in Your Blood Test
+- **Slug**: `understanding-inflammatory-markers-crp-esr-ferritin`
+- **Tags**: Inflammation, Lab Tests, Autoimmune, Health Guide
+- **Image**: `https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=1200&auto=format&fit=crop`
+- **Topics Covered**: Acute-phase reactants, C-Reactive Protein (CRP) rapid hepatic synthesis via IL-6 and magnitude thresholds (mild 3–10, moderate 10–50, marked 50–100, critical >100 mg/L), hs-CRP for cardiovascular plaque instability, Erythrocyte Sedimentation Rate (ESR / Westergren) mechanism via fibrinogen/rouleaux and non-inflammatory confounders (anemia, pregnancy, age), Westergren age formulas, Serum Ferritin dual role as iron storage and acute-phase protein, differentiating iron deficiency anemia vs anemia of chronic disease with TSAT, extreme hyperferritinemia (>1,000–10,000 ng/mL), 4 diagnostic combination patterns, emergency red flags (temporal arteritis / blindness risk, severe bacterial sepsis, HLH / cytokine storm), 4-step patient protocol, doctor questions, MedGPT AI lab analysis.
+
+### Blog 19 — How to Read a Chest X-Ray Report: A Patient's Plain-English Guide
+- **Slug**: `how-to-read-chest-x-ray-report`
+- **Tags**: Chest X-Ray, Radiology, Imaging Reports, Health Guide
+- **Image**: `https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=1200&auto=format&fit=crop`
+- **Topics Covered**: 5 anatomical sections of CXR reports (Indication, Technique, Comparison, Findings, Impression/Conclusion), decoding radiology jargon (Unremarkable / clear lungs, Opacity / Infiltrate, Consolidation / alveolar filling, Atelectasis / volume loss, Pleural Effusion / costophrenic blunting, Cardiomegaly / CTR > 0.50, Pneumothorax), PA vs. AP projection magnification physics (portable AP views falsely exaggerating cardiac silhouette), differentiating atelectasis vs consolidation vs bronchovascular markings, emergency red flags (tension pneumothorax with mediastinal shift, widened mediastinum / aortic dissection, acute massive pulmonary edema, pneumoperitoneum / free subdiaphragmatic air), 4-step patient review checklist, doctor discussion questions, MedGPT AI radiology translation.
+
+### Blog 20 — Understanding Your Bone X-Ray Report: Fractures, Osteoporosis, and Joint Findings
+- **Slug**: `bone-x-ray-report-explained`
+- **Tags**: Bone X-Ray, Orthopedics, Radiology, Bone Health, Health Guide
+- **Image**: `https://images.unsplash.com/photo-1530497610245-94d3c16cda28?q=80&w=1200&auto=format&fit=crop`
+- **Topics Covered**: 4 structural domains evaluated by radiologists (Alignment, Cortical Margins, Cartilage & Joint Space, Soft Tissues), decoding orthopedic radiology jargon (Intact cortices, Hairline / non-displaced fracture, Displaced / comminuted fracture, Joint space narrowing, Osteophytes / bone spurs, Subchondral sclerosis, Osteopenia / demineralization), the "Hidden Fracture" phenomenon and osteoclast bone resorption lag (10–14 days before visible fracture line or callus), Osteoarthritis (local joint wear, sclerosis, osteophytes) vs. Osteoporosis (systemic cortical thinning, radiolucency, DEXA T-score necessity), emergency red flags (open fracture, neurovascular compromise, unstable pelvic/spinal injury, complete dislocation, aggressive lytic bone destruction), 4-step patient review plan, orthopedic doctor discussion questions, MedGPT radiology AI translation.
+
+### Blog 21 — What Does Your CT Scan Report Mean? A Patient's Guide to Common Findings
+- **Slug**: `ct-scan-report-meaning-explained`
+- **Tags**: CT Scan, Radiology, Medical Imaging, Health Guide
+- **Image**: `https://images.unsplash.com/photo-1551076805-e1869033e561?q=80&w=1200&auto=format&fit=crop`
+- **Topics Covered**: 5 core sections of CT reports (Indication, Technique/Protocol, Comparison, Organ-by-organ findings, Impression), Hounsfield Unit (HU) radiodensity scale explained (Hypodense cysts/fat vs. Isodense tissue vs. Hyperdense bone/acute blood vs. Contrast enhancement and wash-out), common benign findings decoding table (unremarkable, hypodense lesion, calcified granuloma, subcentimeter pulmonary nodule, reactive lymphadenopathy, hepatic steatosis, diverticulosis, vascular calcification), the "Incidentaloma" dilemma (30–50% of adult scans reveal asymptomatic benign findings like Bosniak I renal cysts, adrenal adenomas, hemangiomas), Contrast vs. Non-contrast CT trade-offs and hydration advice, emergency red flags (acute intracranial hemorrhage, pulmonary embolism, contrast blush active bleed, aortic dissection, pneumoperitoneum free air, bowel ischemia/pneumatosis), 4-step report review guide, doctor discussion questions, MedGPT AI CT interpretation.
+
+### Blog 22 — Understanding Your MRI Report: What "Disc Bulge," "Signal Intensity," and "Lesion" Really Mean
+- **Slug**: `mri-report-findings-explained`
+- **Tags**: MRI, Radiology, Neurology, Spine Health, Health Guide
+- **Image**: `https://images.unsplash.com/photo-1559757175-5700dde675bc?q=80&w=1200&auto=format&fit=crop`
+- **Topics Covered**: MRI physics without radiation (1.5T/3.0T magnetic fields & RF excitation of hydrogen protons), MRI sequence decoding (T1 structural/fat bright, T2 water/edema/inflammation bright, FLAIR CSF-suppressed brain edema/MS plaques, STIR fat-suppressed bone marrow edema/bone bruises), signal intensity terms (Hyperintense, Hypointense, Isointense), spine pathology spectrum (disc desiccation / "dark disc", disc bulge vs focal protrusion vs true extrusion / herniation, thecal sac abutment vs nerve root impingement, canal & foraminal stenosis, Modic type 1/2/3 endplate changes), brain MRI white matter lesions (microvascular aging vs MS Dawson fingers vs tumors), gadolinium contrast safety & indications (kidney eGFR considerations, distinguishing surgical scar from recurrent disc), emergency red flags (cauda equina syndrome, acute cervical myelopathy / myelomalacia, acute ischemic stroke on DWI/ADC, intracranial mass effect), 4-step report review plan, doctor discussion questions, MedGPT AI MRI interpretation.
+
 ---
 
 ## 4. Upcoming Topic Roadmap (`idea_blog.md`)
 
-All future blog posts (Blog 15 through Blog 50) **must** be selected from the comprehensive research roadmap documented in `idea_blog.md`.
+All future blog posts (Blog 23 through Blog 50) **must** be selected from the comprehensive research roadmap documented in `idea_blog.md`.
 
-### Next Topics in Queue (Sequential Cluster A)
-- **Blog 15** — How to Read Coagulation Test Results: PT, INR, and aPTT Explained (`PT INR aPTT explained`)
-- **Blog 16** — Hormone Blood Tests Explained: Estrogen, Testosterone, Cortisol, and Progesterone (`hormone blood test results explained`)
-- **Blog 17** — What Does an Abnormal Blood Test Result Mean? When to Worry and When Not To (`abnormal blood test results when to worry` — **#1 Highest-Impact Priority**)
-- **Blog 18** — Understanding Inflammatory Markers: CRP, ESR, and Ferritin in Your Blood Test (`CRP ESR blood test meaning`)
+### Next Topics in Queue (Sequential Cluster B)
+- **Blog 23** — Dental X-Ray Report: Understanding Cavities, Root Canal Findings, and Jaw Conditions (`dental-x-ray-report-explained`)
+- **Blog 24** — How to Read an Ultrasound Report: Abdominal, Pelvic, and Thyroid Scans Explained (`ultrasound-report-explained`)
 
 ### Topic Clusters Overview
 Refer to `idea_blog.md` for complete keyword metrics, long-tail variants, target GEOs, and MedGPT feature mappings:
-- **Cluster A (Blog 9–18)**: Blood & Lab Report Deep Dives *(Blogs 9–14 completed; Blogs 15–18 remaining)*
-- **Cluster B (Blog 19–25)**: X-Ray & Imaging Reports (Chest X-Ray, Bone/Fractures, CT Scan, MRI, Dental, Ultrasound, "Unremarkable" report term)
+- **Cluster A (Blog 9–18)**: Blood & Lab Report Deep Dives *(Blogs 9–18 completed; Cluster A 100% complete)*
+- **Cluster B (Blog 19–25)**: X-Ray & Imaging Reports (Chest X-Ray [Blog 19 complete], Bone/Fractures [Blog 20 complete], CT Scan [Blog 21 complete], MRI [Blog 22 complete], Dental, Ultrasound, "Unremarkable" report term)
 - **Cluster C (Blog 26–32)**: Multilingual & GEO-Targeted Health Systems (Multilingual Assistant, German ePA/Blutbild, Polish NFZ/Morfologia, Russian ОМС, Czech VZP, Bulgarian НЗОК, Australian My Health Record)
 - **Cluster D (Blog 33–37)**: Medication, Drug Interactions & Safety (Drug-Food Interactions, Polypharmacy, Antibiotic Resistance, Supplements & Drugs, Missed Dose Guide)
 - **Cluster E (Blog 38–44)**: Chronic Conditions & Preventive Health (CKD Stages, Fatty Liver/NAFLD, Allergy IgE Panels, Stool/Gut Tests, PSA/Prostate, STI Panels, Pregnancy Labs)
