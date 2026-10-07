@@ -6,17 +6,24 @@ import mdx from '@astrojs/mdx';
 export default defineConfig({
   site: 'https://medgptai.droploop.in',
   output: 'static',
+  trailingSlash: 'never',
   integrations: [
     sitemap({
       changefreq: 'weekly',
       priority: 0.7,
       lastmod: new Date(),
       serialize(item) {
+        // Normalize: strip trailing slash for all pages except the root domain
+        if (item.url !== 'https://medgptai.droploop.in/' && item.url.endsWith('/')) {
+          item.url = item.url.replace(/\/$/, '');
+        }
+
         // Higher priority for homepage and English blog posts
-        if (item.url === 'https://medgptai.droploop.in/') {
+        if (item.url === 'https://medgptai.droploop.in/' || item.url === 'https://medgptai.droploop.in') {
+          item.url = 'https://medgptai.droploop.in/';
           item.priority = 1.0;
           item.changefreq = 'daily';
-        } else if (item.url.match(/\/blog\/[^/]+\/?$/) && !item.url.match(/^\/(ar|fr|es|de|it|pt|nl|sv|da|no|nb|pl|cs|ro|lt|lv|bg|el|tr|ru|ja|ko|zh|ar-ma)\//)) {
+        } else if (item.url.match(/\/blog\/[^/]+$/) && !item.url.match(/^\/(ar|fr|es|de|it|pt|nl|sv|da|no|nb|pl|cs|ro|lt|lv|bg|el|tr|ru|ja|ko|zh|ar-ma)\//)) {
           item.priority = 0.9;
           item.changefreq = 'weekly';
         } else if (item.url.includes('/blog')) {

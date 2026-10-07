@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import DownloadCTA from '../components/DownloadCTA.astro';
 import SimilarBlogs from '../components/SimilarBlogs.astro';
 import MedicalCitations from '../components/MedicalCitations.astro';
+import MobileAppStickyBar from '../components/MobileAppStickyBar.astro';
 import { getUITranslation } from '../utils/uiTranslations';
 
 export interface Props {
@@ -22,9 +23,10 @@ export interface Props {
   lang?: string;
   dir?: 'ltr' | 'rtl';
   hreflangAlternates?: Array<{ lang: string; href: string }>;
+  faqs?: Array<{ question: string; answer: string }>;
 }
 
-const { title, description, pubDate, updatedDate, author, image, imageAlt, readingTime, tags, shortAnswer, about, mentions, sources = [], lang = 'en', dir, hreflangAlternates = [] } = Astro.props;
+const { title, description, pubDate, updatedDate, author, image, imageAlt, readingTime, tags, shortAnswer, about, mentions, sources = [], lang = 'en', dir, hreflangAlternates = [], faqs = [] } = Astro.props;
 
 const formattedPubDate = pubDate.toLocaleDateString('en-US', {
   year: 'numeric',
@@ -48,6 +50,7 @@ const formattedUpdatedDate = updatedDate?.toLocaleDateString('en-US', {
   modifiedTime={updatedDate?.toISOString() || pubDate.toISOString()}
   author={author}
   schemaType="article"
+  faqs={faqs}
   image={image}
   about={about}
   mentions={mentions}
@@ -110,11 +113,17 @@ const formattedUpdatedDate = updatedDate?.toLocaleDateString('en-US', {
       <!-- Similar Blogs -->
       <SimilarBlogs currentTitle={title} tags={tags} lang={lang} />
 
-      <!-- CTA -->
+      <!-- CTA with Desktop QR Code & App Download -->
       <aside class="blog-post__cta">
         <h3>{getUITranslation(lang, 'tryMedGPTFree')}</h3>
         <p>{getUITranslation(lang, 'tryMedGPTDesc')}</p>
-        <DownloadCTA variant="primary" utmMedium="blog-post" />
+        <div class="blog-post__cta-actions">
+          <DownloadCTA variant="primary" utmMedium="blog-post" />
+          <div class="blog-post__cta-qr" title="Scan with your phone to download MedGPT on Google Play">
+            <img src="/images/medgpt-playstore-qr.svg" alt="Scan to install MedGPT" width="76" height="76" loading="lazy" />
+            <span>Scan with phone</span>
+          </div>
+        </div>
       </aside>
 
       <!-- Back to Blog -->
@@ -123,6 +132,9 @@ const formattedUpdatedDate = updatedDate?.toLocaleDateString('en-US', {
       </nav>
     </div>
   </article>
+
+  <!-- Mobile Floating App Install Bar -->
+  <MobileAppStickyBar lang={lang} />
 </BaseLayout>
 
 <style>
@@ -222,6 +234,44 @@ const formattedUpdatedDate = updatedDate?.toLocaleDateString('en-US', {
     color: var(--color-text-secondary);
     margin-bottom: var(--space-5);
     font-size: var(--text-base);
+  }
+
+  .blog-post__cta-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-6);
+    flex-wrap: wrap;
+    margin-top: var(--space-4);
+  }
+
+  .blog-post__cta-qr {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 12px;
+    background: #ffffff;
+    border-radius: var(--radius-md);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  }
+
+  .blog-post__cta-qr img {
+    border-radius: 4px;
+  }
+
+  .blog-post__cta-qr span {
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: #121418;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  @media (min-width: 769px) {
+    .blog-post__cta-qr {
+      display: flex;
+    }
   }
 
   .blog-post__nav {

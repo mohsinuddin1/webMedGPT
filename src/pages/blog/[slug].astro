@@ -2,6 +2,7 @@
 import BlogLayout from '../../layouts/BlogLayout.astro';
 import { getCollection, render } from 'astro:content';
 import { slugMap } from '../../utils/slugMap';
+import { extractFaqsFromMarkdown } from '../../utils/faqExtractor';
 
 const siteUrl = 'https://medgptai.droploop.in';
 
@@ -17,6 +18,7 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await render(post);
 const enSlug = post.id.replace('en/', '');
+const faqs = extractFaqsFromMarkdown(post.body);
 
 // Build hreflang alternates from the slug map
 const hreflangAlternates: Array<{ lang: string; href: string }> = [];
@@ -50,6 +52,7 @@ if (slugTranslations) {
   mentions={post.data.mentions}
   sources={post.data.sources}
   hreflangAlternates={hreflangAlternates}
+  faqs={faqs}
 >
   <Content />
 </BlogLayout>

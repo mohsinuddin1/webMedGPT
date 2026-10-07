@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import DownloadCTA from '../components/DownloadCTA.astro';
+import MobileAppStickyBar from '../components/MobileAppStickyBar.astro';
 import { getCollection } from 'astro:content';
 
 const allPosts = await getCollection('blog');
@@ -293,6 +294,9 @@ const steps = [
       </div>
     </div>
   </section>
+
+  <!-- Mobile Floating App Install Bar -->
+  <MobileAppStickyBar lang="en" />
 </BaseLayout>
 
 <style>

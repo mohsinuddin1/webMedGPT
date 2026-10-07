@@ -14,24 +14,77 @@ const {
 const playStoreUrl = `https://play.google.com/store/apps/details?id=com.medgptai.app&referrer=utm_source%3Dwebsite%26utm_medium%3D${utmMedium}`;
 ---
 
-<a
-  href={playStoreUrl}
-  target="_blank"
-  rel="noopener noreferrer"
-  class:list={['download-cta', `download-cta--${variant}`, size === 'large' && 'download-cta--large']}
-  id={`download-cta-${utmMedium}`}
-  aria-label="Download MedGPT on Google Play"
->
-  <svg class="download-cta__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zM17.458 8.7L20.29 12l-2.832 3.3L14.799 12l2.66-3.3zM5.864 3.357l10.937 6.334-2.302 2.302-8.635-8.636z" fill="currentColor"/>
-  </svg>
-  <div class="download-cta__text">
-    <span class="download-cta__small">GET IT ON</span>
-    <span class="download-cta__big">Google Play</span>
+<div class="download-cta-wrapper">
+  <a
+    href={playStoreUrl}
+    target="_blank"
+    rel="noopener noreferrer"
+    class:list={['download-cta', `download-cta--${variant}`, size === 'large' && 'download-cta--large']}
+    id={`download-cta-${utmMedium}`}
+    aria-label="Download MedGPT on Google Play"
+  >
+    <svg class="download-cta__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zM17.458 8.7L20.29 12l-2.832 3.3L14.799 12l2.66-3.3zM5.864 3.357l10.937 6.334-2.302 2.302-8.635-8.636z" fill="currentColor"/>
+    </svg>
+    <div class="download-cta__text">
+      <span class="download-cta__small">GET IT ON</span>
+      <span class="download-cta__big">Google Play</span>
+    </div>
+  </a>
+  <div class="download-cta-qr-popover">
+    <img src="/images/medgpt-playstore-qr.svg" alt="Scan to download MedGPT" class="download-cta-qr-image" />
+    <span class="download-cta-qr-text">Scan to Download</span>
   </div>
-</a>
+</div>
 
 <style>
+  .download-cta-wrapper {
+    position: relative;
+    display: inline-flex;
+  }
+
+  .download-cta-qr-popover {
+    position: absolute;
+    bottom: calc(100% + 15px);
+    left: 50%;
+    transform: translateX(-50%) translateY(10px) scale(0.95);
+    background: #fcf9f9;
+    padding: 1.2rem;
+    border-radius: 24px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    pointer-events: none;
+    z-index: 50;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+  }
+
+  .download-cta:hover + .download-cta-qr-popover {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+
+  .download-cta-qr-image {
+    width: 140px;
+    height: 140px;
+    display: block;
+  }
+
+  .download-cta-qr-text {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #633246;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
   .download-cta {
     display: inline-flex;
     align-items: center;

@@ -1,0 +1,142 @@
+---
+export interface Props {
+  lang?: string;
+}
+
+const { lang = 'en' } = Astro.props;
+
+// Localized CTAs
+const translations: Record<string, { title: string; subtitle: string; button: string }> = {
+  en: { title: 'MedGPT AI Health App', subtitle: 'Analyze Lab Reports Instantly', button: 'Install Free' },
+  es: { title: 'MedGPT App de Salud IA', subtitle: 'Analiza tus análisis al instante', button: 'Instalar Gratis' },
+  fr: { title: 'MedGPT Santé IA', subtitle: 'Analysez vos bilans sanguins', button: 'Installer Gratuit' },
+  de: { title: 'MedGPT KI-Gesundheit', subtitle: 'Laborwerte sofort verstehen', button: 'Kostenlos' },
+  it: { title: 'MedGPT Salute IA', subtitle: 'Analizza esami del sangue', button: 'Installa Gratis' },
+  pt: { title: 'MedGPT Saúde IA', subtitle: 'Interprete exames de sangue', button: 'Instalar Grátis' },
+  nl: { title: 'MedGPT Gezondheid AI', subtitle: 'Begrijp bloeduitslagen direct', button: 'Gratis installeren' },
+  sv: { title: 'MedGPT AI Hälsa', subtitle: 'Förstå dina provsvar direkt', button: 'Installera' },
+  da: { title: 'MedGPT AI Sundhed', subtitle: 'Forstå dine blodprøvesvar', button: 'Installer' },
+  no: { title: 'MedGPT AI Helse', subtitle: 'Forstå blodprøvesvar direkte', button: 'Installer' },
+  nb: { title: 'MedGPT AI Helse', subtitle: 'Forstå blodprøvesvar direkte', button: 'Installer' },
+  pl: { title: 'MedGPT Zdrowie AI', subtitle: 'Analizuj wyniki badań krwi', button: 'Zainstaluj' },
+  cs: { title: 'MedGPT Zdraví AI', subtitle: 'Rozumějte krevním testům', button: 'Instalovat' },
+  tr: { title: 'MedGPT Sağlık Yapay Zeka', subtitle: 'Tahlil sonuçlarını hemen anla', button: 'Ücretsiz Yükle' },
+  ar: { title: 'تطبيق MedGPT الطبي', subtitle: 'تحليل نتائج التحاليل فوراً', button: 'تثبيت مجاني' },
+};
+
+const t = translations[lang] || translations.en;
+const playStoreUrl = `https://play.google.com/store/apps/details?id=com.medgptai.app&referrer=utm_source%3Dwebsite%26utm_medium%3Dsticky_mobile_bar`;
+---
+
+<div class="mobile-sticky-bar" id="mobile-sticky-bar" aria-label="MedGPT App Banner">
+  <button type="button" class="mobile-sticky-bar__close" id="mobile-sticky-close" aria-label="Dismiss banner">×</button>
+  <img src="/appLogo.png" alt="MedGPT Logo" class="mobile-sticky-bar__logo" width="40" height="40" loading="lazy" />
+  <div class="mobile-sticky-bar__info">
+    <span class="mobile-sticky-bar__title">{t.title}</span>
+    <span class="mobile-sticky-bar__sub">{t.subtitle}</span>
+  </div>
+  <a href={playStoreUrl} target="_blank" rel="noopener noreferrer" class="mobile-sticky-bar__btn">
+    {t.button}
+  </a>
+</div>
+
+<style>
+  .mobile-sticky-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    background: rgba(18, 20, 24, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(0, 212, 170, 0.3);
+    padding: 8px 14px;
+    display: none;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
+    animation: slideUp 0.3s ease-out;
+  }
+
+  @keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+  }
+
+  @media (max-width: 768px) {
+    .mobile-sticky-bar {
+      display: flex;
+    }
+  }
+
+  .mobile-sticky-bar__close {
+    background: none;
+    border: none;
+    color: var(--color-text-muted, #8b949e);
+    font-size: 20px;
+    line-height: 1;
+    padding: 2px 6px;
+    cursor: pointer;
+  }
+
+  .mobile-sticky-bar__logo {
+    border-radius: 8px;
+    flex-shrink: 0;
+  }
+
+  .mobile-sticky-bar__info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .mobile-sticky-bar__title {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--color-text-primary, #ffffff);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .mobile-sticky-bar__sub {
+    font-size: 0.7rem;
+    color: #00d4aa;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .mobile-sticky-bar__btn {
+    background: #00d4aa;
+    color: #0d1117;
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 8px 14px;
+    border-radius: 999px;
+    text-decoration: none;
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(0, 212, 170, 0.35);
+    flex-shrink: 0;
+  }
+
+  .mobile-sticky-bar__btn:hover {
+    background: #00f0c0;
+  }
+</style>
+
+<script is:inline>
+  const closeBtn = document.getElementById('mobile-sticky-close');
+  const bar = document.getElementById('mobile-sticky-bar');
+  if (closeBtn && bar) {
+    closeBtn.addEventListener('click', () => {
+      bar.style.display = 'none';
+      sessionStorage.setItem('medgpt_bar_closed', '1');
+    });
+    if (sessionStorage.getItem('medgpt_bar_closed') === '1') {
+      bar.style.display = 'none';
+    }
+  }
+</script>
