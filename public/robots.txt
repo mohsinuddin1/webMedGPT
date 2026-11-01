@@ -1,20 +1,24 @@
+# MedGPT Robots Policy
+# https://medgptai.droploop.in
+
 User-agent: *
 Allow: /
-Content-Signal: ai-train=no, search=yes, ai-input=yes
-Agentmap: https://medgptai.droploop.in/.well-known/ai-catalog.json
-Sitemap: https://medgptai.droploop.in/sitemap-index.xml
-
-User-agent: GPTBot
-Allow: /
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /api/
+Disallow: /account/
 Content-Signal: ai-train=no, search=yes, ai-input=yes
 
-User-agent: Google-Extended
+# Standard Web Search Crawlers
+User-agent: Googlebot
 Allow: /
-Content-Signal: ai-train=no, search=yes, ai-input=yes
 
-User-agent: ChatGPT-User
+User-agent: Bingbot
 Allow: /
-Content-Signal: ai-train=no, search=yes, ai-input=yes
+
+# Dedicated AI Search Engine Crawlers (Allow for Answer Engine Optimization)
+User-agent: OAI-SearchBot
+Allow: /
 
 User-agent: PerplexityBot
 Allow: /
@@ -24,6 +28,23 @@ User-agent: ClaudeBot
 Allow: /
 Content-Signal: ai-train=no, search=yes, ai-input=yes
 
-User-agent: Amazonbot
+User-agent: ChatGPT-User
 Allow: /
 Content-Signal: ai-train=no, search=yes, ai-input=yes
+
+# AI Model Training Crawlers (Disallow model training data harvesting)
+User-agent: GPTBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+# Dual Sitemap Declarations
+Sitemap: https://medgptai.droploop.in/sitemap.xml
+Sitemap: https://medgptai.droploop.in/sitemap-index.xml
+
+# Machine-Readable AI & Agent Discovery
+Agentmap: https://medgptai.droploop.in/.well-known/ai-catalog.json

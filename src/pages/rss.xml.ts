@@ -15,14 +15,14 @@ export async function GET(context: any) {
       title: post.data.title,
       pubDate: post.data.pubDate,
       description: post.data.description,
-      link: `/blog/${post.id.replace('en/', '')}/`,
+      link: `/blog/${post.id.replace('en/', '')}`,
       categories: post.data.tags,
-      author: post.data.author,
+      author: post.data.author || 'MedGPT Team',
     })),
     customData: `<language>en-us</language>
 <copyright>© 2026 PureScan AI. All rights reserved.</copyright>
-<managingEditor>purescanai@outlook.com (MedGPT Team)</managingEditor>
-<webMaster>purescanai@outlook.com (MedGPT Team)</webMaster>
+<managingEditor>contact@droploop.in (PureScan AI)</managingEditor>
+<webMaster>contact@droploop.in (PureScan AI)</webMaster>
 <image>
   <url>https://medgptai.droploop.in/appLogo.png</url>
   <title>MedGPT Health Blog</title>

@@ -10,9 +10,10 @@ export interface Props {
   faqs?: Array<{ question: string; answer: string }>;
   about?: string[];
   mentions?: string[];
+  sources?: Array<{ name: string; url: string; description?: string }>;
 }
 
-const { type, title, description, publishedDate, modifiedDate, author, image, faqs, about = [], mentions = [] } = Astro.props;
+const { type, title, description, publishedDate, modifiedDate, author, image, faqs, about = [], mentions = [], sources = [] } = Astro.props;
 const siteUrl = 'https://medgptai.droploop.in';
 const pageUrl = new URL(Astro.url.pathname, siteUrl).toString();
 
@@ -25,7 +26,7 @@ const organizationSchema = {
   logo: `${siteUrl}/favicon.svg`,
   contactPoint: {
     '@type': 'ContactPoint',
-    email: 'purescanai@outlook.com',
+    email: 'contact@droploop.in',
     contactType: 'customer support',
   },
 };
@@ -35,9 +36,10 @@ const appSchema = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
   name: 'MedGPT — AI Health Assistant',
-  operatingSystem: 'Android',
+  operatingSystem: 'Android, Web',
   applicationCategory: 'HealthApplication',
-  description: 'AI-powered health companion. Analyze medical reports, blood tests, understand medications, explore symptoms, and prepare for doctor visits.',
+  applicationSubCategory: 'MedicalInformatics',
+  description: 'AI-powered educational health companion. Analyze medical reports, blood tests, understand medications, explore symptoms, and prepare for doctor visits.',
   offers: {
     '@type': 'Offer',
     price: '0',
@@ -47,10 +49,19 @@ const appSchema = {
   author: {
     '@type': 'Organization',
     name: 'PureScan AI',
+    url: siteUrl,
   },
+  featureList: [
+    'Complete Blood Count (CBC) breakdown',
+    'Liver & kidney function test interpretation',
+    'Radiology report simplifier (X-ray, CT, MRI, Ultrasound)',
+    'Medication indications & side effect verification',
+    'Doctor appointment preparation checklist',
+    'Multilingual medical translation in 25 languages',
+  ],
 };
 
-// WebSite schema (homepage only)
+// WebSite schema (homepage only) with SearchAction for AEO/Sitelinks
 const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
@@ -59,6 +70,14 @@ const websiteSchema = {
   publisher: {
     '@type': 'Organization',
     name: 'PureScan AI',
+  },
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: `${siteUrl}/blog?q={search_term_string}`,
+    },
+    'query-input': 'required name=search_term_string',
   },
 };
 
@@ -82,6 +101,7 @@ const articleSchema = publishedDate ? {
   author: {
     '@type': 'Organization',
     name: author || 'MedGPT Team',
+    url: siteUrl,
   },
   publisher: {
     '@type': 'Organization',
@@ -103,11 +123,19 @@ const articleSchema = publishedDate ? {
     '@type': 'SpeakableSpecification',
     cssSelector: ['.prose h1', '.prose h2', '.blog-post__short-answer', '.prose p:first-of-type'],
   },
-  reviewedBy: {
-    '@type': 'Organization',
-    name: 'MedGPT Editorial Team',
-    url: siteUrl,
-  },
+  ...(sources.length > 0 ? {
+    reviewedBy: {
+      '@type': 'Organization',
+      name: sources[0].name,
+      url: sources[0].url,
+    },
+    citation: sources.map(s => ({
+      '@type': 'CreativeWork',
+      name: s.name,
+      url: s.url,
+    })),
+    isBasedOn: sources.map(s => s.url),
+  } : {}),
 } : null;
 
 // MedicalWebPage (for health articles)
@@ -118,9 +146,17 @@ const medicalWebPageSchema = type === 'article' ? {
   url: pageUrl,
   description: description,
   lastReviewed: modifiedDate || publishedDate,
+  author: {
+    '@type': 'Organization',
+    name: author || 'MedGPT Team',
+    url: siteUrl,
+  },
   medicalAudience: {
     '@type': 'PatientAudience',
   },
+  ...(sources.length > 0 ? {
+    citation: sources.map(s => s.url),
+  } : {}),
 } : null;
 
 // FAQ schema
@@ -137,24 +173,44 @@ const faqSchema = faqs && faqs.length > 0 ? {
   })),
 } : null;
 
-// BreadcrumbList
+// BreadcrumbList schema matching visible hierarchy (Home -> Blog -> Article)
+const breadcrumbListItems = [
+  {
+    '@type': 'ListItem',
+    position: 1,
+    name: 'Home',
+    item: siteUrl,
+  },
+];
+
+if (type === 'article') {
+  breadcrumbListItems.push(
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Blog',
+      item: `${siteUrl}/blog`,
+    },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: title || 'Article',
+      item: pageUrl,
+    }
+  );
+} else if (type !== 'homepage') {
+  breadcrumbListItems.push({
+    '@type': 'ListItem',
+    position: 2,
+    name: title || 'Page',
+    item: pageUrl,
+  });
+}
+
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
-  itemListElement: [
-    {
-      '@type': 'ListItem',
-      position: 1,
-      name: 'Home',
-      item: siteUrl,
-    },
-    ...(type !== 'homepage' ? [{
-      '@type': 'ListItem',
-      position: 2,
-      name: title,
-      item: pageUrl,
-    }] : []),
-  ],
+  itemListElement: breadcrumbListItems,
 };
 
 const schemas = [

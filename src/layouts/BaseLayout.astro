@@ -19,6 +19,7 @@ export interface Props {
   image?: string;
   about?: string[];
   mentions?: string[];
+  sources?: Array<{ name: string; url: string; description?: string }>;
   noindex?: boolean;
   lang?: string;
   dir?: 'ltr' | 'rtl';
@@ -39,6 +40,7 @@ const {
   image,
   about,
   mentions,
+  sources = [],
   noindex,
   lang = 'en',
   dir,
@@ -83,6 +85,7 @@ const htmlDir = dir || (lang.startsWith('ar') ? 'rtl' : 'ltr');
     image={image}
     about={about}
     mentions={mentions}
+    sources={sources}
   />
 
   <!-- AI Agent Discovery Links (RFC 8288 / RFC 9727 / ARD / MCP) -->

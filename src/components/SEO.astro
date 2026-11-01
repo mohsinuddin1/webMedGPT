@@ -29,7 +29,125 @@ const {
 
 const siteName = 'MedGPT';
 const siteUrl = 'https://medgptai.droploop.in';
-const fullTitle = title.includes('MedGPT') ? title : `${title} — ${siteName}`;
+
+const DANGLING_WORDS = new Set([
+  'for', 'and', 'to', 'with', 'in', 'on', 'at', 'by', 'from', 'of', 'the', 'a', 'an', 'without', 'under', 'about',
+  'do', 'dla', 'i', 'w', 'z', 'na', 'o', 'po', 'ze', 'od', 'bez', 'lub', 'oraz', 'pod', 'nad',
+  'de', 'et', 'en', 'pour', 'dans', 'sur', 'avec', 'par', 'sans', 'sous',
+  'und', 'mit', 'für', 'im', 'von', 'bei', 'zu', 'ohne', 'über', 'unter',
+  'y', 'e', 'para', 'con', 'por', 'sobre', 'sin', 'bajo', 'hacia',
+  'da', 'per', 'su', 'senza', 'sotto'
+]);
+
+function cleanDangling(text: string): string {
+  const words = text.split(/\s+/);
+  while (words.length > 0) {
+    const lastWord = words[words.length - 1].toLowerCase().replace(/[.,;:?!—\-|()[\]’'"]+/g, '');
+    if (DANGLING_WORDS.has(lastWord)) {
+      words.pop();
+    } else {
+      break;
+    }
+  }
+  return words.join(' ');
+}
+
+// SEO Title Optimization: strictly < 65 chars (industry optimal: 50-58 characters)
+const MAX_TITLE_LEN = 58;
+
+function formatTitle(rawTitle: string): string {
+  // Use typographic apostrophe to prevent HTML entity inflation (&#39;) in title tags
+  let cleaned = (rawTitle || '').replace(/'/g, '’').replace(/"/g, '').replace(/\s+/g, ' ').trim();
+  if (!cleaned) return siteName;
+
+  if (cleaned.includes('MedGPT')) {
+    if (cleaned.length <= MAX_TITLE_LEN) return cleaned;
+    let base = cleaned;
+    for (const sep of [' — MedGPT', ' - MedGPT', ' | MedGPT', ': MedGPT']) {
+      if (base.includes(sep)) {
+        base = base.split(sep)[0].trim();
+        break;
+      }
+    }
+    if (base.length <= MAX_TITLE_LEN - 9 && !base.toLowerCase().includes('medgpt')) {
+      return `${base} — ${siteName}`;
+    }
+    if (base.length <= MAX_TITLE_LEN) {
+      return base;
+    }
+    cleaned = base;
+  }
+
+  const withSuffix = `${cleaned} — ${siteName}`;
+  if (withSuffix.length <= MAX_TITLE_LEN) {
+    return withSuffix;
+  }
+
+  const withShortSuffix = `${cleaned} | ${siteName}`;
+  if (withShortSuffix.length <= MAX_TITLE_LEN) {
+    return withShortSuffix;
+  }
+
+  if (cleaned.length <= MAX_TITLE_LEN) {
+    return cleaned;
+  }
+
+  const sub = cleaned.slice(0, MAX_TITLE_LEN);
+  const boundary = Math.max(sub.lastIndexOf(' '), sub.lastIndexOf(':'), sub.lastIndexOf('-'));
+  let trimmed = boundary > 28 ? sub.slice(0, boundary).trim() : sub.trim();
+  trimmed = cleanDangling(trimmed);
+  if (trimmed.includes('(') && !trimmed.includes(')')) {
+    trimmed = trimmed.split('(')[0].trim();
+  }
+  return trimmed.replace(/[ ,;:\-]+$/, '');
+}
+
+const fullTitle = formatTitle(title);
+
+// SEO Meta Description Optimization: strictly between 25 and 145 chars (industry optimal: 120-140 characters)
+const MIN_DESC_LEN = 25;
+const MAX_DESC_LEN = 145;
+
+function formatDescription(rawDesc: string): string {
+  // Use typographic apostrophe to prevent HTML entity inflation (&#39;) in meta tags
+  const cleaned = (rawDesc || '').replace(/'/g, '’').replace(/"/g, '').replace(/\s+/g, ' ').trim();
+  if (!cleaned) {
+    return 'MedGPT provides clinical AI insights to help you understand medical reports.';
+  }
+
+  if (cleaned.length >= MIN_DESC_LEN && cleaned.length <= MAX_DESC_LEN) {
+    return cleaned;
+  }
+
+  if (cleaned.length > MAX_DESC_LEN) {
+    const windowText = cleaned.slice(0, MAX_DESC_LEN);
+    for (const punct of ['. ', '? ', '! ']) {
+      const idx = windowText.lastIndexOf(punct);
+      if (idx >= 80) {
+        return windowText.slice(0, idx + 1).trim();
+      }
+    }
+    const lastSpace = windowText.lastIndexOf(' ');
+    if (lastSpace >= 65) {
+      let trimmed = windowText.slice(0, lastSpace).replace(/[ ,;:\-]+$/, '');
+      if (trimmed.includes('(') && !trimmed.includes(')')) {
+        trimmed = trimmed.split('(')[0].replace(/[ ,;:\-]+$/, '');
+      }
+      trimmed = cleanDangling(trimmed);
+      if (!/[.?!]$/.test(trimmed)) {
+        trimmed += '.';
+      }
+      return trimmed;
+    }
+    return windowText.replace(/[ ,;:\-]+$/, '');
+  }
+
+  // Too short (< 25 chars)
+  const enriched = `${cleaned} Understand your health results and doctor reports with MedGPT.`;
+  return enriched.length <= MAX_DESC_LEN ? enriched : enriched.slice(0, MAX_DESC_LEN).trim();
+}
+
+const metaDescription = formatDescription(description);
 
 // Clean pathname: remove trailing slash for consistency (unless it's root)
 const pathname = Astro.url.pathname;
@@ -53,7 +171,7 @@ const currentOgLocale = langToOgLocale[lang] || 'en_US';
 
 <!-- Primary Meta -->
 <title>{fullTitle}</title>
-<meta name="description" content={description} />
+<meta name="description" content={metaDescription} />
 <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
 <link rel="canonical" href={canonicalUrl} />
 
@@ -68,7 +186,7 @@ const currentOgLocale = langToOgLocale[lang] || 'en_US';
 <!-- Open Graph -->
 <meta property="og:type" content={ogType} />
 <meta property="og:title" content={fullTitle} />
-<meta property="og:description" content={description} />
+<meta property="og:description" content={metaDescription} />
 <meta property="og:url" content={canonicalUrl} />
 <meta property="og:site_name" content={siteName} />
 <meta property="og:image" content={ogImageUrl} />
@@ -82,7 +200,7 @@ const currentOgLocale = langToOgLocale[lang] || 'en_US';
 <!-- Twitter/X Card -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={fullTitle} />
-<meta name="twitter:description" content={description} />
+<meta name="twitter:description" content={metaDescription} />
 <meta name="twitter:image" content={ogImageUrl} />
 
 <!-- Article-specific -->
@@ -97,4 +215,3 @@ const currentOgLocale = langToOgLocale[lang] || 'en_US';
 <meta name="google-site-verification" content="viybWkN34LbYpJIo4S6U45yJ_dyolZ6suvyIlKZgz9U" />
 <link rel="icon" type="image/png" href="/appLogo.png" />
 <link rel="manifest" href="/manifest.json" />
-

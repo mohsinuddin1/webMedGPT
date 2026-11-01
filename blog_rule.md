@@ -20,7 +20,7 @@ title: "<string>"                      # SEO: Target primary high-intent keyword
 description: "<string>"                # SEO/AEO: Compelling, click-worthy meta description with secondary keywords (140-160 characters)
 pubDate: YYYY-MM-DD                    # SEO/E-E-A-T: Publication date (ISO format)
 updatedDate: YYYY-MM-DD                # SEO/E-E-A-T: (Optional) Last clinically reviewed date
-author: "<Accredited Medical Authority or Guideline Body>" # SEO/E-E-A-T: Legitimate clinical institution (e.g., "National Institutes of Health (NIH)", "Ministry of Health Clinical Guidelines"). STRICTLY NO "MedGPT Team" or "MedGPT Editorial Team"
+author: "MedGPT Team"                    # Editorial attribution: Strictly "MedGPT Team" in all blogs
 image: "<url>"                         # SEO: Unique, high-res Unsplash image (1200x630 ratio, must differ from ALL previous blogs)
 imageAlt: "<string>"                   # SEO/Accessibility: Descriptive, keyword-rich alt text for image search
 tags: ["<string>", "<string>"]          # SEO: 3-5 relevant thematic tags for internal taxonomy and related post matching
@@ -128,10 +128,9 @@ Targeting Google, Bing, Yahoo, Yandex, and Baidu:
 
 3. **Medical E-E-A-T & Google Search Ranking Factors (Experience, Expertise, Authoritativeness, Trustworthiness)**:
    - **YMYL (Your Money Your Life) Rigor**: Health topics undergo the strictest evaluation under Google's Search Quality Rater Guidelines. Content must be factually accurate, clinically grounded, objective, and devoid of hyperbolic claims or AI hallucinations.
-   - **Legitimate Author Attribution & Editorial Grounding (Strictly NO MedGPT Team/Editor/Author)**:
-     - **Strict Prohibition**: Strictly **NO** "MedGPT Team", "MedGPT Editorial Team", "MedGPT Clinical Informatics Team", "MedGPT Medical Team", or any invented in-house author/editor personas. Self-attributed AI or company bylines undermine clinical E-E-A-T and trigger low-quality rater flags.
-     - **Authentic External Source Attribution**: Authorship, medical grounding, and clinical review must be directly attributed to the **legitimate source websites, accredited public health institutions, national ministries of health, certified laboratory federations, and verified medical guideline authors** (e.g., `National Institutes of Health (NIH)`, `Ministry of Health Clinical Guidelines`, `National Heart, Lung, and Blood Institute (NHLBI)`).
-     - Frontmatter `author` must name the legitimate authoring clinical organization or primary scientific source body behind the evidence, never a generic MedGPT team.
+   - **Author Attribution (Strictly "MedGPT Team")**:
+     - **Standard Author Byline**: All blog posts must carry `author: "MedGPT Team"` across all locales.
+     - **Authentic External Source Grounding**: Medical grounding, evidence, and clinical accuracy are directly attributed to the **legitimate source websites, accredited public health institutions, national ministries of health, certified laboratory federations, and verified medical guidelines** in the `sources` array and in-body citations (e.g., `National Institutes of Health (NIH)`, `CDC`, `FDA`, `Czech Society of Clinical Biochemistry (ČSKB)`). In Schema.org JSON-LD, `author` is mapped to `MedGPT Team` and `reviewedBy`/`citation` are mapped to these accredited external medical sources.
    - **Dual Citation Strategy (Strictly Exact Working Deep Links — Zero General Homepages)**:
      - **Frontmatter Array**: Include 2–5 structured sources linking to gold-standard institutions (NIH, MedlinePlus, CDC, FDA, WHO, Mayo Clinic, Cleveland Clinic, NHS, national health ministry guideline rubricators). Rendered in `<MedicalCitations />` and parsed into JSON-LD schema.
      - **In-Body Contextual Citations**: Directly hyperlink clinical claims, diagnostic thresholds, and statistical prevalence data to specific clinical publications on reputable external bodies (e.g., `[NIH MedlinePlus Complete Blood Count Guide](https://medlineplus.gov/lab-tests/complete-blood-count-cbc/)`, `[NHLBI Blood Tests Guide](https://www.nhlbi.nih.gov/health/blood-tests)`).
@@ -549,7 +548,7 @@ Before and during the generation of a new blog post, the agent **must** follow a
   - Consult `idea_blog.md` to select the next topic (e.g., Blog 15 or top priority).
   - Verify that the topic does NOT duplicate any entry in Section 3 (Master Topic Index) above.
 - [ ] **2. Frontmatter Complete & Tri-Optimized**:
-  - **SEO Fields**: `title` (under 60 chars with primary keyword), `description` (140–160 chars), `pubDate`, `author` (MUST be legitimate accredited clinical authority / guideline body; STRICTLY NO "MedGPT Team" or "MedGPT Editorial Team"), `image` (unique Unsplash), `imageAlt` (descriptive), `tags` (3–5), `readingTime`, `featured`.
+  - **SEO Fields**: `title` (under 60 chars with primary keyword), `description` (120–140 chars), `pubDate`, `author: "MedGPT Team"` (strictly "MedGPT Team" across all blogs), `image` (unique Unsplash), `imageAlt` (descriptive), `tags` (3–5), `readingTime`, `featured`.
   - **AEO Fields**: `shortAnswer` (25–45 word standalone direct answer targeting voice/AI overviews).
   - **GEO Fields**: `about` (array of Schema.org `Type: Name` entities), `mentions` (secondary entities), and `sources` (array of 2–5 authoritative medical citations with exact, working, deep-linked URLs; STRICTLY NO general homepages).
 - [ ] **3. Quality, Accuracy & Anti-AI-Slop Verification**:

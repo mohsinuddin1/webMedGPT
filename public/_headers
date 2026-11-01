@@ -40,6 +40,22 @@
   x-markdown-tokens: 380
   Access-Control-Allow-Origin: *
 
+/llms.txt
+  Content-Type: text/markdown; charset=utf-8
+  Access-Control-Allow-Origin: *
+
+/llms-full.txt
+  Content-Type: text/markdown; charset=utf-8
+  Access-Control-Allow-Origin: *
+
+/sitemap.xml
+  Content-Type: application/xml; charset=utf-8
+  Access-Control-Allow-Origin: *
+
+/rss.xml
+  Content-Type: application/xml; charset=utf-8
+  Access-Control-Allow-Origin: *
+
 /api/health
   Content-Type: application/json
   Access-Control-Allow-Origin: *

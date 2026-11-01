@@ -1,0 +1,36 @@
+# MedGPT
+
+> MedGPT is an AI-powered educational health companion that helps patients decode and understand complex medical reports, complete blood count (CBC) panels, radiology findings, and prescription side effects.
+
+## Main Product & Platform
+
+- [MedGPT Web Application](https://medgptai.droploop.in): Official web portal and educational health assistant.
+- [Google Play Application](https://play.google.com/store/apps/details?id=com.medgptai.app): Android native mobile app for scanning and explaining medical records.
+
+## Core Clinical Capabilities
+
+- **Blood Test Analysis**: Automated breakdown of CBC, metabolic panels, liver function tests (ALT, AST, ALP), kidney panels (eGFR, Creatinine, BUN), and lipid panels.
+- **Radiology Report Interpretation**: Decoding medical terminology across X-rays, CT scans, MRIs, and ultrasounds.
+- **Medication & Drug Safety**: Understanding prescription indications, side effects, contraindications, and food-drug interactions.
+- **Multilingual Support**: Real-time localization across 25 languages with regional healthcare system integration (e.g., German ePA, Polish NFZ, Russian OMI, Czech VZP).
+
+## Key Health Education Guides
+
+- [Health Blog Index](https://medgptai.droploop.in/blog): Complete library of evidence-based patient guides.
+- [How to Read Blood Test Results](https://medgptai.droploop.in/blog/how-to-read-blood-test-results): Foundational reference guide to understanding lab values, reference ranges, and units.
+- [Understanding CBC & Differential](https://medgptai.droploop.in/blog/understanding-cbc-differential-wbc-types): Detailed explanation of white blood cells, neutrophils, and immune markers.
+- [Kidney Function Test Guide](https://medgptai.droploop.in/blog/how-to-read-kidney-function-test-results): Interpreting eGFR, creatinine, and kidney health stages.
+- [Liver Function Test Guide](https://medgptai.droploop.in/blog/understanding-liver-function-test-results): Transaminases (ALT, AST) and biliary enzymes explained.
+- [Czech Healthcare & Krevní Obraz Guide](https://medgptai.droploop.in/blog/czech-healthcare-krevni-obraz-guide): Navigating Czech blood tests, žádanka requisitions, and VZP health insurance.
+- [German Healthcare & Blutbild Guide](https://medgptai.droploop.in/blog/german-healthcare-blutbild-epa-guide): Accessing blood test data via Germany's electronic patient record (ePA).
+- [Polish Healthcare & Badania Krwi Guide](https://medgptai.droploop.in/blog/polish-healthcare-badania-krwi-guide): Understanding Polish blood tests and NFZ primary care POZ referrals.
+
+## Important Policies & Ethics
+
+- [Privacy Policy](https://medgptai.droploop.in/privacy): HIPAA-aligned, zero-data-retention architectural principles.
+- [Terms of Service](https://medgptai.droploop.in/terms): User agreement and educational boundaries.
+
+## Medical Disclaimer
+
+MedGPT is an educational tool designed to improve health literacy and prepare patients for doctor visits. It does not provide medical diagnosis, clinical prognosis, or direct treatment advice. Always consult a licensed healthcare professional for medical emergencies and clinical evaluations.
+
