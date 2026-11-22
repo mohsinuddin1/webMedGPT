@@ -507,21 +507,27 @@ To ensure maximum organic search dominance in Google and authoritative citation 
 - **Image**: `https://images.unsplash.com/photo-1511174511562-5f7f18b874f8?q=80&w=1200&auto=format&fit=crop`
 - **Topics Covered**: Czech healthcare system architecture (Praktický lékař gatekeeping in primary care, statutory public health insurance: VZP 111, VoZP 201, ČPZP 205, OZP 207, ZPMV ČR 211, electronic and paper lab requisition slips - žádanka o vyšetření with MKN-10 diagnostic codes), private/commercial diagnostic networks (Synlab, EUC Laboratoře, Aeskulab, Spadia samoplátce walk-in testing without physician referral), central e-health portals (NZIP, eRecept, eOčkování), Krevní obraz (KO complete blood count) breakdown (Erytrocyty RBC, Hemoglobin Hb in g/l, Hematokrit Hct as decimal fraction, MCV fl, MCH pg, MCHC g/l, RDW %, Trombocyty Plt in × 10⁹/l, Leukocyty WBC and 5-part differential: segmenty vs. tyče, lymfocyty, monocyty, eozinofily, bazofily), FW sedimentace erytrocytů (Fahraeus-Westergren method in mm/hod), Czech biochemical conventions (enzymes reported in µkat/l: ALT, AST, GGT, ALP with conversion formula 1 µkat/l ≈ 60 U/l, creatinine in µmol/l, glucose in mmol/l, urea in mmol/l, kyselina močová, total bilirubin in µmol/l, CRP in mg/l), interpretation of flags (+, -, H, L, bold), emergency red flags requiring immediate emergency medical care (call 155 / 112: critical anemia Hb < 70 g/l, acute thrombocytopenia Plt < 20 × 10⁹/l with petechiae, febrile neutropenia, acute renal failure, hyperkalemia potassium > 6.5 mmol/l), 4 doctor follow-up questions in Czech, MedGPT 25-language AI report analysis.
 
+### Blog 32 — Australian Healthcare Lab Guide: Blood Tests, Bulk Billing, and My Health Record
+- **Slug**: `australian-healthcare-blood-test-guide`
+- **Tags**: Australian Healthcare, Blood Tests, My Health Record, Pathology, Health Literacy
+- **Image**: `https://images.unsplash.com/photo-1579684453423-f84349ef60b0?q=80&w=1200&auto=format&fit=crop`
+- **Topics Covered**: Australian healthcare architecture (GP primary care gatekeeping, universal Medicare funding via Services Australia, Medicare Benefits Schedule / MBS schedule fees), Bulk Billing vs. private out-of-pocket gap fees ($0 copay for standard public pathology), Commonwealth Health Insurance Act 1973 "Rule of Choice" (legal freedom to take any GP pathology request form to ANY accredited collection centre including Sonic Healthcare, Healius, Laverty, Australian Clinical Labs, Sullivan Nicolaides, Douglass Hanly Moir), My Health Record (MHR via myGov) electronic integration (immediate access for routine bloods, mandatory 5-day clinical hold for sensitive histopathology, biopsies, and genetics), Full Blood Count (FBC) breakdown (Haemoglobin in g/L vs US g/dL, RCC in 10¹²/L, Hct as decimal ratio, MCV in fL, MCH in pg, Platelets in 10⁹/L, White Cell Count WCC and 5-part differential: neutrophils, lymphocytes, monocytes, eosinophils, basophils), Routine Australian Biochemistry (U&Es / EUC: Sodium, Potassium in mmol/L, Urea in mmol/L, Creatinine in µmol/L with conversion 88.4 µmol/L = 1 mg/dL, CKD-EPI eGFR in mL/min/1.73m²; LFTs: ALT, AST, GGT, ALP in U/L, Total Bilirubin in µmol/L, Albumin in g/L), laboratory symbols (*, H, L) and the 95% Gaussian population reference interval rule, emergency red flags requiring immediate emergency care (call 000 / Triple Zero: profound anaemia Hb < 70 g/L, critical thrombocytopenia PLT < 20 × 10⁹/L with petechiae, febrile neutropenia ANC < 0.5 × 10⁹/L with fever > 38°C, severe hyperkalaemia K > 6.5 mmol/L, acute kidney injury), 4 GP follow-up consultation questions, MedGPT 25-language AI pathology translation.
+
 ---
 
 ## 4. Upcoming Topic Roadmap (`idea_blog.md`)
 
-All future blog posts (Blog 31 through Blog 50) **must** be selected from the comprehensive research roadmap documented in `idea_blog.md`.
+All future blog posts (Blog 31, Blog 33 through Blog 50) **must** be selected from the comprehensive research roadmap documented in `idea_blog.md`.
 
-### Next Topics in Queue (Sequential Cluster C)
+### Next Topics in Queue
 - **Blog 31** — Bulgarian Healthcare Lab Guide: ПКК, Биохимия, and НЗОК (`bulgarian-healthcare-pkk-guide`)
-- **Blog 32** — Australian Healthcare Lab Guide: Blood Tests, Bulk Billing, and My Health Record (`australian-healthcare-blood-test-guide`)
+- **Blog 33** — Common Drug-Food Interactions You Need to Know: Beyond Grapefruit (`common-drug-food-interactions-guide`)
 
 ### Topic Clusters Overview
 Refer to `idea_blog.md` for complete keyword metrics, long-tail variants, target GEOs, and MedGPT feature mappings:
 - **Cluster A (Blog 9–18)**: Blood & Lab Report Deep Dives *(Blogs 9–18 completed; Cluster A 100% complete)*
 - **Cluster B (Blog 19–25)**: X-Ray & Imaging Reports *(Blogs 19–25 completed; Cluster B 100% complete)*
-- **Cluster C (Blog 26–32)**: Multilingual & GEO-Targeted Health Systems (Multilingual Assistant, German ePA/Blutbild, Polish NFZ/Morfologia, Russian ОМС, Czech VZP, Bulgarian НЗОК, Australian My Health Record)
+- **Cluster C (Blog 26–32)**: Multilingual & GEO-Targeted Health Systems (Multilingual Assistant, German ePA/Blutbild, Polish NFZ/Morfologia, Russian ОМС, Czech VZP, Australian My Health Record completed; Bulgarian НЗОК pending)
 - **Cluster D (Blog 33–37)**: Medication, Drug Interactions & Safety (Drug-Food Interactions, Polypharmacy, Antibiotic Resistance, Supplements & Drugs, Missed Dose Guide)
 - **Cluster E (Blog 38–44)**: Chronic Conditions & Preventive Health (CKD Stages, Fatty Liver/NAFLD, Allergy IgE Panels, Stool/Gut Tests, PSA/Prostate, STI Panels, Pregnancy Labs)
 - **Cluster F (Blog 45–50)**: Digital Health, AI & Patient Empowerment (AI vs Google, Blood Test Prep/Fasting, Reference Ranges by Age, Health Insurance Coverage, Mental Health & Blood Markers, Beginner's Guide)

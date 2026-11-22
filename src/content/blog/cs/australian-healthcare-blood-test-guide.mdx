@@ -1,0 +1,117 @@
+---
+title: "Průvodce rozborem krve v Austrálii: Bulk Billing a My Health Record"
+description: "Jak číst výsledky krevních testů v Austrálii: úhrady Medicare (bulk billing), My Health Record, referenční meze FBC, U&Es a žádanky od GP."
+pubDate: 2026-11-22
+author: "MedGPT Team"
+image: "https://images.unsplash.com/photo-1579684453423-f84349ef60b0?q=80&w=1200&auto=format&fit=crop"
+imageAlt: "Australská lékařská ordinace s digitálním tabletem zobrazujícím laboratorní výsledky a stetoskopem"
+tags:
+  - "Australské zdravotnictví"
+  - "Krevní testy"
+  - "My Health Record"
+  - "Krevní obraz"
+  - "Zdravotní gramotnost"
+shortAnswer: "V Austrálii se laboratorní odběry označují jako 'pathology tests'. Většina běžných vyšetření je plně hrazena z pojištění Medicare formou 'bulk billing' bez doplatku. Krevní obraz (FBC) i biochemie se nahrávají do elektronického portálu My Health Record."
+about:
+  - "MedicalSpecialty: Health Informatics"
+  - "MedicalSpecialty: Hematology"
+  - "MedicalTest: Complete Blood Count"
+mentions:
+  - "MedicalDevice: MedGPT Clinical AI Assistant"
+  - "HealthTopic: Medicare (Australia)"
+  - "HealthTopic: My Health Record"
+sources:
+  - name: "Australian Digital Health Agency — Pathology Reports in My Health Record"
+    url: "https://www.digitalhealth.gov.au/initiatives-and-programs/my-health-record/consumers/pathology-reports"
+    description: "Oficiální směrnice pro nahrávání a zabezpečený přístup k laboratorním zprávám v My Health Record."
+  - name: "Services Australia — Medicare Bulk Billing Arrangements"
+    url: "https://www.servicesaustralia.gov.au/bulk-billing"
+    description: "Zákonné podmínky bezplatné laboratorní diagnostiky v rámci australského pojištění Medicare."
+  - name: "NIH MedlinePlus — Complete Blood Count (CBC / FBC)"
+    url: "https://medlineplus.gov/lab-tests/complete-blood-count-cbc/"
+    description: "Odborná monografie o červených krvinkách, diferenciálním rozpočtu a krevních destičkách."
+  - name: "NIH MedlinePlus — How to Understand Your Lab Results"
+    url: "https://medlineplus.gov/lab-tests/how-to-understand-your-lab-results/"
+    description: "Klinický průvodce interpretací referenčních mezí a komunikací s lékařem."
+---
+
+Čtení australských laboratorních zpráv (*pathology reports*) se liší od středoevropských zvyklostí. Péče je koordinována praktickým lékařem (*GP*), financována prostřednictvím veřejného fondu **Medicare** a integrována do elektronického portálu **My Health Record**.
+
+Při vyšetření v režimu **Bulk Billing** neplatí pacient žádný doplatek. Australské laboratoře udávají hemoglobin v **g/L** (např. 140 g/L místo 140 g/l v ČR) a elektrolyty v **mmol/L**, zatímco jaterní enzymy se v Austrálii měří v mezinárodních jednotkách **U/L** (na rozdíl od českých µkat/l).
+
+---
+
+## 1. Jak fungují krevní odběry v Austrálii
+
+- **Svobodná volba laboratoře (Rule of Choice):** I když žádanka (*pathology request form*) od praktického lékaře obsahuje logo soukromé sítě (*Sonic*, *Healius*, *Australian Clinical Labs*), ze zákona (*Health Insurance Act 1973*) můžete **jít do jakéhokoli akreditovaného odběrového místa**.
+- **Bulk Billing vs. Doplatek (Gap Fee):** V režimu [Medicare Bulk Billing](https://www.servicesaustralia.gov.au/bulk-billing) hradí stát plnou sazbu; vy platíte **0 $**. U specifických genetických testů se může účtovat doplatek (*gap fee*).
+- **My Health Record:** Podle pravidel [Australian Digital Health Agency](https://www.digitalhealth.gov.au/initiatives-and-programs/my-health-record/consumers/pathology-reports) jsou výsledky nahrávány elektronicky:
+  - **Okamžitý přístup:** Běžný krevní obraz a biochemie jsou dostupné ihned po validaci na portálu *myGov*.
+  - **Lhůta 5 dnů:** U biopsií a genetiky platí 5denní odklad, aby vám nález mohl nejprve vysvětlit váš GP.
+
+---
+
+## 2. Full Blood Count (FBC): Australský krevní obraz
+
+Krevní obraz se v Austrálii nazývá **Full Blood Count (FBC)**. Projděte si náš [český průvodce rozborem krve](/blog/how-to-read-blood-test-results) a standardy [NIH MedlinePlus](https://medlineplus.gov/lab-tests/complete-blood-count-cbc/):
+
+| Parametr | Zkratka | Význam | Australské referenční meze (Dospělí) | Jednotka |
+|:---|:---|:---|:---|:---|
+| **Haemoglobin** | **Hb** | Kyslíkový transport | **130 – 180** (Muži)<br />**115 – 165** (Ženy) | **g/L** |
+| **Red Cell Count** | **RCC** | Erytrocyty | **4,5 – 6,0** (Muži)<br />**3,8 – 5,2** (Ženy) | 10¹²/L |
+| **Haematocrit** | **Hct** | Hematokrit | **0,40 – 0,52** (Muži)<br />**0,35 – 0,47** (Ženy) | L/L (desetinný poměr) |
+| **Mean Cell Volume** | **MCV** | Střední objem erytrocytu | **80 – 100** | fL |
+| **White Cell Count** | **WCC** | Leukocyty | **4,0 – 11,0** | 10⁹/L |
+| **Platelets** | **PLT** | Trombocyty | **150 – 400** | 10⁹/L |
+
+Bližší informace o diferenciálu naleznete v článku o [typech bílých krvinek a diferenciálním rozpočtu](/blog/understanding-cbc-differential-wbc-types).
+
+---
+
+## 3. Základní biochemie: U&Es a LFTs v Austrálii
+
+Praktičtí lékaři standardně žádají panel **U&Es** (*Urea & Electrolytes* / **EUC**) a **LFTs** (*Liver Function Tests*):
+
+| Biomarker | Zkratka | Účel | Běžné rozmezí | Jednotka |
+|:---|:---|:---|:---|:---|
+| **Sodium** | **Na** | Sodík | **135 – 145** | mmol/L |
+| **Potassium** | **K** | Draslík | **3,5 – 5,2** | mmol/L |
+| **Urea** | **Urea** | Močovina | **3,0 – 8,0** | mmol/L |
+| **Creatinine** | **Creat** | Kreatinin | **60 – 110** (Muži)<br />**45 – 90** (Ženy) | **µmol/L** |
+| **eGFR** | **eGFR** | Filtrace ledvin | **> 90** *(norma)* | mL/min/1,73m² |
+| **ALT** | **ALT** | Jaterní enzym | **< 45** (Muži)<br />**< 35** (Ženy) | **U/L** *(přepočet: 1 U/L ≈ 0,0167 µkat/l)* |
+| **AST** | **AST** | Buněčný enzym | **< 40** (Muži)<br />**< 35** (Ženy) | U/L |
+| **GGT** | **GGT** | Biliární enzym | **< 60** (Muži)<br />**< 35** (Ženy) | U/L |
+
+Přečtěte si také náš článek o tom, [jak číst výsledky testů ledvin](/blog/how-to-read-kidney-function-test-results).
+
+---
+
+## 4. Laboratorní symboly a pravidlo 95 %
+
+- Hodnoty mimo normu jsou označeny **`*` (hvězdičkou)** nebo písmeny **`H` (vysoká)** a **`L` (nízká)**.
+- Referenční meze zahrnují **95 % zdravých jedinců** — přibližně **5 % zdravých lidí** má mírně vychýlené hodnoty bez nemoci.
+- Podrobnosti naleznete v článku [abnormální výsledky krve a kdy se znepokojovat](/blog/abnormal-blood-test-results-when-to-worry).
+
+---
+
+## 5. Kdy okamžitě volat pohotovost v Austrálii
+
+> **Varovné signály:** Volejte v Austrálii **000 (Triple Zero)** nebo jděte na pohotovost (*Emergency Department*), pokud:
+> - Hemoglobin klesne pod **70 g/L** se závratěmi či dušností.
+> - Krevní destičky klesnou pod **20 × 10⁹/L** se spontánním krvácením či petechiemi.
+> - Draslík překročí **6,5 mmol/L** (riziko zástavy srdce).
+
+---
+
+## 6. Jak vám MedGPT pomůže s australskými výsledky
+
+MedGPT okamžitě převede australské laboratorní zprávy do srozumitelné češtiny:
+1. **Nahrajte zprávu:** Vložte PDF z My Health Record nebo fotku žádanky.
+2. **Přehledný rozbor:** Rychlé zhodnocení FBC, U&Es a jaterních enzymů.
+
+[Stáhněte si bezplatnou aplikaci MedGPT na Google Play](https://play.google.com/store/apps/details?id=com.medgptai.app&utm_source=blog&utm_medium=australian-healthcare-blood-test-guide)
+
+---
+
+*Tento článek slouží pouze pro informační a vzdělávací účely a nenahrazuje odbornou lékařskou péči, diagnostiku ani léčbu.*

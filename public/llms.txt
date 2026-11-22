@@ -22,6 +22,7 @@
 - [Kidney Function Test Guide](https://bloodtesthelp.com/blog/how-to-read-kidney-function-test-results): Interpreting eGFR, creatinine, and kidney health stages.
 - [Liver Function Test Guide](https://bloodtesthelp.com/blog/understanding-liver-function-test-results): Transaminases (ALT, AST) and biliary enzymes explained.
 - [Czech Healthcare & Krevní Obraz Guide](https://bloodtesthelp.com/blog/czech-healthcare-krevni-obraz-guide): Navigating Czech blood tests, žádanka requisitions, and VZP health insurance.
+- [Australian Healthcare & Blood Test Guide](https://bloodtesthelp.com/blog/australian-healthcare-blood-test-guide): Medicare bulk billing, My Health Record, and Full Blood Count (FBC) interpretation.
 - [German Healthcare & Blutbild Guide](https://bloodtesthelp.com/blog/german-healthcare-blutbild-epa-guide): Accessing blood test data via Germany's electronic patient record (ePA).
 - [Polish Healthcare & Badania Krwi Guide](https://bloodtesthelp.com/blog/polish-healthcare-badania-krwi-guide): Understanding Polish blood tests and NFZ primary care POZ referrals.
 

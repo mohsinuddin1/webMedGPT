@@ -1,0 +1,117 @@
+---
+title: "Кръвни изследвания в Австралия: Bulk Billing и My Health Record"
+description: "Разчитане на австралийски кръвни изследвания: Medicare (bulk billing), My Health Record, референтни стойности на FBC (ПКК), U&Es и лаборатории."
+pubDate: 2026-11-22
+author: "MedGPT Team"
+image: "https://images.unsplash.com/photo-1579684453423-f84349ef60b0?q=80&w=1200&auto=format&fit=crop"
+imageAlt: "Австралийски лекарски кабинет с таблет, показващ лабораторни резултати, и стетоскоп"
+tags:
+  - "Австралийско здравеопазване"
+  - "Кръвни изследвания"
+  - "My Health Record"
+  - "Пълна кръвна картина"
+  - "Здравна грамотност"
+shortAnswer: "В Австралия лабораторните изследвания се наричат 'pathology tests'. Повечето рутинни изследвания се покриват 100% от Medicare чрез 'bulk billing' без доплащане. Пълната кръвна картина (FBC) и биохимията се качват в електронното досие My Health Record."
+about:
+  - "MedicalSpecialty: Health Informatics"
+  - "MedicalSpecialty: Hematology"
+  - "MedicalTest: Complete Blood Count"
+mentions:
+  - "MedicalDevice: MedGPT Clinical AI Assistant"
+  - "HealthTopic: Medicare (Australia)"
+  - "HealthTopic: My Health Record"
+sources:
+  - name: "Australian Digital Health Agency — Pathology Reports in My Health Record"
+    url: "https://www.digitalhealth.gov.au/initiatives-and-programs/my-health-record/consumers/pathology-reports"
+    description: "Официални правила за достъп до лабораторни доклади в системата My Health Record."
+  - name: "Services Australia — Medicare Bulk Billing Arrangements"
+    url: "https://www.servicesaustralia.gov.au/bulk-billing"
+    description: "Условия за безплатна диагностика чрез публичната застрахователна схема Medicare в Австралия."
+  - name: "NIH MedlinePlus — Complete Blood Count (CBC / FBC)"
+    url: "https://medlineplus.gov/lab-tests/complete-blood-count-cbc/"
+    description: "Медицински преглед на показателите на червения и белия кръвен ред."
+  - name: "NIH MedlinePlus — How to Understand Your Lab Results"
+    url: "https://medlineplus.gov/lab-tests/how-to-understand-your-lab-results/"
+    description: "Ръководство за разчитане на лабораторни стойности и референтни граници."
+---
+
+Австралийската диагностична система има свои специфични термини и мерни единици. Лабораторните изследвания (*pathology*) се координират от общопрактикуващия лекар (*GP*), финансират се от държавната каса **Medicare** и се съхраняват в дигиталното досие **My Health Record**.
+
+Чрез механизма **Bulk Billing** рутинните изследвания са напълно безплатни за пациента. В Австралия хемоглобинът се отчита в **g/L**, а електролитите в **mmol/L**.
+
+---
+
+## 1. Как се правят изследвания в Австралия
+
+- **Свободен избор на лаборатория (Rule of Choice):** Дори на бланката (*pathology request form*) да има лого на определена лаборатория (*Sonic*, *Healius*, *Australian Clinical Labs*), законът (*Health Insurance Act 1973*) ви дава **правото да изберете всяка акредитирана манипулационна**.
+- **Bulk Billing и доплащане (Gap Fee):** При [Medicare Bulk Billing](https://www.servicesaustralia.gov.au/bulk-billing) изследването се поема изцяло от държавата и вие плащате **0 $**. Доплащане се изисква само за специфични генетични тестове.
+- **My Health Record:** Резултатите постъпват автоматично онлайн:
+  - **Незабавен достъп:** Рутинните изследвания (ПКК, бъбречни и чернодробни показатели) се виждат в *myGov* веднага след одобрението им.
+  - **5 дни изчакване:** За биопсии и генетични изследвания важи 5-дневен буфер, за да може вашият лекар първи да обсъди резултата с вас.
+
+---
+
+## 2. Full Blood Count (FBC): Австралийската ПКК
+
+В Австралия пълната кръвна картина се нарича **Full Blood Count (FBC)**. Вижте нашето [ръководство за разчитане на кръвни изследвания](/blog/how-to-read-blood-test-results) и данните от [NIH MedlinePlus](https://medlineplus.gov/lab-tests/complete-blood-count-cbc/):
+
+| Показател | Съкращение | Функция | Референтни стойности (Възрастни) | Мерна единица |
+|:---|:---|:---|:---|:---|
+| **Haemoglobin** | **Hb** | Пренос на кислород | **130 – 180** (Мъже)<br />**115 – 165** (Жени) | **g/L** |
+| **Red Cell Count** | **RCC** | Еритроцити | **4,5 – 6,0** (Мъже)<br />**3,8 – 5,2** (Жени) | 10¹²/L |
+| **Haematocrit** | **Hct** | Хематокрит | **0,40 – 0,52** (Мъже)<br />**0,35 – 0,47** (Жени) | L/L |
+| **Mean Cell Volume** | **MCV** | Среден обем на еритроцита | **80 – 100** | fL |
+| **White Cell Count** | **WCC** | Левкоцити | **4,0 – 11,0** | 10⁹/L |
+| **Platelets** | **PLT** | Тромбоцити | **150 – 400** | 10⁹/L |
+
+За диференциалното броене вижте [нашата статия за видовете левкоцити](/blog/understanding-cbc-differential-wbc-types).
+
+---
+
+## 3. Рутинна биохимия: U&Es и LFTs
+
+Австралийските лекари редовно назначават **U&Es** (*Urea & Electrolytes* / **EUC**) и **LFTs** (*Liver Function Tests*):
+
+| Биомаркер | Съкращение | Значение | Нормални стойности | Единица |
+|:---|:---|:---|:---|:---|
+| **Sodium** | **Na** | Натрий | **135 – 145** | mmol/L |
+| **Potassium** | **K** | Калий | **3,5 – 5,2** | mmol/L |
+| **Urea** | **Urea** | Урея | **3,0 – 8,0** | mmol/L |
+| **Creatinine** | **Creat** | Креатинин | **60 – 110** (Мъже)<br />**45 – 90** (Жени) | **µmol/L** |
+| **eGFR** | **eGFR** | Гломерулна филтрация | **> 90** *(норма)* | mL/min/1,73m² |
+| **ALT** | **ALT** | АЛАТ (черен дроб) | **< 45** (Мъже)<br />**< 35** (Жени) | U/L |
+| **AST** | **AST** | АСАТ | **< 40** (Мъже)<br />**< 35** (Жени) | U/L |
+| **GGT** | **GGT** | ГГТ | **< 60** (Мъже)<br />**< 35** (Жени) | U/L |
+
+Вижте и ръководството за [изследване на бъбречната функция](/blog/how-to-read-kidney-function-test-results).
+
+---
+
+## 4. Лабораторни маркери и правилото за 95%
+
+- Отклоненията се маркират със **`*` (звездичка)** или с буквите **`H` (висок)** и **`L` (нисък)**.
+- Референтните граници обхващат **95% от здравите хора**: около **5% от здравите пациенти** показват леки допустими вариации.
+- Научете повече в статията [отклонения в кръвните изследвания: кога да се тревожим](/blog/abnormal-blood-test-results-when-to-worry).
+
+---
+
+## 5. Спешни сигнали в Австралия
+
+> **Спешна помощ:** В Австралия позвънете веднага на **000 (Triple Zero)** или отидете в спешно отделение (*Emergency Department*) при:
+> - Хемоглобин **< 70 g/L** с виене на свят или задух.
+> - Тромбоцити **< 20 × 10⁹/L** със спонтанни кръвоизливи.
+> - Калий **> 6,5 mmol/L** (опасност от аритмия).
+
+---
+
+## 6. Как MedGPT помага при австралийски изследвания
+
+MedGPT превежда австралийските медицински съкращения на чист български език:
+1. **Качете файл:** Прикачете PDF от My Health Record или снимайте бланката.
+2. **Ясен анализ:** Получете незабавно разяснение на показателите на достъпен език.
+
+[Изтеглете MedGPT безплатно в Google Play](https://play.google.com/store/apps/details?id=com.medgptai.app&utm_source=blog&utm_medium=australian-healthcare-blood-test-guide)
+
+---
+
+*Тази статия има само информационна и образователна цел и не замества професионалната медицинска консултация, диагностика или лечение.*

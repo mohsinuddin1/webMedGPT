@@ -621,6 +621,33 @@ export const slugMap: Record<string, Record<string, string>> = {
     'zh': 'czech-healthcare-krevni-obraz-guide',
     'ar': 'czech-healthcare-krevni-obraz-guide',
     'ar-MA': 'czech-healthcare-krevni-obraz-guide'
+  },
+  'australian-healthcare-blood-test-guide': {
+    'en': 'australian-healthcare-blood-test-guide',
+    'de': 'australian-healthcare-blood-test-guide',
+    'pl': 'australian-healthcare-blood-test-guide',
+    'ru': 'australian-healthcare-blood-test-guide',
+    'fr': 'australian-healthcare-blood-test-guide',
+    'es': 'australian-healthcare-blood-test-guide',
+    'it': 'australian-healthcare-blood-test-guide',
+    'cs': 'australian-healthcare-blood-test-guide',
+    'nl': 'australian-healthcare-blood-test-guide',
+    'sv': 'australian-healthcare-blood-test-guide',
+    'da': 'australian-healthcare-blood-test-guide',
+    'no': 'australian-healthcare-blood-test-guide',
+    'nb': 'australian-healthcare-blood-test-guide',
+    'pt': 'australian-healthcare-blood-test-guide',
+    'ro': 'australian-healthcare-blood-test-guide',
+    'tr': 'australian-healthcare-blood-test-guide',
+    'el': 'australian-healthcare-blood-test-guide',
+    'bg': 'australian-healthcare-blood-test-guide',
+    'lt': 'australian-healthcare-blood-test-guide',
+    'lv': 'australian-healthcare-blood-test-guide',
+    'ja': 'australian-healthcare-blood-test-guide',
+    'ko': 'australian-healthcare-blood-test-guide',
+    'zh': 'australian-healthcare-blood-test-guide',
+    'ar': 'australian-healthcare-blood-test-guide',
+    'ar-MA': 'australian-healthcare-blood-test-guide'
   }
 };
 

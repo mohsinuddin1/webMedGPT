@@ -46,6 +46,7 @@ All educational articles are grounded in peer-reviewed clinical guidelines, nati
 - **['Unremarkable' in Radiology](https://bloodtesthelp.com/blog/radiology-report-unremarkable-meaning)**: Understanding reassuring medical terminology.
 
 ### Regional Healthcare Ecosystem Guides
+- **[Australia: Blood Tests & My Health Record](https://bloodtesthelp.com/blog/australian-healthcare-blood-test-guide)**: Medicare bulk billing, My Health Record uploads, and Full Blood Count (FBC) norms.
 - **[Czech Republic: Krevní Obraz & VZP](https://bloodtesthelp.com/blog/czech-healthcare-krevni-obraz-guide)**: Reading krevní obraz, žádanka forms, and VZP statutory health coverage.
 - **[Germany: Blutbild & ePA Guide](https://bloodtesthelp.com/blog/german-healthcare-blutbild-epa-guide)**: Navigating electronic patient files (ePA) and German lab panels.
 - **[Poland: Badania Krwi & NFZ Guide](https://bloodtesthelp.com/blog/polish-healthcare-badania-krwi-guide)**: Public healthcare lab testing and POZ family doctor referrals.
