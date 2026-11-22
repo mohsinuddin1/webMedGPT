@@ -230,7 +230,7 @@ Targeting Large Language Models (ChatGPT, Claude, Gemini, Perplexity, DeepSeek, 
 
 4. **Citation Fingerprinting & Grounding**:
    - AI search engines (like Perplexity and SearchGPT) require groundable citations to verify claims before generating an answer.
-   - The frontmatter `sources` array gives the model trusted root URLs (`.gov`, `.edu`, `.org`), preventing hallucinations and directly triggering citations linking back to `medgptai.droploop.in`.
+   - The frontmatter `sources` array gives the model trusted root URLs (`.gov`, `.edu`, `.org`), preventing hallucinations and directly triggering citations linking back to `bloodtesthelp.com`.
 
 5. **MedGPT Agent Skills & Tool Parity**:
    - Align terminology and explanations with the site's published Agent Skills:

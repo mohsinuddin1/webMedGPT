@@ -1,6 +1,6 @@
 # MedGPT — Full Knowledge Base & Agent System Context
 
-> MedGPT (https://medgptai.droploop.in) is an AI-powered educational health platform and clinical health assistant designed to decode medical jargon, analyze blood test results, explain imaging reports, and provide medication safety information.
+> MedGPT (https://bloodtesthelp.com) is an AI-powered educational health platform and clinical health assistant designed to decode medical jargon, analyze blood test results, explain imaging reports, and provide medication safety information.
 
 ---
 
@@ -20,36 +20,36 @@ MedGPT provides patient-friendly health literacy tools accessible via web and mo
 All educational articles are grounded in peer-reviewed clinical guidelines, national health agencies (CDC, NIH, MedlinePlus, FDA), and certified laboratory medicine federations.
 
 ### Blood & Laboratory Diagnostics
-- **[How to Read Blood Test Results](https://medgptai.droploop.in/blog/how-to-read-blood-test-results)**: Complete reference guide to lab values, reference intervals, and flags.
-- **[Understanding CBC & Differential](https://medgptai.droploop.in/blog/understanding-cbc-differential-wbc-types)**: White blood cell types (neutrophils, lymphocytes, monocytes, eosinophils, basophils).
-- **[Abnormal Blood Tests: When to Worry](https://medgptai.droploop.in/blog/abnormal-blood-test-results-when-to-worry)**: Triage guidelines distinguishing critical laboratory panic values from benign fluctuations.
-- **[Kidney Function Test Results (eGFR, BUN, Creatinine)](https://medgptai.droploop.in/blog/how-to-read-kidney-function-test-results)**: Stages of chronic kidney disease and filtration biomarkers.
-- **[Liver Function Test Results (ALT, AST, ALP, Bilirubin)](https://medgptai.droploop.in/blog/understanding-liver-function-test-results)**: Hepatocellular injury vs. cholestatic liver patterns.
-- **[Lipid Panel & Cholesterol](https://medgptai.droploop.in/blog/understanding-cholesterol-lipid-panel)**: Total cholesterol, LDL-C, HDL-C, and triglycerides in cardiovascular risk assessment.
-- **[Diabetes & HbA1c Levels](https://medgptai.droploop.in/blog/understanding-diabetes-and-a1c)**: Glycated hemoglobin thresholds for prediabetes and type 2 diabetes.
-- **[Thyroid Function Tests (TSH, Free T3, Free T4)](https://medgptai.droploop.in/blog/understanding-thyroid-test-results)**: Hypothyroidism, hyperthyroidism, and Hashimoto's thyroiditis.
-- **[Electrolyte Panel Results](https://medgptai.droploop.in/blog/understanding-electrolyte-panel-results)**: Sodium, potassium, chloride, and bicarbonate balance.
-- **[Coagulation Tests (PT, INR, aPTT)](https://medgptai.droploop.in/blog/how-to-read-coagulation-test-results-pt-inr-aptt)**: Blood clotting times and anticoagulant monitoring.
-- **[Inflammatory Markers (CRP, ESR, Ferritin)](https://medgptai.droploop.in/blog/understanding-inflammatory-markers-crp-esr-ferritin)**: Acute-phase reactants in autoimmune and infectious diseases.
-- **[Urinalysis & Urine Test Interpretation](https://medgptai.droploop.in/blog/understanding-urinalysis-urine-test-results)**: Specific gravity, leukocytes, nitrites, protein, and microhematuria.
-- **[Vitamin Deficiency Tests](https://medgptai.droploop.in/blog/understanding-vitamin-deficiency-blood-test-results)**: Vitamin D (25-OH), Vitamin B12, and ferritin deficiency anemia.
-- **[Iron Deficiency Anemia Management](https://medgptai.droploop.in/blog/recognizing-and-treating-iron-deficiency-anemia)**: Hemoglobin, serum iron, TIBC, and ferritin kinetics.
-- **[Hormone Blood Test Results](https://medgptai.droploop.in/blog/hormone-blood-test-results-explained)**: Estrogen, progesterone, testosterone, cortisol, and prolactin.
+- **[How to Read Blood Test Results](https://bloodtesthelp.com/blog/how-to-read-blood-test-results)**: Complete reference guide to lab values, reference intervals, and flags.
+- **[Understanding CBC & Differential](https://bloodtesthelp.com/blog/understanding-cbc-differential-wbc-types)**: White blood cell types (neutrophils, lymphocytes, monocytes, eosinophils, basophils).
+- **[Abnormal Blood Tests: When to Worry](https://bloodtesthelp.com/blog/abnormal-blood-test-results-when-to-worry)**: Triage guidelines distinguishing critical laboratory panic values from benign fluctuations.
+- **[Kidney Function Test Results (eGFR, BUN, Creatinine)](https://bloodtesthelp.com/blog/how-to-read-kidney-function-test-results)**: Stages of chronic kidney disease and filtration biomarkers.
+- **[Liver Function Test Results (ALT, AST, ALP, Bilirubin)](https://bloodtesthelp.com/blog/understanding-liver-function-test-results)**: Hepatocellular injury vs. cholestatic liver patterns.
+- **[Lipid Panel & Cholesterol](https://bloodtesthelp.com/blog/understanding-cholesterol-lipid-panel)**: Total cholesterol, LDL-C, HDL-C, and triglycerides in cardiovascular risk assessment.
+- **[Diabetes & HbA1c Levels](https://bloodtesthelp.com/blog/understanding-diabetes-and-a1c)**: Glycated hemoglobin thresholds for prediabetes and type 2 diabetes.
+- **[Thyroid Function Tests (TSH, Free T3, Free T4)](https://bloodtesthelp.com/blog/understanding-thyroid-test-results)**: Hypothyroidism, hyperthyroidism, and Hashimoto's thyroiditis.
+- **[Electrolyte Panel Results](https://bloodtesthelp.com/blog/understanding-electrolyte-panel-results)**: Sodium, potassium, chloride, and bicarbonate balance.
+- **[Coagulation Tests (PT, INR, aPTT)](https://bloodtesthelp.com/blog/how-to-read-coagulation-test-results-pt-inr-aptt)**: Blood clotting times and anticoagulant monitoring.
+- **[Inflammatory Markers (CRP, ESR, Ferritin)](https://bloodtesthelp.com/blog/understanding-inflammatory-markers-crp-esr-ferritin)**: Acute-phase reactants in autoimmune and infectious diseases.
+- **[Urinalysis & Urine Test Interpretation](https://bloodtesthelp.com/blog/understanding-urinalysis-urine-test-results)**: Specific gravity, leukocytes, nitrites, protein, and microhematuria.
+- **[Vitamin Deficiency Tests](https://bloodtesthelp.com/blog/understanding-vitamin-deficiency-blood-test-results)**: Vitamin D (25-OH), Vitamin B12, and ferritin deficiency anemia.
+- **[Iron Deficiency Anemia Management](https://bloodtesthelp.com/blog/recognizing-and-treating-iron-deficiency-anemia)**: Hemoglobin, serum iron, TIBC, and ferritin kinetics.
+- **[Hormone Blood Test Results](https://bloodtesthelp.com/blog/hormone-blood-test-results-explained)**: Estrogen, progesterone, testosterone, cortisol, and prolactin.
 
 ### Radiology & Imaging
-- **[Chest X-Ray Reports](https://medgptai.droploop.in/blog/how-to-read-chest-x-ray-report)**: Infiltrates, cardiomegaly, and costophrenic angles.
-- **[Bone X-Ray Reports](https://medgptai.droploop.in/blog/bone-x-ray-report-explained)**: Fractures, degenerative joint disease, and osteophytes.
-- **[Dental X-Ray Reports](https://medgptai.droploop.in/blog/dental-x-ray-report-explained)**: Bitewings, periapicals, caries, and bone loss.
-- **[CT Scan Report Interpretation](https://medgptai.droploop.in/blog/ct-scan-report-meaning-explained)**: Attenuation, contrast enhancement, and incidentalomas.
-- **[MRI Report Findings](https://medgptai.droploop.in/blog/mri-report-findings-explained)**: T1/T2 weighted signals, disc herniations, and stenosis.
-- **[Ultrasound Reports](https://medgptai.droploop.in/blog/ultrasound-report-explained)**: Echogenicity, cysts, nodules, and Doppler flow.
-- **['Unremarkable' in Radiology](https://medgptai.droploop.in/blog/radiology-report-unremarkable-meaning)**: Understanding reassuring medical terminology.
+- **[Chest X-Ray Reports](https://bloodtesthelp.com/blog/how-to-read-chest-x-ray-report)**: Infiltrates, cardiomegaly, and costophrenic angles.
+- **[Bone X-Ray Reports](https://bloodtesthelp.com/blog/bone-x-ray-report-explained)**: Fractures, degenerative joint disease, and osteophytes.
+- **[Dental X-Ray Reports](https://bloodtesthelp.com/blog/dental-x-ray-report-explained)**: Bitewings, periapicals, caries, and bone loss.
+- **[CT Scan Report Interpretation](https://bloodtesthelp.com/blog/ct-scan-report-meaning-explained)**: Attenuation, contrast enhancement, and incidentalomas.
+- **[MRI Report Findings](https://bloodtesthelp.com/blog/mri-report-findings-explained)**: T1/T2 weighted signals, disc herniations, and stenosis.
+- **[Ultrasound Reports](https://bloodtesthelp.com/blog/ultrasound-report-explained)**: Echogenicity, cysts, nodules, and Doppler flow.
+- **['Unremarkable' in Radiology](https://bloodtesthelp.com/blog/radiology-report-unremarkable-meaning)**: Understanding reassuring medical terminology.
 
 ### Regional Healthcare Ecosystem Guides
-- **[Czech Republic: Krevní Obraz & VZP](https://medgptai.droploop.in/blog/czech-healthcare-krevni-obraz-guide)**: Reading krevní obraz, žádanka forms, and VZP statutory health coverage.
-- **[Germany: Blutbild & ePA Guide](https://medgptai.droploop.in/blog/german-healthcare-blutbild-epa-guide)**: Navigating electronic patient files (ePA) and German lab panels.
-- **[Poland: Badania Krwi & NFZ Guide](https://medgptai.droploop.in/blog/polish-healthcare-badania-krwi-guide)**: Public healthcare lab testing and POZ family doctor referrals.
-- **[Russia: Анализы Крови & ОМС Guide](https://medgptai.droploop.in/blog/russian-healthcare-blood-test-guide)**: Standard clinical blood count (ОАК) and mandatory medical insurance coverage.
+- **[Czech Republic: Krevní Obraz & VZP](https://bloodtesthelp.com/blog/czech-healthcare-krevni-obraz-guide)**: Reading krevní obraz, žádanka forms, and VZP statutory health coverage.
+- **[Germany: Blutbild & ePA Guide](https://bloodtesthelp.com/blog/german-healthcare-blutbild-epa-guide)**: Navigating electronic patient files (ePA) and German lab panels.
+- **[Poland: Badania Krwi & NFZ Guide](https://bloodtesthelp.com/blog/polish-healthcare-badania-krwi-guide)**: Public healthcare lab testing and POZ family doctor referrals.
+- **[Russia: Анализы Крови & ОМС Guide](https://bloodtesthelp.com/blog/russian-healthcare-blood-test-guide)**: Standard clinical blood count (ОАК) and mandatory medical insurance coverage.
 
 ---
 
@@ -81,11 +81,10 @@ MedGPT prompts immediate emergency care (calling local emergency services such a
 
 ## 5. Machine-Readable Endpoints & Policies
 
-- **Web Portal**: https://medgptai.droploop.in
-- **Blog Sitemap**: https://medgptai.droploop.in/sitemap.xml
-- **RSS Feed**: https://medgptai.droploop.in/rss.xml
-- **Agent Discovery (RFC 8288 / RFC 9727)**: https://medgptai.droploop.in/.well-known/ai-catalog.json
-- **OpenAPI Schema**: https://medgptai.droploop.in/openapi.json
-- **Privacy Policy**: https://medgptai.droploop.in/privacy
-- **Terms of Service**: https://medgptai.droploop.in/terms
-
+- **Web Portal**: https://bloodtesthelp.com
+- **Blog Sitemap**: https://bloodtesthelp.com/sitemap.xml
+- **RSS Feed**: https://bloodtesthelp.com/rss.xml
+- **Agent Discovery (RFC 8288 / RFC 9727)**: https://bloodtesthelp.com/.well-known/ai-catalog.json
+- **OpenAPI Schema**: https://bloodtesthelp.com/openapi.json
+- **Privacy Policy**: https://bloodtesthelp.com/privacy
+- **Terms of Service**: https://bloodtesthelp.com/terms

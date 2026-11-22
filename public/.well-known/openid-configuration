@@ -1,10 +1,10 @@
 {
-  "issuer": "https://medgptai.droploop.in",
-  "authorization_endpoint": "https://medgptai.droploop.in/oauth/authorize",
-  "token_endpoint": "https://medgptai.droploop.in/oauth/token",
-  "userinfo_endpoint": "https://medgptai.droploop.in/oauth/userinfo",
-  "jwks_uri": "https://medgptai.droploop.in/.well-known/jwks.json",
-  "registration_endpoint": "https://medgptai.droploop.in/oauth/register",
+  "issuer": "https://bloodtesthelp.com",
+  "authorization_endpoint": "https://bloodtesthelp.com/oauth/authorize",
+  "token_endpoint": "https://bloodtesthelp.com/oauth/token",
+  "userinfo_endpoint": "https://bloodtesthelp.com/oauth/userinfo",
+  "jwks_uri": "https://bloodtesthelp.com/.well-known/jwks.json",
+  "registration_endpoint": "https://bloodtesthelp.com/oauth/register",
   "scopes_supported": [
     "openid",
     "profile",

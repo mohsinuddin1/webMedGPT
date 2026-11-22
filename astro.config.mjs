@@ -3,8 +3,12 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import mdx from '@astrojs/mdx';
 
+const SITE_URL = process.env.PUBLIC_SITE_URL || process.env.SITE_URL || 'https://bloodtesthelp.com';
+const siteClean = SITE_URL.replace(/\/+$/, '');
+const siteWithSlash = `${siteClean}/`;
+
 export default defineConfig({
-  site: 'https://medgptai.droploop.in',
+  site: siteClean,
   output: 'static',
   trailingSlash: 'never',
   integrations: [
@@ -14,13 +18,13 @@ export default defineConfig({
       lastmod: new Date(),
       serialize(item) {
         // Normalize: strip trailing slash for all pages except the root domain
-        if (item.url !== 'https://medgptai.droploop.in/' && item.url.endsWith('/')) {
+        if (item.url !== siteWithSlash && item.url.endsWith('/')) {
           item.url = item.url.replace(/\/$/, '');
         }
 
         // Higher priority for homepage and English blog posts
-        if (item.url === 'https://medgptai.droploop.in/' || item.url === 'https://medgptai.droploop.in') {
-          item.url = 'https://medgptai.droploop.in/';
+        if (item.url === siteWithSlash || item.url === siteClean) {
+          item.url = siteWithSlash;
           item.priority = 1.0;
           item.changefreq = 'daily';
         } else if (item.url.match(/\/blog\/[^/]+$/) && !item.url.match(/^\/(ar|fr|es|de|it|pt|nl|sv|da|no|nb|pl|cs|ro|lt|lv|bg|el|tr|ru|ja|ko|zh|ar-ma)\//)) {

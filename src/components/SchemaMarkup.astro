@@ -13,8 +13,10 @@ export interface Props {
   sources?: Array<{ name: string; url: string; description?: string }>;
 }
 
+import { getSiteUrl, SITE_EMAIL } from '../utils/siteConfig';
+
 const { type, title, description, publishedDate, modifiedDate, author, image, faqs, about = [], mentions = [], sources = [] } = Astro.props;
-const siteUrl = 'https://medgptai.droploop.in';
+const siteUrl = Astro.site ? Astro.site.origin : getSiteUrl();
 const pageUrl = new URL(Astro.url.pathname, siteUrl).toString();
 
 // Organization schema (always present)
@@ -26,7 +28,7 @@ const organizationSchema = {
   logo: `${siteUrl}/favicon.svg`,
   contactPoint: {
     '@type': 'ContactPoint',
-    email: 'contact@droploop.in',
+    email: SITE_EMAIL,
     contactType: 'customer support',
   },
 };

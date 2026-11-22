@@ -27,8 +27,10 @@ const {
   hreflangAlternates = [],
 } = Astro.props;
 
-const siteName = 'MedGPT';
-const siteUrl = 'https://medgptai.droploop.in';
+import { getSiteUrl, SITE_NAME } from '../utils/siteConfig';
+
+const siteName = SITE_NAME;
+const siteUrl = Astro.site ? Astro.site.origin : getSiteUrl();
 
 const DANGLING_WORDS = new Set([
   'for', 'and', 'to', 'with', 'in', 'on', 'at', 'by', 'from', 'of', 'the', 'a', 'an', 'without', 'under', 'about',

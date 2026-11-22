@@ -1,22 +1,22 @@
 {
   "linkset": [
     {
-      "anchor": "https://medgptai.droploop.in/api",
+      "anchor": "https://bloodtesthelp.com/api",
       "service-desc": [
         {
-          "href": "https://medgptai.droploop.in/openapi.json",
+          "href": "https://bloodtesthelp.com/openapi.json",
           "type": "application/vnd.oai.openapi+json"
         }
       ],
       "service-doc": [
         {
-          "href": "https://medgptai.droploop.in/docs/api",
+          "href": "https://bloodtesthelp.com/docs/api",
           "type": "text/html"
         }
       ],
       "status": [
         {
-          "href": "https://medgptai.droploop.in/api/health",
+          "href": "https://bloodtesthelp.com/api/health",
           "type": "application/json"
         }
       ]

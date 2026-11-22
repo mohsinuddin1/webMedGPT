@@ -2,14 +2,14 @@
   "specVersion": "1.0",
   "host": {
     "displayName": "MedGPT AI Health Assistant",
-    "identifier": "did:web:medgptai.droploop.in"
+    "identifier": "did:web:bloodtesthelp.com"
   },
   "entries": [
     {
-      "identifier": "urn:air:medgptai.droploop.in:server:medgpt-mcp",
+      "identifier": "urn:air:bloodtesthelp.com:server:medgpt-mcp",
       "displayName": "MedGPT MCP Health Analysis Server",
       "type": "application/mcp-server-card+json",
-      "url": "https://medgptai.droploop.in/.well-known/mcp/server-card.json",
+      "url": "https://bloodtesthelp.com/.well-known/mcp/server-card.json",
       "representativeQueries": [
         "analyze complete blood count lab report",
         "interpret lipid panel cholesterol numbers",
@@ -18,10 +18,10 @@
       ]
     },
     {
-      "identifier": "urn:air:medgptai.droploop.in:api:openapi",
+      "identifier": "urn:air:bloodtesthelp.com:api:openapi",
       "displayName": "MedGPT OpenAPI Specification",
       "type": "application/vnd.oai.openapi+json",
-      "url": "https://medgptai.droploop.in/openapi.json",
+      "url": "https://bloodtesthelp.com/openapi.json",
       "representativeQueries": [
         "medgpt rest api documentation",
         "blood test analysis api endpoint",
@@ -29,10 +29,10 @@
       ]
     },
     {
-      "identifier": "urn:air:medgptai.droploop.in:skill:blood-test-analysis",
+      "identifier": "urn:air:bloodtesthelp.com:skill:blood-test-analysis",
       "displayName": "Blood Test Analysis Agent Skill",
       "type": "text/markdown",
-      "url": "https://medgptai.droploop.in/.well-known/agent-skills/blood-test-analysis/SKILL.md",
+      "url": "https://bloodtesthelp.com/.well-known/agent-skills/blood-test-analysis/SKILL.md",
       "representativeQueries": [
         "how to interpret CBC differential white blood cells",
         "normal reference ranges for liver enzymes AST ALT",
@@ -40,10 +40,10 @@
       ]
     },
     {
-      "identifier": "urn:air:medgptai.droploop.in:skill:medication-information",
+      "identifier": "urn:air:bloodtesthelp.com:skill:medication-information",
       "displayName": "Medication Information Agent Skill",
       "type": "text/markdown",
-      "url": "https://medgptai.droploop.in/.well-known/agent-skills/medication-information/SKILL.md",
+      "url": "https://bloodtesthelp.com/.well-known/agent-skills/medication-information/SKILL.md",
       "representativeQueries": [
         "check drug interactions for metformin and lisinopril",
         "common side effects of prescription antibiotics",

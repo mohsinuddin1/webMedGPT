@@ -1,50 +1,50 @@
 # DNS for AI Discovery (DNS-AID) & Agent Discovery Configuration
 
-To pass the `dnsAid` check on [isitagentready.com](https://isitagentready.com) and enable DNS-based agent discovery, add the following records to your DNS provider (**Cloudflare** for `droploop.in`):
+To pass the `dnsAid` check on [isitagentready.com](https://isitagentready.com) and enable DNS-based agent discovery, add the following records to your DNS provider (**Cloudflare** for `bloodtesthelp.com`):
 
 ---
 
 ## 1. Cloudflare DNS Records to Add
 
-Log in to the **Cloudflare Dashboard** &rarr; Select domain **`droploop.in`** &rarr; **DNS** &rarr; **Records** &rarr; **Add Record**:
+Log in to the **Cloudflare Dashboard** &rarr; Select domain **`bloodtesthelp.com`** &rarr; **DNS** &rarr; **Records** &rarr; **Add Record**:
 
 ### Record 1: HTTPS Entrypoint for Index
 - **Type**: `HTTPS`
-- **Name**: `_index._agents.medgptai` (or `_index._agents.medgptai.droploop.in`)
+- **Name**: `_index._agents` (or `_index._agents.bloodtesthelp.com`)
 - **Priority**: `1`
-- **Target**: `medgptai.droploop.in`
+- **Target**: `bloodtesthelp.com`
 - **Value / Parameters**: `alpn="h2,h3" port=443 mandatory=alpn,port`
 - **TTL**: Auto / 5 min
 - **Proxy Status**: DNS only (Grey Cloud)
 
 ### Record 2: HTTPS Entrypoint for MCP
 - **Type**: `HTTPS`
-- **Name**: `_mcp._agents.medgptai` (or `_mcp._agents.medgptai.droploop.in`)
+- **Name**: `_mcp._agents` (or `_mcp._agents.bloodtesthelp.com`)
 - **Priority**: `1`
-- **Target**: `medgptai.droploop.in`
+- **Target**: `bloodtesthelp.com`
 - **Value / Parameters**: `alpn="h2,h3" port=443 mandatory=alpn,port`
 - **TTL**: Auto / 5 min
 - **Proxy Status**: DNS only (Grey Cloud)
 
 ### Record 3: HTTPS Entrypoint for A2A
 - **Type**: `HTTPS`
-- **Name**: `_a2a._agents.medgptai` (or `_a2a._agents.medgptai.droploop.in`)
+- **Name**: `_a2a._agents` (or `_a2a._agents.bloodtesthelp.com`)
 - **Priority**: `1`
-- **Target**: `medgptai.droploop.in`
+- **Target**: `bloodtesthelp.com`
 - **Value / Parameters**: `alpn="a2a,h2,h3" port=443 mandatory=alpn,port`
 - **TTL**: Auto / 5 min
 - **Proxy Status**: DNS only (Grey Cloud)
 
 ### Record 4: DNS-AID Index TXT Record
 - **Type**: `TXT`
-- **Name**: `_index._agents.medgptai`
-- **Content**: `v=dnsaid1; endpoint=https://medgptai.droploop.in/.well-known/ai-catalog.json`
+- **Name**: `_index._agents` (or `_index._agents.bloodtesthelp.com`)
+- **Content**: `v=dnsaid1; endpoint=https://bloodtesthelp.com/.well-known/ai-catalog.json`
 - **TTL**: Auto / 5 min
 
 ### Record 5: ARD Catalog TXT Record
 - **Type**: `TXT`
-- **Name**: `_catalog._agents.medgptai`
-- **Content**: `url=https://medgptai.droploop.in/.well-known/ai-catalog.json`
+- **Name**: `_catalog._agents` (or `_catalog._agents.bloodtesthelp.com`)
+- **Content**: `url=https://bloodtesthelp.com/.well-known/ai-catalog.json`
 - **TTL**: Auto / 5 min
 
 ---

@@ -7,7 +7,7 @@
   },
   "transport": {
     "type": "http",
-    "endpoint": "https://medgptai.droploop.in/api/mcp"
+    "endpoint": "https://bloodtesthelp.com/api/mcp"
   },
   "capabilities": {
     "tools": {

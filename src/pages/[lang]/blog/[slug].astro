@@ -3,8 +3,9 @@ import BlogLayout from '../../../layouts/BlogLayout.astro';
 import { getCollection, render } from 'astro:content';
 import { slugMap, getBaseSlug } from '../../../utils/slugMap';
 import { extractFaqsFromMarkdown } from '../../../utils/faqExtractor';
+import { getSiteUrl } from '../../../utils/siteConfig';
 
-const siteUrl = 'https://medgptai.droploop.in';
+const siteUrl = Astro.site ? Astro.site.origin : getSiteUrl();
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');

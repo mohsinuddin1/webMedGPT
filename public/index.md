@@ -4,7 +4,7 @@
 
 MedGPT is an AI-powered health educational assistant designed to translate complex medical reports, laboratory panels, prescriptions, and health queries into clear, easy-to-understand language.
 
-Download MedGPT on Google Play: https://play.google.com/store/apps/details?id=com.droploop.medgpt
+Download MedGPT on Google Play: https://play.google.com/store/apps/details?id=com.medgptai.app
 
 ---
 
@@ -34,12 +34,12 @@ MedGPT evaluates biomarkers against standard age- and sex-adjusted reference int
 
 ## Machine-Readable Discovery & Agent Interfaces
 
-- **API Documentation**: https://medgptai.droploop.in/docs/api
-- **OpenAPI 3.1 Spec**: https://medgptai.droploop.in/openapi.json
-- **RFC 9727 API Catalog**: https://medgptai.droploop.in/.well-known/api-catalog
-- **Model Context Protocol (MCP)**: https://medgptai.droploop.in/.well-known/mcp/server-card.json
-- **Agent Resource Discovery (ARD)**: https://medgptai.droploop.in/.well-known/ai-catalog.json
-- **Agent Skills Discovery Index**: https://medgptai.droploop.in/.well-known/agent-skills/index.json
-- **OAuth Protected Resource Metadata (RFC 9728)**: https://medgptai.droploop.in/.well-known/oauth-protected-resource
-- **OAuth 2.0 Authorization Server (RFC 8414)**: https://medgptai.droploop.in/.well-known/oauth-authorization-server
-- **Agent Registration (auth.md)**: https://medgptai.droploop.in/auth.md
+- **API Documentation**: https://bloodtesthelp.com/docs/api
+- **OpenAPI 3.1 Spec**: https://bloodtesthelp.com/openapi.json
+- **RFC 9727 API Catalog**: https://bloodtesthelp.com/.well-known/api-catalog
+- **Model Context Protocol (MCP)**: https://bloodtesthelp.com/.well-known/mcp/server-card.json
+- **Agent Resource Discovery (ARD)**: https://bloodtesthelp.com/.well-known/ai-catalog.json
+- **Agent Skills Discovery Index**: https://bloodtesthelp.com/.well-known/agent-skills/index.json
+- **OAuth Protected Resource Metadata (RFC 9728)**: https://bloodtesthelp.com/.well-known/oauth-protected-resource
+- **OAuth 2.0 Authorization Server (RFC 8414)**: https://bloodtesthelp.com/.well-known/oauth-authorization-server
+- **Agent Registration (auth.md)**: https://bloodtesthelp.com/auth.md

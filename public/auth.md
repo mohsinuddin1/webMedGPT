@@ -12,20 +12,20 @@ This authentication interface is designed for:
 ## Discovery Metadata
 
 MedGPT exposes standardized discovery metadata for automated discovery:
-- **OAuth Protected Resource Metadata (RFC 9728)**: `https://medgptai.droploop.in/.well-known/oauth-protected-resource`
-- **OAuth 2.0 Authorization Server (RFC 8414)**: `https://medgptai.droploop.in/.well-known/oauth-authorization-server`
-- **OpenID Connect Discovery**: `https://medgptai.droploop.in/.well-known/openid-configuration`
-- **RFC 9727 API Catalog**: `https://medgptai.droploop.in/.well-known/api-catalog`
-- **MCP Server Card**: `https://medgptai.droploop.in/.well-known/mcp/server-card.json`
-- **ARD Capability Manifest**: `https://medgptai.droploop.in/.well-known/ai-catalog.json`
-- **Agent Skills Discovery**: `https://medgptai.droploop.in/.well-known/agent-skills/index.json`
+- **OAuth Protected Resource Metadata (RFC 9728)**: `https://bloodtesthelp.com/.well-known/oauth-protected-resource`
+- **OAuth 2.0 Authorization Server (RFC 8414)**: `https://bloodtesthelp.com/.well-known/oauth-authorization-server`
+- **OpenID Connect Discovery**: `https://bloodtesthelp.com/.well-known/openid-configuration`
+- **RFC 9727 API Catalog**: `https://bloodtesthelp.com/.well-known/api-catalog`
+- **MCP Server Card**: `https://bloodtesthelp.com/.well-known/mcp/server-card.json`
+- **ARD Capability Manifest**: `https://bloodtesthelp.com/.well-known/ai-catalog.json`
+- **Agent Skills Discovery**: `https://bloodtesthelp.com/.well-known/agent-skills/index.json`
 
 ## Agent Registration Endpoints
 
 Agents can register and acquire access credentials programmatically:
 
 ### 1. Dynamic Client Registration (RFC 7591)
-- **Endpoint**: `POST https://medgptai.droploop.in/oauth/register`
+- **Endpoint**: `POST https://bloodtesthelp.com/oauth/register`
 - **Content-Type**: `application/json`
 - **Request Example**:
 ```json
@@ -40,12 +40,12 @@ Agents can register and acquire access credentials programmatically:
 ### 2. Identity Assertion Flow (ID-JAG)
 - **Assertion Type**: `urn:ietf:params:oauth:token-type:id-jag`
 - **Identity Types Supported**: `identity_assertion`
-- **Revocation URI**: `https://medgptai.droploop.in/oauth/revoke`
+- **Revocation URI**: `https://bloodtesthelp.com/oauth/revoke`
 - **Revocation Event**: `revocation`
 
 ### 3. Anonymous / Public Registration
 - **Identity Type**: `anonymous`
-- **Claim URI**: `https://medgptai.droploop.in/oauth/claim`
+- **Claim URI**: `https://bloodtesthelp.com/oauth/claim`
 - **Credential Types**: `bearer_token`, `api_key`
 
 ## Credential Usage
@@ -54,9 +54,9 @@ Authenticate API requests by including the Bearer token in the `Authorization` H
 
 ```http
 GET /api/v1/medications/Metformin HTTP/1.1
-Host: medgptai.droploop.in
+Host: bloodtesthelp.com
 Authorization: Bearer <your_access_token>
 Accept: application/json
 ```
 
-For human-readable documentation and interactive testing, please visit [MedGPT API Documentation](https://medgptai.droploop.in/docs/api).
+For human-readable documentation and interactive testing, please visit [MedGPT API Documentation](https://bloodtesthelp.com/docs/api).

@@ -1,5 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getDomain } from '../utils/siteConfig';
+
+const domain = getDomain();
 ---
 
 <BaseLayout
@@ -12,7 +15,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <h1>Privacy Policy</h1>
       <p class="updated-date">Last Updated: July 10, 2026</p>
 
-      <p>PureScan AI ("we," "our," or "us") operates the MedGPT mobile application (the "App") and the website medgptai.droploop.in (the "Site"). This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our App and Site.</p>
+      <p>PureScan AI ("we," "our," or "us") operates the MedGPT mobile application (the "App") and the website {domain} (the "Site"). This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our App and Site.</p>
 
       <p>Please read this privacy policy carefully. If you do not agree with the terms of this privacy policy, please do not access the App or Site.</p>
 

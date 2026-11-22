@@ -1,5 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getDomain } from '../utils/siteConfig';
+
+const domain = getDomain();
 ---
 
 <BaseLayout
@@ -12,7 +15,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <h1>Terms of Service</h1>
       <p class="updated-date">Last Updated: July 10, 2026</p>
 
-      <p>Welcome to MedGPT. These Terms of Service ("Terms") govern your use of the MedGPT mobile application (the "App") and website at medgptai.droploop.in (the "Site"), operated by PureScan AI ("we," "our," or "us").</p>
+      <p>Welcome to MedGPT. These Terms of Service ("Terms") govern your use of the MedGPT mobile application (the "App") and website at {domain} (the "Site"), operated by PureScan AI ("we," "our," or "us").</p>
 
       <p>By downloading, installing, or using MedGPT, you agree to be bound by these Terms. If you do not agree to these Terms, do not use MedGPT.</p>
 

@@ -6,7 +6,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
 
-const HOST = 'medgptai.droploop.in';
+const HOST = process.env.SITE_HOST || 'bloodtesthelp.com';
 const KEY = 'd042f8c07df14d48aaf41adbaf6570b7';
 const KEY_LOCATION = `https://${HOST}/${KEY}.txt`;
 const SITEMAP_LOCAL = path.join(rootDir, 'dist', 'sitemap-0.xml');

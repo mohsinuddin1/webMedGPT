@@ -1,5 +1,5 @@
 # MedGPT Robots Policy
-# Website: https://medgptai.droploop.in
+# Website: https://bloodtesthelp.com
 # Standard-compliant RFC 9309 policy for SEO, AEO (Answer Engine Optimization), and GEO (Generative Engine Optimization)
 
 User-agent: *
@@ -61,10 +61,10 @@ User-agent: Bytespider
 Allow: /
 
 # Sitemaps
-Sitemap: https://medgptai.droploop.in/sitemap.xml
-Sitemap: https://medgptai.droploop.in/sitemap-index.xml
+Sitemap: https://bloodtesthelp.com/sitemap.xml
+Sitemap: https://bloodtesthelp.com/sitemap-index.xml
 
 # Machine-readable discovery index:
-# - LLMs Index: https://medgptai.droploop.in/llms.txt
-# - LLMs Full: https://medgptai.droploop.in/llms-full.txt
-# - AI Catalog: https://medgptai.droploop.in/.well-known/ai-catalog.json
+# - LLMs Index: https://bloodtesthelp.com/llms.txt
+# - LLMs Full: https://bloodtesthelp.com/llms-full.txt
+# - AI Catalog: https://bloodtesthelp.com/.well-known/ai-catalog.json

@@ -1,5 +1,6 @@
 import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
+import { getSiteUrl, SITE_EMAIL } from '../utils/siteConfig';
 
 export async function GET(context: any) {
   const allPosts = await getCollection('blog');
@@ -7,10 +8,12 @@ export async function GET(context: any) {
     .filter(post => post.id.startsWith('en/'))
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
+  const siteUrl = context.site ? (typeof context.site === 'string' ? context.site.replace(/\/+$/, '') : context.site.origin) : getSiteUrl();
+
   return rss({
     title: 'MedGPT Health Blog — AI-Powered Health Insights',
     description: 'Expert health guides, medical report tips, and medication safety information from MedGPT. Learn how to read blood tests, understand side effects, and make informed health decisions.',
-    site: context.site,
+    site: siteUrl,
     items: posts.map((post) => ({
       title: post.data.title,
       pubDate: post.data.pubDate,
@@ -21,12 +24,12 @@ export async function GET(context: any) {
     })),
     customData: `<language>en-us</language>
 <copyright>© 2026 PureScan AI. All rights reserved.</copyright>
-<managingEditor>contact@droploop.in (PureScan AI)</managingEditor>
-<webMaster>contact@droploop.in (PureScan AI)</webMaster>
+<managingEditor>${SITE_EMAIL} (PureScan AI)</managingEditor>
+<webMaster>${SITE_EMAIL} (PureScan AI)</webMaster>
 <image>
-  <url>https://medgptai.droploop.in/appLogo.png</url>
+  <url>${siteUrl}/appLogo.png</url>
   <title>MedGPT Health Blog</title>
-  <link>https://medgptai.droploop.in/blog</link>
+  <link>${siteUrl}/blog</link>
 </image>`,
   });
 }
