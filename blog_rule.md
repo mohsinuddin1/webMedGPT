@@ -31,7 +31,7 @@ about:                                 # GEO/Schema: Entity linking using "Type:
   - "MedicalCondition: <Condition>"
   - "MedicalTest: <Test Name>"
 mentions:                              # GEO/Schema: Secondary entities discussed in the article
-  - "Drug: <Medication Name>"
+  - "Substance: <Medication Name>"       # Note: Use Substance (not Drug, which inherits from Product and triggers GSC Product snippet errors)
   - "MedicalTherapy: <Therapy Name>"
 sources:                               # SEO/E-E-A-T & GEO: Evidence-based citations (rendered via <MedicalCitations />)
   - name: "<Authoritative Medical Organization, Journal, or Clinical Guideline>"
@@ -202,11 +202,11 @@ Targeting Large Language Models (ChatGPT, Claude, Gemini, Perplexity, DeepSeek, 
        - "MedicalCondition: Chronic Kidney Disease"
        - "MedicalTest: Estimated Glomerular Filtration Rate"
      mentions:
-       - "Drug: Lisinopril"
+       - "Substance: Lisinopril"
        - "MedicalTest: Blood Urea Nitrogen"
        - "AnatomicalStructure: Kidney"
      ```
-   - Supported Schema Types: `MedicalCondition`, `MedicalTest`, `Drug`, `MedicalTherapy`, `AnatomicalStructure`, `MedicalSpecialty`.
+   - Supported Schema Types: `MedicalCondition`, `MedicalTest`, `Substance`, `MedicalTherapy`, `AnatomicalStructure`, `MedicalSpecialty`. (Do **not** use `Drug` or `DietarySupplement` — Schema.org defines them as subclasses of `Product`, which triggers Google Search Console Product snippet errors on informational articles; use `Substance` or `MedicalTherapy` instead.)
 
 2. **Quantitative Precision & Data Density**:
    - Generative models prioritize sources with verifiable numbers, statistics, and clinical cutoffs over vague summaries.
@@ -318,7 +318,7 @@ To ensure maximum organic search dominance in Google and authoritative citation 
 
 4. **Tri-Optimization Terminology Integration (SEO, GEO & AEO Words)**:
    - **SEO Words**: Seamlessly embed high-volume, high-intent patient search queries (e.g., *"how to read lab results"*, *"what does high ALT mean"*, *"normal reference range"*).
-   - **GEO Words (Generative Engine Optimization)**: Explicitly integrate Schema.org clinical entity terms (`MedicalCondition: ...`, `MedicalTest: ...`, `Drug: ...`) so RAG retrievers, vector databases, and LLM reasoning engines readily index and cite the article.
+   - **GEO Words (Generative Engine Optimization)**: Explicitly integrate Schema.org clinical entity terms (`MedicalCondition: ...`, `MedicalTest: ...`, `Substance: ...`) so RAG retrievers, vector databases, and LLM reasoning engines readily index and cite the article.
    - **AEO Words (Answer Engine Optimization)**: Craft fact-dense direct answers in the first 100 words and `shortAnswer` field using direct definition patterns (*"X is Y"*, *"A normal range is Z"*) to dominate Google Featured Snippets, Voice Assistants, and AI Overviews.
 
 ---

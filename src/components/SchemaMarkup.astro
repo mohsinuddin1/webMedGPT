@@ -83,11 +83,28 @@ const websiteSchema = {
   },
 };
 
+// Map Schema.org Product subclasses (like Drug or DietarySupplement) and non-standard types
+// to MedicalEntity/Substance so Google Search Console does not validate informational
+// entity mentions as commercial Product snippets requiring offers, review, or aggregateRating.
+const PRODUCT_SUBCLASS_MAP: Record<string, string> = {
+  Drug: 'Substance',
+  DietarySupplement: 'Substance',
+  Product: 'Thing',
+  IndividualProduct: 'Thing',
+  ProductModel: 'Thing',
+  ProductGroup: 'Thing',
+  SomeProducts: 'Thing',
+  HealthTopic: 'MedicalEntity',
+};
+
 // Helper to parse 'Type: Name' strings (e.g. 'MedicalCondition: Keratosis Pilaris')
 const parseEntity = (item: string) => {
   const parts = item.split(':');
-  if (parts.length === 2) {
-    return { '@type': parts[0].trim(), name: parts[1].trim() };
+  if (parts.length >= 2) {
+    const rawType = parts[0].trim();
+    const name = parts.slice(1).join(':').trim();
+    const safeType = PRODUCT_SUBCLASS_MAP[rawType] || rawType;
+    return { '@type': safeType, name };
   }
   return { '@type': 'Thing', name: item };
 };
