@@ -178,6 +178,10 @@
     {
       "source": "/api/health",
       "destination": "/api/health.json"
+    },
+    {
+      "source": "/download",
+      "destination": "/api/download"
     }
   ]
 }
