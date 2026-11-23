@@ -1,0 +1,32 @@
+---
+const iosUrl = 'https://apps.apple.com/app/id6837951020?pt=128779508&ct=friends_family_share&mt=8';
+const androidUrl = 'https://play.google.com/store/apps/details?id=com.medgptai.app&referrer=utm_source%3Dfriends_family%26utm_medium%3Dsocial_share%26utm_campaign%3Dresult_share';
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Download MedGPT</title>
+    <meta name="robots" content="noindex" />
+    <script is:inline define:vars={{ iosUrl, androidUrl }}>
+      (function () {
+        var ua = navigator.userAgent || '';
+        var isApple = /iPad|iPhone|iPod|Macintosh|Mac OS/i.test(ua);
+        window.location.replace(isApple ? iosUrl : androidUrl);
+      })();
+    </script>
+    <noscript>
+      <meta http-equiv="refresh" content={`0;url=${androidUrl}`} />
+    </noscript>
+  </head>
+  <body style="background:#000;color:#fff;font-family:system-ui,-apple-system,sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;text-align:center;padding:24px;">
+    <div>
+      <p style="margin-bottom:16px;">Redirecting to MedGPT app store...</p>
+      <p>
+        <a href={iosUrl} style="color:#00d4aa;margin-right:16px;">App Store (iOS / Mac)</a>
+        <a href={androidUrl} style="color:#00d4aa;">Google Play (Android)</a>
+      </p>
+    </div>
+  </body>
+</html>

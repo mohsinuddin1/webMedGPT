@@ -163,6 +163,25 @@
       ]
     }
   ],
+  "redirects": [
+    {
+      "source": "/download",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(iPad|iPhone|iPod|Macintosh|Mac OS|ipad|iphone|ipod|macintosh|mac os).*"
+        }
+      ],
+      "destination": "https://apps.apple.com/app/id6837951020?pt=128779508&ct=friends_family_share&mt=8",
+      "statusCode": 302
+    },
+    {
+      "source": "/download",
+      "destination": "https://play.google.com/store/apps/details?id=com.medgptai.app&referrer=utm_source%3Dfriends_family%26utm_medium%3Dsocial_share%26utm_campaign%3Dresult_share",
+      "statusCode": 302
+    }
+  ],
   "rewrites": [
     {
       "source": "/",
