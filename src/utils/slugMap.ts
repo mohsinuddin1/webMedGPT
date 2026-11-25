@@ -675,6 +675,33 @@ export const slugMap: Record<string, Record<string, string>> = {
     'zh': 'australian-healthcare-blood-test-guide',
     'ar': 'australian-healthcare-blood-test-guide',
     'ar-MA': 'australian-healthcare-blood-test-guide'
+  },
+  'best-blood-test-tracking-apps': {
+    'en': 'best-blood-test-tracking-apps',
+    'fr': 'best-blood-test-tracking-apps',
+    'es': 'best-blood-test-tracking-apps',
+    'de': 'best-blood-test-tracking-apps',
+    'nl': 'best-blood-test-tracking-apps',
+    'pt': 'best-blood-test-tracking-apps',
+    'ro': 'best-blood-test-tracking-apps',
+    'it': 'best-blood-test-tracking-apps',
+    'sv': 'best-blood-test-tracking-apps',
+    'da': 'best-blood-test-tracking-apps',
+    'no': 'best-blood-test-tracking-apps',
+    'nb': 'best-blood-test-tracking-apps',
+    'pl': 'best-blood-test-tracking-apps',
+    'cs': 'best-blood-test-tracking-apps',
+    'lt': 'best-blood-test-tracking-apps',
+    'lv': 'best-blood-test-tracking-apps',
+    'tr': 'best-blood-test-tracking-apps',
+    'bg': 'best-blood-test-tracking-apps',
+    'ru': 'best-blood-test-tracking-apps',
+    'el': 'best-blood-test-tracking-apps',
+    'ar': 'best-blood-test-tracking-apps',
+    'ar-MA': 'best-blood-test-tracking-apps',
+    'ja': 'best-blood-test-tracking-apps',
+    'ko': 'best-blood-test-tracking-apps',
+    'zh': 'best-blood-test-tracking-apps'
   }
 };
 

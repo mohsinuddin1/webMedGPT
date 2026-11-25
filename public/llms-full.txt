@@ -36,6 +36,7 @@ All educational articles are grounded in peer-reviewed clinical guidelines, nati
 - **[Vitamin Deficiency Tests](https://bloodtesthelp.com/blog/understanding-vitamin-deficiency-blood-test-results)**: Vitamin D (25-OH), Vitamin B12, and ferritin deficiency anemia.
 - **[Iron Deficiency Anemia Management](https://bloodtesthelp.com/blog/recognizing-and-treating-iron-deficiency-anemia)**: Hemoglobin, serum iron, TIBC, and ferritin kinetics.
 - **[Hormone Blood Test Results](https://bloodtesthelp.com/blog/hormone-blood-test-results-explained)**: Estrogen, progesterone, testosterone, cortisol, and prolactin.
+- **[8 Best Blood Test Tracking Apps in 2026](https://bloodtesthelp.com/blog/best-blood-test-tracking-apps)**: Objective 2026 comparison of MedGPT, InsideTracker, Function Health, SiPhox Health, Carrot Care, Soka, Biotracker, and Apple Health on any-document/PDF/photo upload, auto-extraction, biomarker trends, dual US/SI units, and interactive AI chat.
 
 ### Medication & Drug Safety
 - **[Understanding Medicine Side Effects & Drug Interactions](https://bloodtesthelp.com/blog/understanding-medicine-side-effects)**: Distinguishing mild vs. severe adverse drug reactions, food/supplement interactions, and emergency warning signs.
