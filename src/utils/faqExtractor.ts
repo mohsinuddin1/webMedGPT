@@ -11,25 +11,30 @@ export interface FAQItem {
 const FAQ_HEADING_KEYWORDS = [
   'faq',
   'frequently asked',
-  'questions',
-  'sorulan',
-  'preguntas',
-  'domande',
-  'fragen',
-  'pytania',
-  'întrebări',
-  'klausimai',
-  'jautājumi',
-  'въпроси',
-  'вопросы',
-  'ερωτήσεις',
-  'أسئلة',
-  'الأسئلة',
+  'questions fréquentes',
+  'preguntas frecuentes',
+  'perguntas frequentes',
+  'domande frequenti',
+  'häufig gestellte',
+  'häufige fragen',
+  'częste pytania',
+  'często zadawane',
+  'întrebări frecvente',
+  'dažniausiai užduodami',
+  'dažni klausimai',
+  'biežāk uzdotie',
+  'често задавани',
+  'часто задаваемые',
+  'συχνές ερωτήσεις',
+  'sık sorulan',
+  'الأسئلة الشائعة',
+  'أسئلة شائعة',
   '常见问题',
   'よくある質問',
   '자주 묻는',
   'vanliga frågor',
   'ofte stillede',
+  'ofte stilte',
   'veelgestelde',
   'časté otázky'
 ];
@@ -50,12 +55,17 @@ export function extractFaqsFromMarkdown(markdown?: string): FAQItem[] {
     // Check for H2 heading
     if (/^##\s+/.test(rawLine)) {
       if (inFaqSection) {
-        // Reached another H2 section after FAQ, flush and terminate
         if (currentQuestion && currentAnswerLines.length > 0) {
           const cleanAns = cleanAnswer(currentAnswerLines.join(' '));
           if (cleanAns) faqs.push({ question: currentQuestion, answer: cleanAns });
         }
-        break;
+        currentQuestion = null;
+        currentAnswerLines = [];
+        // Only terminate if we actually collected FAQs; prevents false-positive H2 matches from blocking real FAQs later
+        if (faqs.length > 0) {
+          break;
+        }
+        inFaqSection = false;
       }
 
       const headingText = trimmed.replace(/^##\s+/, '').toLowerCase();
@@ -75,7 +85,7 @@ export function extractFaqsFromMarkdown(markdown?: string): FAQItem[] {
         }
         currentQuestion = trimmed.replace(/^###\s+/, '').trim();
       } else if (currentQuestion) {
-        // Stop if reaching medical disclaimer or divider
+        // Stop cleanly at horizontal divider or medical disclaimer so disclaimers never leak into FAQ answers
         if (
           trimmed.startsWith('---') ||
           trimmed.startsWith('*This article') ||
@@ -86,7 +96,7 @@ export function extractFaqsFromMarkdown(markdown?: string): FAQItem[] {
           trimmed.startsWith('*Questo articolo') ||
           trimmed.startsWith('*Disclaimer')
         ) {
-          continue;
+          break;
         }
 
         if (trimmed && !trimmed.startsWith('>')) {

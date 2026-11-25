@@ -17,7 +17,11 @@
 ## Key Health Education Guides
 
 - [Health Blog Index](https://bloodtesthelp.com/blog): Complete library of evidence-based patient guides.
+- [Find Local Medical Labs Near You](https://bloodtesthelp.com/blog/find-local-medical-labs-near-me): Verifying laboratory accreditation (CLIA, CAP, ISO 15189), insurance coverage, and fasting preparation.
 - [How to Read Blood Test Results](https://bloodtesthelp.com/blog/how-to-read-blood-test-results): Foundational reference guide to understanding lab values, reference ranges, and units.
+- [Understanding Cholesterol & Lipid Panels](https://bloodtesthelp.com/blog/understanding-cholesterol-lipid-panel): Interpreting LDL, HDL, triglycerides, and cardiovascular risk targets.
+- [Understanding Medicine Side Effects](https://bloodtesthelp.com/blog/understanding-medicine-side-effects): Screening adverse drug reactions, food-drug interactions, and medication safety red flags.
+- [Understanding Thyroid Test Results](https://bloodtesthelp.com/blog/understanding-thyroid-test-results): Decoding TSH, Free T4, Free T3, hypothyroidism, and hyperthyroidism.
 - [Understanding CBC & Differential](https://bloodtesthelp.com/blog/understanding-cbc-differential-wbc-types): Detailed explanation of white blood cells, neutrophils, and immune markers.
 - [Kidney Function Test Guide](https://bloodtesthelp.com/blog/how-to-read-kidney-function-test-results): Interpreting eGFR, creatinine, and kidney health stages.
 - [Liver Function Test Guide](https://bloodtesthelp.com/blog/understanding-liver-function-test-results): Transaminases (ALT, AST) and biliary enzymes explained.

@@ -20,6 +20,7 @@ MedGPT provides patient-friendly health literacy tools accessible via web and mo
 All educational articles are grounded in peer-reviewed clinical guidelines, national health agencies (CDC, NIH, MedlinePlus, FDA), and certified laboratory medicine federations.
 
 ### Blood & Laboratory Diagnostics
+- **[Find Local Medical Labs Near You](https://bloodtesthelp.com/blog/find-local-medical-labs-near-me)**: Guide to verifying lab accreditation (CLIA, CAP, ISO 15189), checking insurance coverage, and preparing for blood draws.
 - **[How to Read Blood Test Results](https://bloodtesthelp.com/blog/how-to-read-blood-test-results)**: Complete reference guide to lab values, reference intervals, and flags.
 - **[Understanding CBC & Differential](https://bloodtesthelp.com/blog/understanding-cbc-differential-wbc-types)**: White blood cell types (neutrophils, lymphocytes, monocytes, eosinophils, basophils).
 - **[Abnormal Blood Tests: When to Worry](https://bloodtesthelp.com/blog/abnormal-blood-test-results-when-to-worry)**: Triage guidelines distinguishing critical laboratory panic values from benign fluctuations.
@@ -35,6 +36,9 @@ All educational articles are grounded in peer-reviewed clinical guidelines, nati
 - **[Vitamin Deficiency Tests](https://bloodtesthelp.com/blog/understanding-vitamin-deficiency-blood-test-results)**: Vitamin D (25-OH), Vitamin B12, and ferritin deficiency anemia.
 - **[Iron Deficiency Anemia Management](https://bloodtesthelp.com/blog/recognizing-and-treating-iron-deficiency-anemia)**: Hemoglobin, serum iron, TIBC, and ferritin kinetics.
 - **[Hormone Blood Test Results](https://bloodtesthelp.com/blog/hormone-blood-test-results-explained)**: Estrogen, progesterone, testosterone, cortisol, and prolactin.
+
+### Medication & Drug Safety
+- **[Understanding Medicine Side Effects & Drug Interactions](https://bloodtesthelp.com/blog/understanding-medicine-side-effects)**: Distinguishing mild vs. severe adverse drug reactions, food/supplement interactions, and emergency warning signs.
 
 ### Radiology & Imaging
 - **[Chest X-Ray Reports](https://bloodtesthelp.com/blog/how-to-read-chest-x-ray-report)**: Infiltrates, cardiomegaly, and costophrenic angles.

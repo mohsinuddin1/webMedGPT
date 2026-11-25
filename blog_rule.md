@@ -1,78 +1,92 @@
 # MedGPT Blog Creation Rules & Topic Index
 
-This document defines the mandatory criteria for creating new blog posts on the MedGPT website, maintains the master index of published topics to prevent duplication, and connects to the upcoming topic roadmap defined in `idea_blog.md`.
+This document defines the mandatory criteria for creating, localizing, and indexing blog posts on the MedGPT website (`https://bloodtesthelp.com`), maintains the master index of published topics to prevent duplication, and connects to the upcoming topic roadmap in `idea_blog.md`.
 
 All articles must achieve industry-leading excellence across the three pillars of modern digital visibility:
-- **SEO (Search Engine Optimization)** — Traditional & Technical search engines (Google, Bing, Yahoo, Yandex, Baidu)
-- **AEO (Answer Engine Optimization)** — Direct answers, voice search, and featured snippets (Perplexity, Google AI Overviews, SearchGPT, Siri, Google Assistant)
-- **GEO (Generative Engine Optimization)** — AI reasoning engines, RAG retrieval pipelines, and LLM citations (ChatGPT, Claude, Gemini, Copilot, NotebookLM)
+- **SEO (Search Engine Optimization)** — Google Search (Search Console, Core & YMYL quality systems), Microsoft Bing (Bing Webmaster Tools & IndexNow), and regional search engines (Yandex, Baidu, Naver, Yahoo Japan)
+- **AEO (Answer Engine Optimization)** — Google AI Overviews & AI Mode, Microsoft Copilot, Perplexity, ChatGPT Search, and voice assistants (Siri, Google Assistant, Alexa)
+- **GEO (Generative Engine Optimization)** — LLM citations, RAG retrieval pipelines, Bing Grounding API, and parametric/live indexing across ChatGPT, Claude, Gemini, Copilot, Perplexity, NotebookLM, and Apple Intelligence
 
 ---
 
 ## 1. Universal Blog Creation Criteria
 
 ### Frontmatter Requirements
-Every blog post `.mdx` file **must** include the following YAML frontmatter fields, adhering to the Astro content collection schema (`src/content.config.ts`) and powering Schema.org structured data, SEO meta tags, AEO snippet extraction, and GEO entity graphs:
+Every blog post `.mdx` file **must** include the following YAML frontmatter fields, strictly adhering to `src/content.config.ts`, `src/components/SEO.astro`, and `src/components/SchemaMarkup.astro`:
 
 ```yaml
 ---
-title: "<string>"                      # SEO: Target primary high-intent keyword near the front (50-60 characters)
-description: "<string>"                # SEO/AEO: Compelling, click-worthy meta description with secondary keywords (140-160 characters)
+title: "<string>"                      # SEO: Primary high-intent keyword near front (45-58 chars; do NOT append "| MedGPT" or "— MedGPT" — SEO.astro handles branding automatically)
+description: "<string>"                # SEO/AEO: Compelling meta description with primary/secondary keywords (120-145 chars; SEO.astro enforces <= 145 chars)
 pubDate: YYYY-MM-DD                    # SEO/E-E-A-T: Publication date (ISO format)
-updatedDate: YYYY-MM-DD                # SEO/E-E-A-T: (Optional) Last clinically reviewed date
-author: "MedGPT Team"                    # Editorial attribution: Strictly "MedGPT Team" in all blogs
-image: "<url>"                         # SEO: Unique, high-res Unsplash image (1200x630 ratio, must differ from ALL previous blogs)
-imageAlt: "<string>"                   # SEO/Accessibility: Descriptive, keyword-rich alt text for image search
-tags: ["<string>", "<string>"]          # SEO: 3-5 relevant thematic tags for internal taxonomy and related post matching
-readingTime: "<number> min read"       # User Experience: Estimated reading time (e.g., "7 min read")
+updatedDate: YYYY-MM-DD                # SEO/E-E-A-T: (Optional) Last clinically reviewed date; update on every substantive clinical revision
+author: "MedGPT Team"                    # Editorial attribution: Strictly "MedGPT Team" across all blogs and locales
+image: "<url>"                         # SEO/Discover: Unique, high-res Unsplash image (1200x630 ratio, must differ from ALL previous blogs)
+imageAlt: "<string>"                   # SEO/Accessibility: Descriptive, localized, keyword-rich alt text for Google Image Search
+tags: ["<string>", "<string>"]          # SEO: 3-5 localized thematic tags for internal taxonomy and related post matching
+readingTime: "<number> min read"       # UX: Localized estimated reading time (e.g., "7 min read")
 featured: <boolean>                    # Site Architecture: true or false (default: false)
-shortAnswer: "<string>"                # AEO/Voice: 25-45 word direct, authoritative answer for Speakable schema & AI Overviews
-about:                                 # GEO/Schema: Entity linking using "Type: Name" format for AI Knowledge Graphs
+shortAnswer: "<string>"                # AEO/Voice/GEO: 25-45 word standalone direct answer for .blog-post__short-answer, Speakable, AI Overviews & Copilot grounding
+about:                                 # GEO/Schema: Primary entities in "Type: Name" format (ONLY safe medical/entity types; see prohibited list below)
   - "MedicalCondition: <Condition>"
   - "MedicalTest: <Test Name>"
 mentions:                              # GEO/Schema: Secondary entities discussed in the article
-  - "Substance: <Medication Name>"       # Note: Use Substance (not Drug, which inherits from Product and triggers GSC Product snippet errors)
+  - "Substance: <Medication Name>"       # NEVER use Drug, DietarySupplement, or Product subclasses (triggers GSC Product snippet errors)
   - "MedicalTherapy: <Therapy Name>"
-sources:                               # SEO/E-E-A-T & GEO: Evidence-based citations (rendered via <MedicalCitations />)
+sources:                               # SEO/E-E-A-T & GEO: 2-5 evidence-based citations (rendered via <MedicalCitations /> & JSON-LD)
   - name: "<Authoritative Medical Organization, Journal, or Clinical Guideline>"
-    url: "<https://authoritative-source.gov/exact-page-or-guideline-url>" # MUST be exact working deep link; STRICTLY NO general homepage URLs
+    url: "<https://authoritative-source.gov/exact-page-or-guideline-url>" # MUST be an exact working deep link; STRICTLY NO general homepage URLs
     description: "<Optional brief description of specific clinical standard, range, or trial>"
-  - name: "<National Institutes of Health / MedlinePlus / CDC / WHO / Mayo Clinic>"
+  - name: "<National Institutes of Health / MedlinePlus / CDC / WHO / National Health Ministry>"
     url: "<https://medlineplus.gov/lab-tests/exact-monograph-url>"
 ---
 ```
 
+> **Schema Entity Safety Rule (`about` & `mentions`)**:
+> Only use `MedicalCondition`, `MedicalTest`, `Substance`, `MedicalTherapy`, `AnatomicalStructure`, `MedicalSpecialty`, and `MedicalEntity`. **Never** use `Drug`, `DietarySupplement`, `Product`, `IndividualProduct`, `ProductModel`, `ProductGroup`, `SomeProducts` (all trigger Google Search Console Product snippet validation errors on informational pages), or non-standard `HealthTopic`.
+
+---
+
+### Core Authoring Commandments
+1. **Scientific Factuality & Zero Hallucination**: Ground every clinical claim, biomarker threshold, and physiological explanation in verified medical literature from accredited institutions. Never fabricate statistics, invent pathways, or guess reference ranges; if lab cutoffs vary, state the variation explicitly.
+2. **Simplicity, Conciseness & Answer-First Density**: Explain complex medicine in plain, patient-friendly language. Banish filler and bloated word counts; keep sections tight, scannable, and high-density.
+3. **Authentic Clinical Voice (Anti-AI-Slop)**: Write with the clarity and empathy of an experienced clinician—never robotic clichés, formulaic openers, or repetitive transitions (see Part E).
+4. **Autonomous Native Localization**: Never plain-translate or use external translation APIs (Google Translate, DeepL). Localize natively with authentic regional clinical terminology, statutory healthcare workflows, and local lab units across all 25 locales.
+5. **Tri-Optimization Alignment**: Integrate high-intent search queries (SEO), direct answer capsules and question headings (AEO), and Schema.org medical entities plus verifiable deep-linked citations (GEO).
+
 ---
 
 ### Content Structure & Writing Rules (MDX Body)
-All blog posts must follow this strict structural pattern and core authoring rules to ensure clinical accuracy, patient readability, and seamless ingestion by both human readers and AI crawlers:
+Every blog post must follow this exact structural pattern for human readability, Google/Bing indexing, and LLM extraction:
 
-> **Core Authoring Commandments**:
-> 1. **Scientific Factuality & Zero Hallucination**: Every claim must be grounded in verified medical science. Never hallucinate physiology, fake cutoffs, or unproven therapies.
-> 2. **Simplicity & Conciseness (Don't Make It Too Long)**: Demystify complex medicine in clear, accessible plain language. Banish fluff and wordiness; keep articles high-density and focused.
-> 3. **High Quality & Anti-AI-Slop**: Strictly avoid robotic clichés, formulaic introductions, monotonous transitions, and empty boilerplate. Write with human clinical empathy and precision.
-> 4. **Native Autonomous Localization**: Never plain translate; never use external translation APIs. Localize natively using authentic regional healthcare terms and standard clinical units.
-> 5. **Tri-Optimization Terminology (SEO, GEO & AEO Words)**: Strategically weave high-intent search queries, Schema medical entities, and direct answer definitions to dominate Google search and LLMs.
-
-1. **Introductory Paragraph**: A clear, empathetic opening hook summarizing the topic, why it matters to the patient, and the core takeaway. Must include the primary keyword in the first 100 words.
-2. **Speakable Direct Answer**: Fed by the frontmatter `shortAnswer` (rendered in `.blog-post__short-answer` and registered in `SpeakableSpecification` schema for voice assistants and AI answer cards).
-3. **Main Sections (`##`) & Subsections (`###`)**: Strictly hierarchical headings. H2s and H3s should be framed as natural-language questions or search-intent queries (e.g., `## What Does High Creatinine Mean in a Blood Test?`).
-4. **Structured Markdown Data Tables (Linkable Assets)**: Markdown tables for reference ranges, biomarker interpretations, symptom comparisons, or drug interactions. Every table **must** specify clinical measurement units (`mg/dL`, `mmol/L`, `g/dL`, `mIU/L`). Markdown tables act as natural linkable assets that earn third-party backlinks and are critical for GEO/LLM parsing via HTTP Markdown content negotiation (`Accept: text/markdown`).
-5. **Contextual Internal Backlinks (2–4 In-Body Links)**: Every article must embed at least 2–4 natural, contextual internal links to related topic guides or clinical tools across the MedGPT site (e.g., linking from a regional lab guide to the foundational CBC guide, WBC differential, or abnormal test explainer). Anchor text must be descriptive and entity-rich (e.g., `[complete blood count interpretation guide](/blog/how-to-read-blood-test-results)`).
-6. **In-Body Authoritative Medical Citations (E-E-A-T Grounding, 2–4 External Links)**: In addition to the frontmatter `sources` array, the MDX body text must cite and hyperlink directly to gold-standard medical authorities and their accredited publications (e.g., [NIH MedlinePlus Complete Blood Count Guide](https://medlineplus.gov/lab-tests/complete-blood-count-cbc/), [NHLBI Blood Test Directory](https://www.nhlbi.nih.gov/health/blood-tests), national health ministry clinical guideline registries) when presenting clinical cutoffs, physiological mechanisms, or diagnostic criteria.
-   - **STRICTLY NO General Homepage Links**: Never link to generic homepages (e.g., `https://who.int/`, `https://cdc.gov/`, `https://medlineplus.gov/`, `https://minzdrav.gov.ru/`). Every external link must be an exact, correct, working URL pointing directly to the specific clinical monograph, research report, or guideline document.
-7. **Lists**: Bullet points or numbered lists for symptoms, risk factors, preparation steps, or common causes to capture Google Featured Snippets (list-type).
-8. **Red Flags / Emergency Section**: A dedicated callout highlighting acute symptoms requiring immediate emergency medical care:
+1. **Introductory Paragraph**: Empathetic, high-clarity opening hook explaining why the topic matters and the core takeaway. Include the primary keyword naturally within the first 100 words.
+2. **Speakable Direct Answer (`shortAnswer`)**: Rendered automatically from frontmatter into `.blog-post__short-answer` and registered in `SpeakableSpecification` for voice assistants and AI answer cards.
+3. **Question-Based H2/H3 Hierarchy + Answer-Capsule Rule**:
+   - Maintain a strict hierarchy: one single `<h1>` (from `title`), followed by `<h2>` sections and nested `<h3>` subsections without skipping levels.
+   - Frame `##` and `###` headings as conversational patient search queries (e.g., `## What Does High Creatinine Mean in a Blood Test?`).
+   - **Answer-Capsule / Inverted Pyramid Rule**: Immediately after every question-based `##` heading, open with a **40–60 word direct, fact-dense answer paragraph** stating the concrete numbers, clinical meaning, and threshold before expanding into nuance. This is the primary pattern extracted by Google AI Overviews, Bing Copilot, Perplexity, and ChatGPT Search.
+4. **Structured Markdown Data Tables (Linkable Assets)**: Include at least one comprehensive Markdown table for reference ranges, biomarker interpretations, imaging terms, or drug interactions. Specify both **US conventional units** (`mg/dL`, `g/dL`) and **SI international units** (`mmol/L`, `µmol/L`, `g/L`) where applicable. Tables earn natural inbound links and achieve 95%+ RAG retrieval accuracy via HTTP Markdown content negotiation (`Accept: text/markdown`).
+5. **Contextual Internal Backlinks (2–4 In-Body Links) & URL Hygiene**:
+   - Embed 2–4 contextual internal links to related MedGPT guides using descriptive, entity-rich anchor text (never "click here", "read more", or raw URLs).
+   - **Strict No-Trailing-Slash Rule**: All internal URLs must omit trailing slashes (matching `trailingSlash: 'never'` in `astro.config.mjs` and `vercel.json`).
+   - **Same-Locale Linking Rule**: English posts link to `/blog/<en-slug>`. Localized posts (`/{locale}/...`) **must** link to the same locale's localized URL from `src/utils/slugMap.ts` (e.g., `[Leitfaden zum Blutbild verstehen](/de/blog/so-lesen-sie-bluttestergebnisse)`), never hardcoded English `/blog/...` paths.
+6. **In-Body Authoritative Medical Citations (2–4 External Deep Links)**: Hyperlink clinical cutoffs, diagnostic criteria, and prevalence data directly to exact, working monographs or official clinical guidelines (e.g., `[NIH MedlinePlus Complete Blood Count Guide](https://medlineplus.gov/lab-tests/complete-blood-count-cbc/)`).
+   - **STRICTLY NO General Homepage Links**: Never link to root homepages (e.g., `https://who.int/`, `https://cdc.gov/`, `https://medlineplus.gov/`). Generic homepage links weaken E-E-A-T and YMYL trust verification.
+7. **Featured Snippet Lists**: Use bulleted lists for symptoms, causes, or risk factors, and numbered lists for sequential preparation or triage steps. Start list items with bold lead-in terms.
+8. **Emergency Red Flags Callout**: Highlight acute warning signs requiring urgent care with localized emergency numbers:
    ```markdown
    > **Emergency Red Flags:** Seek immediate emergency medical care (call 911 / 112 / your local emergency number) if you experience...
    ```
-9. **Questions for Your Doctor**: A bulleted checklist of 4–6 actionable questions the patient should bring to their healthcare provider.
-10. **App Promotion Section ("How MedGPT Helps...")**: A dedicated section demonstrating how MedGPT assists with this exact topic (e.g., report scanning, biomarker extraction, medication interaction checking), including a tracked Google Play CTA:
-   ```markdown
-   [Download MedGPT free on Google Play](https://play.google.com/store/apps/details?id=com.medgptai.app&utm_source=blog&utm_medium=<topic-slug>)
-   ```
-11. **Frequently Asked Questions (FAQ)**: 3–5 high-intent conversational FAQs with concise, direct answers. These power the `FAQPage` schema markup and browser WebMCP `get_medical_faq` queries.
-12. **Medical Disclaimer**: Every blog post **must** conclude with the mandatory disclaimer:
+9. **Questions for Your Doctor**: A bulleted checklist of 4–6 actionable questions patients can bring to their appointment.
+10. **App Promotion Section ("How MedGPT Helps...")**: Explain how MedGPT assists with this exact topic (report scanning, biomarker flagging, medication checks) with a UTM-tracked Google Play CTA:
+    ```markdown
+    [Download MedGPT free on Google Play](https://play.google.com/store/apps/details?id=com.medgptai.app&utm_source=blog&utm_medium=<topic-slug>)
+    ```
+11. **Frequently Asked Questions (FAQ) — `faqExtractor.ts` Compatible**:
+    - Include 3–5 conversational Q&As.
+    - The FAQ `##` heading **must** contain a recognized localized keyword from `FAQ_HEADING_KEYWORDS` in `src/utils/faqExtractor.ts` (e.g., `Frequently Asked Questions`, `Häufig gestellte Fragen`, `Questions fréquentes`, `Preguntas frecuentes`, `Domande frequenti`, `Częste pytania` / `Pytania`, `Частые вопросы`, `よくある質問`, `常见问题`, `자주 묻는 질문`, etc.).
+    - Format each item as an `###` question heading followed by a concise **40–60 word plain-text answer paragraph**. Do **not** place blockquotes (`>`) or `---` dividers inside the FAQ block, as `faqExtractor.ts` ignores blockquotes and terminates extraction at `---`.
+12. **Medical Disclaimer**: Every post **must** end with the mandatory localized disclaimer:
     ```markdown
     ---
 
@@ -83,243 +97,155 @@ All blog posts must follow this strict structural pattern and core authoring rul
 
 ## 2. Universal Tri-Optimization Framework: SEO, AEO & GEO Excellence
 
-Every MedGPT article must be optimized across all three dimensions simultaneously:
-
 ```
-                  ┌─────────────────────────────────────────┐
-                  │          MedGPT Blog Tri-Optimization    │
-                  └────────────────────┬────────────────────┘
+                  ┌──────────────────────────────────────────┐
+                  │         MedGPT Blog Tri-Optimization     │
+                  └────────────────────┬─────────────────────┘
                                        │
          ┌─────────────────────────────┼─────────────────────────────┐
          ▼                             ▼                             ▼
    ┌───────────┐                 ┌───────────┐                 ┌───────────┐
    │    SEO    │                 │    AEO    │                 │    GEO    │
-   │  Search   │                 │  Answer   │                 │Generative │
-   │  Engines  │                 │  Engines  │                 │  Engines  │
+   │  Google   │                 │  Answer   │                 │  LLMs &   │
+   │  & Bing   │                 │  Engines  │                 │ Citations │
    └─────┬─────┘                 └─────┬─────┘                 └─────┬─────┘
          │                             │                             │
-  • High-Intent Keywords        • Direct `shortAnswer`        • Entity Graph (`about`)
-  • Medical E-E-A-T             • `Speakable` Schema          • Structured Data Tables
-  • Hreflang (25 Locales)       • Question-Based H2s/H3s      • Authoritative Citations
-  • Schema.org JSON-LD          • Featured Snippet Lists      • Clean Markdown (RFC 8288)
-  • Internal Links & Meta       • WebMCP FAQ Integration      • Agent Skill Alignment
+  • Google Search Console       • 25-45w `shortAnswer`        • Entity Graph (`about`)
+  • Bing BWT & IndexNow         • 40-60w Answer Capsules      • Dual-Unit RAG Tables
+  • YMYL E-E-A-T Grounding      • Question-Based H2s/H3s      • Deep `.gov`/`.org` Links
+  • 25 Locales & Hreflang       • `Speakable` & Snippet Lists • Clean Markdown (Accept header)
+  • Clean Static HTML & Schema  • `FAQPage` & WebMCP Parity   • `llms.txt` & `llms-full.txt`
 ```
 
 ---
 
-### Part A: SEO Requirements (Search Engine Optimization)
+### Part A: Google Search Central & Search Console Indexing (SEO & YMYL E-E-A-T)
 
-Targeting Google, Bing, Yahoo, Yandex, and Baidu:
-
-1. **Keyword Architecture & Placement**:
-   - **Primary Keyword**: Must appear in the `title`, URL slug, H1, meta `description`, within the first 100 words of the body, and in at least one H2.
-   - **Secondary & LSI Keywords**: Distribute long-tail variations, synonyms, and clinical vs lay terminology across H2s, H3s, and body paragraphs.
-   - **Search Intent**: Focus on informational + high-conversion intent (e.g., `"how to read kidney function test results"`, `"eGFR low levels meaning"`, `"what does unremarkable mean on CT scan"`).
-
-2. **On-Page & Technical SEO**:
-   - **Title Tag**: 50–60 characters. Formatted as `Primary Keyword: Secondary Hook | MedGPT`.
-   - **Meta Description**: 140–160 characters. Engaging summary including primary keyword, actionable value, and a CTA.
-   - **Heading Hierarchy**: Strictly one single `<h1>` (generated from `title`), followed by logical `<h2>` sections and nested `<h3>` subsections. Never skip heading levels.
-   - **Image Optimization**: Unique Unsplash URL per article. Must specify `imageAlt` with descriptive, accessible, keyword-rich text. Image dimensions standard 1200x630 (aspect ratio 21:9 in hero).
-   - **Internal Linking & Topical Backlinks**: Every article must feature **2–4 contextual internal links** connecting related guides within MedGPT's library.
-     - **Topic Cluster Hub & Spoke**: Link foundational guides (e.g. general blood tests) to specialized deep dives (e.g. WBC differential, kidney panel, liver panel, abnormal results). Regional health guides must cross-link to relevant clinical biomarker explainers.
-     - **Anchor Text Precision**: Anchor text must be descriptive and semantically rich (e.g., `[complete blood count interpretation guide](/blog/how-to-read-blood-test-results)` or `[guide on when to worry about abnormal blood tests](/blog/abnormal-blood-test-results-when-to-worry)`). **Never** use generic anchors like "click here", "read more", or raw URLs.
-     - **Internal PageRank Distribution**: Contextual internal links pass link equity, establish thematic relevance in Google's Knowledge Graph, reduce bounce rates, and ensure search engine crawlers discover deep content.
-
-3. **Medical E-E-A-T & Google Search Ranking Factors (Experience, Expertise, Authoritativeness, Trustworthiness)**:
-   - **YMYL (Your Money Your Life) Rigor**: Health topics undergo the strictest evaluation under Google's Search Quality Rater Guidelines. Content must be factually accurate, clinically grounded, objective, and devoid of hyperbolic claims or AI hallucinations.
-   - **Author Attribution (Strictly "MedGPT Team")**:
-     - **Standard Author Byline**: All blog posts must carry `author: "MedGPT Team"` across all locales.
-     - **Authentic External Source Grounding**: Medical grounding, evidence, and clinical accuracy are directly attributed to the **legitimate source websites, accredited public health institutions, national ministries of health, certified laboratory federations, and verified medical guidelines** in the `sources` array and in-body citations (e.g., `National Institutes of Health (NIH)`, `CDC`, `FDA`, `Czech Society of Clinical Biochemistry (ČSKB)`). In Schema.org JSON-LD, `author` is mapped to `MedGPT Team` and `reviewedBy`/`citation` are mapped to these accredited external medical sources.
-   - **Dual Citation Strategy (Strictly Exact Working Deep Links — Zero General Homepages)**:
-     - **Frontmatter Array**: Include 2–5 structured sources linking to gold-standard institutions (NIH, MedlinePlus, CDC, FDA, WHO, Mayo Clinic, Cleveland Clinic, NHS, national health ministry guideline rubricators). Rendered in `<MedicalCitations />` and parsed into JSON-LD schema.
-     - **In-Body Contextual Citations**: Directly hyperlink clinical claims, diagnostic thresholds, and statistical prevalence data to specific clinical publications on reputable external bodies (e.g., `[NIH MedlinePlus Complete Blood Count Guide](https://medlineplus.gov/lab-tests/complete-blood-count-cbc/)`, `[NHLBI Blood Tests Guide](https://www.nhlbi.nih.gov/health/blood-tests)`).
-     - **Deep-Link Requirement**: **NEVER link to general homepages** (e.g., `https://who.int/`, `https://medlineplus.gov/`, `https://cdc.gov/`, `https://minzdrav.gov.ru/`). Every outbound link must resolve to the exact, correct, working URL of the specific clinical monograph, official guideline, or laboratory standard. Generic homepage links trigger search quality penalties and fail YMYL verification.
-   - **Linkable Asset Strategy (Natural Inbound Backlink Magnet)**:
-     - To rank in Google's top organic positions and gain generative search citations, each blog post must include original linkable assets that third-party websites, patient forums, and healthcare professionals naturally cite:
-       - Clear, publication-grade biomarker reference tables specifying both conventional (US) and SI (international) units.
-       - Unit conversion formulas (e.g., converting glucose `mmol/L` to `mg/dL` or creatinine `µmol/L` to `mg/dL`).
-       - Actionable diagnostic triage workflows and red-flag emergency criteria.
-       - Actionable doctor-discussion question checklists.
-   - **Prominent Medical Disclaimer**: Clear legal/medical boundaries build trust with Google's Quality Raters and reinforce ethical patient guidance.
-
-4. **Schema.org Structured Data**:
-   - Automatically injected by `SchemaMarkup.astro`:
-     - `Article` (with headline, datePublished, dateModified, author, publisher, speakable, reviewedBy)
-     - `MedicalWebPage` (with patient audience and medical subject tags)
-     - `BreadcrumbList` (hierarchical site navigation)
-     - `FAQPage` (structured question-answer rich results)
-     - `Organization` & `SoftwareApplication` (author authority and app connection)
+1. **Keyword Architecture & Search Intent**:
+   - **Primary Keyword**: Place in `title` (45–58 chars, no manual brand suffix), URL slug, H1 (rendered from `title`), meta `description` (120–145 chars), first 100 words of body, and at least one H2.
+   - **Secondary & Semantic Keywords**: Integrate long-tail patient phrasing, lay vs. clinical synonyms, and regional biomarker abbreviations naturally across H2s, H3s, and body copy.
+2. **Technical & Indexing Compliance (Google Search Console)**:
+   - **Static HTML Priority**: Astro outputs clean static HTML (`output: 'static'`) so critical prose, tables, links, canonicals, and JSON-LD are immediately readable on initial fetch without client-side JS dependency.
+   - **URL & Canonical Hygiene**: Enforce `trailingSlash: 'never'` and self-referencing canonical URLs (`SEO.astro`). Never link to trailing-slash or redirect URLs.
+   - **Image Optimization**: Unique `1200x630` Unsplash URL per article with descriptive localized `imageAlt` for Google Image Search, Open Graph, and Google Discover eligibility.
+   - **Hub-and-Spoke Internal PageRank**: Link foundational explainers (e.g., CBC, abnormal tests) with specialized panels and regional healthcare guides using 2–4 contextual same-locale links.
+3. **Medical YMYL E-E-A-T & Anti-Scaled-Content-Abuse Compliance**:
+   - **YMYL Rigor**: Health content receives Google's strictest Search Quality Rater evaluation. Every claim must be clinically accurate, non-alarmist, objective, and verifiable.
+   - **Anti-Scaled-Content-Abuse**: Never publish thin, repetitive, template-spun posts. Every article and every localized edition must provide genuine clinical utility, specific diagnostic context, and original value.
+   - **Editorial Attribution & Source Grounding**: Maintain `author: "MedGPT Team"` across all posts while grounding clinical authority in accredited institutions (`sources` frontmatter + in-body citations), which `SchemaMarkup.astro` maps to `reviewedBy`, `citation`, and `isBasedOn`.
+   - **Original Linkable Assets**: Include publication-grade dual-unit reference tables, unit conversion formulas, triage workflows, and doctor-question checklists that earn organic third-party citations.
+   - **Clinical Freshness**: Update `updatedDate` whenever clinical guidelines, cutoffs, or regional health policies (e.g., ePA, NFZ, VZP) change.
+4. **2026 Schema.org Structured Data Policy (`SchemaMarkup.astro`)**:
+   - **Active Google Search Rich Results & Core Types**: `Article`, `BreadcrumbList`, `Organization`, `SoftwareApplication`, and `WebSite` (`SearchAction`).
+   - **Semantic & Vertical Context Types**: `MedicalWebPage` (establishes `PatientAudience` and medical domain context — does not produce a visual SERP card) and `SpeakableSpecification` (targets `.prose h1`, `.prose h2`, `.blog-post__short-answer`, `.prose p:first-of-type` for voice/read-aloud features).
+   - **`FAQPage` (2026 Status)**: Google **deprecated `FAQPage` visual rich results on May 7, 2026** and phased out Search Console FAQ reporting. MedGPT intentionally retains clean `FAQPage` JSON-LD strictly for **AEO, LLM Q&A parsing, AI Overviews synthesis, and WebMCP `get_medical_faq`**—never expect Google SERP FAQ accordions from it.
+   - **Prohibited / Retired Types**: Never inject deprecated Google rich-result schemas (`Course Info`, `ClaimReview`, `Estimated Salary`, `Learning Video`, `Special Announcement`, `Vehicle Listing`, `Practice Problem`) or `Product` subclasses (`Drug`, `DietarySupplement`). JSON-LD must strictly match visible page content.
 
 ---
 
-### Part B: AEO Requirements (Answer Engine Optimization)
+### Part B: Bing Webmaster Guidelines, IndexNow & Copilot Grounding
 
-Targeting Perplexity, Google AI Overviews (SGE), SearchGPT, Bing Copilot, and Voice Assistants (Siri, Alexa, Google Assistant):
+Because Microsoft Copilot, Bing AI answers, and external AI retrieval pipelines (including ChatGPT's Bing-grounded web search) rely directly on the Bing index and grounding APIs, Bing optimization is mandatory for both search traffic and AI citations:
 
-1. **The Direct Answer Formula (`shortAnswer`)**:
-   - Every article **must** provide a self-contained, fact-dense direct answer in the frontmatter `shortAnswer` field.
-   - **Length**: 25–45 words (1–2 sentences).
-   - **Structure**: Directly define or answer the core query without preamble. State the normal range, the common cause of elevation/abnormality, and the clinical implication.
-   - *Example*: `"An eGFR of 60 or higher is in the normal range. An eGFR below 60 for three months or more may indicate kidney disease, while a score under 15 indicates kidney failure requiring immediate nephrology care."`
-   - Rendered into `.blog-post__short-answer` with a distinctive accent callout at the top of the post.
-
-2. **Speakable Specification Integration**:
-   - The site embeds Schema.org `SpeakableSpecification` targeting:
-     ```json
-     "cssSelector": [".prose h1", ".prose h2", ".blog-post__short-answer", ".prose p:first-of-type"]
-     ```
-   - Voice assistants extract these exact CSS selectors when a user asks a spoken health question on a phone, smart speaker, or in-car assistant.
-
-3. **Question-Based Headings (Query Matching)**:
-   - Frame H2 and H3 headings as conversational, natural-language questions that real patients ask:
-     - ❌ `## Creatinine Details`
-     - ✅ `## What Does a High Creatinine Level Mean?`
-     - ❌ `## Normal Ranges`
-     - ✅ `## What Are the Normal Reference Ranges for a CBC?`
-
-4. **Structured Lists for Google Featured Snippets**:
-   - Use bullet points for symptoms and risk factors (targets bulleted list snippets).
-   - Use numbered lists for sequential processes (e.g., preparation steps, how to collect a urine sample) to capture ordered list snippets.
-   - Keep list items concise, starting each with a bold keyword (e.g., `- **Fasting:** Drink only water for 8–12 hours before...`).
-
-5. **Standalone FAQ Units**:
-   - The FAQ section must contain 3–5 distinct questions.
-   - Each answer must be concise (2–3 sentences, 40–60 words) and completely understandable without reading the rest of the article.
-   - Directly answers conversational long-tail queries and feeds WebMCP `get_medical_faq`.
+1. **Bing Crawling & On-Page Fundamentals**:
+   - Bing and Copilot share the same core crawling, indexing, and ranking engine: clean semantic HTML, crisp keyword alignment in `title`/H1/intro, valid XML sitemaps (`sitemap-index.xml` / `sitemap-0.xml`), clean canonical consolidation, and descriptive internal links directly govern Copilot grounding eligibility.
+   - Keep `public/robots.txt` explicitly open to `Bingbot`, `OAI-SearchBot`, `ChatGPT-User`, `PerplexityBot`, `ClaudeBot`, `GPTBot`, and `Google-Extended`.
+2. **Mandatory IndexNow Protocol (`npm run indexnow`)**:
+   - After deploying any new blog post, translation batch, or clinical update to production, run `npm run indexnow` (`scripts/submit-indexnow.mjs`), which verifies the hosted IndexNow key and pushes all sitemap URLs directly to `https://api.indexnow.org/IndexNow` and `https://www.bing.com/indexnow` for near-instant discovery.
+3. **Bing Webmaster Tools AI Performance Optimization**:
+   - Optimize articles to maximize Bing Webmaster Tools **AI Performance** metrics (*Total Citations*, *Average Cited Pages*, *Grounding Queries*, *Citation Share*) by pairing conversational H2s with self-contained 40–60 word Answer Capsules, dual-unit Markdown tables, and `.gov`/`.org` primary citations.
 
 ---
 
-### Part C: GEO Requirements (Generative Engine Optimization)
+### Part C: AEO & GEO — LLM Citations, RAG Retrieval & `llms.txt`
 
-Targeting Large Language Models (ChatGPT, Claude, Gemini, Perplexity, DeepSeek, Apple Intelligence, NotebookLM) and RAG (Retrieval-Augmented Generation) systems:
+Targeting Google AI Overviews & AI Mode, ChatGPT Search, Perplexity, Claude, Gemini, Copilot, NotebookLM, and Apple Intelligence:
 
-1. **Entity-Dense Knowledge Graph Alignment (`about` & `mentions`)**:
-   - LLMs rely on named entity recognition (NER) to connect content to their internal knowledge graphs.
-   - In frontmatter, declare explicit entities using the `Type: Name` format:
-     ```yaml
-     about:
-       - "MedicalCondition: Chronic Kidney Disease"
-       - "MedicalTest: Estimated Glomerular Filtration Rate"
-     mentions:
-       - "Substance: Lisinopril"
-       - "MedicalTest: Blood Urea Nitrogen"
-       - "AnatomicalStructure: Kidney"
-     ```
-   - Supported Schema Types: `MedicalCondition`, `MedicalTest`, `Substance`, `MedicalTherapy`, `AnatomicalStructure`, `MedicalSpecialty`. (Do **not** use `Drug` or `DietarySupplement` — Schema.org defines them as subclasses of `Product`, which triggers Google Search Console Product snippet errors on informational articles; use `Substance` or `MedicalTherapy` instead.)
-
-2. **Quantitative Precision & Data Density**:
-   - Generative models prioritize sources with verifiable numbers, statistics, and clinical cutoffs over vague summaries.
-   - Always provide exact numbers:
-     - ❌ *"eGFR can be low or high depending on your kidneys."*
-     - ✅ *"An eGFR between 60–89 mL/min/1.73m² with kidney damage indicates Stage 2 CKD, while an eGFR < 15 indicates Stage 5 kidney failure."*
-   - Always state both US conventional units (`mg/dL`, `g/dL`) and international SI units (`mmol/L`, `µmol/L`) where applicable.
-
-3. **Structured Markdown Tables (Optimized for RAG & Markdown Negotiation)**:
-   - MedGPT implements HTTP Markdown Content Negotiation (`Accept: text/markdown` and AI bot User-Agents like GPTBot, ClaudeBot, PerplexityBot).
-   - When an AI agent fetches a blog post, it receives clean, raw Markdown.
-   - LLMs parse Markdown tables with **95%+ retrieval accuracy** compared to unstructured paragraphs.
-   - Every blog post covering tests, medications, or symptoms must feature at least one comprehensive Markdown table:
-     ```markdown
-     | Biomarker | Standard Reference Range | Elevated Levels May Indicate | Low Levels May Indicate |
-     |:---|:---|:---|:---|
-     | **eGFR** | > 90 mL/min/1.73m² | Normal kidney filtration | CKD, acute kidney injury |
-     | **Creatinine** | 0.7–1.3 mg/dL (men)<br>0.6–1.1 mg/dL (women) | Kidney dysfunction, dehydration | Muscle loss, severe liver disease |
-     | **BUN** | 7–20 mg/dL | High-protein diet, renal failure | Malnutrition, severe liver damage |
-     ```
-
+1. **Direct Answer Formula (`shortAnswer`) & Answer Capsules**:
+   - Frontmatter `shortAnswer`: **25–45 words**, zero preamble, stating exact normal ranges, key causes, and clinical action.
+   - Body Answer Capsules: **40–60 words** immediately below every question-based `##` heading, written as standalone, quotable clinical statements.
+2. **Quantitative Precision & RAG-Optimized Markdown Tables**:
+   - LLMs prioritize verifiable numeric ranges over vague prose. Always give exact reference intervals in both **US conventional** and **SI international** units.
+   - MedGPT supports HTTP Markdown content negotiation (`Accept: text/markdown`) and AI bot crawling; structured Markdown tables achieve 95%+ retrieval accuracy in RAG chunking pipelines.
+3. **Entity Graph Alignment (`about` & `mentions`)**:
+   - Declare explicit `Type: Name` entities in frontmatter (`MedicalCondition`, `MedicalTest`, `Substance`, `MedicalTherapy`, `AnatomicalStructure`, `MedicalSpecialty`) so NER and Knowledge Graph pipelines link the article accurately.
 4. **Citation Fingerprinting & Grounding**:
-   - AI search engines (like Perplexity and SearchGPT) require groundable citations to verify claims before generating an answer.
-   - The frontmatter `sources` array gives the model trusted root URLs (`.gov`, `.edu`, `.org`), preventing hallucinations and directly triggering citations linking back to `bloodtesthelp.com`.
-
-5. **MedGPT Agent Skills & Tool Parity**:
-   - Align terminology and explanations with the site's published Agent Skills:
+   - Providing 2–5 deep-linked `.gov`, `.edu`, `.org`, or national health ministry sources in `sources` and inline prose allows Perplexity, Copilot, ChatGPT, and Gemini to verify claims and cite `https://bloodtesthelp.com`.
+5. **`llms.txt` & `llms-full.txt` Maintenance**:
+   - Treat `public/llms.txt` and `public/llms-full.txt` as a structured discovery map complementing clean HTML, Schema.org, and IndexNow.
+   - Every newly published article **must** be added to `public/llms-full.txt` (under its appropriate cluster), and flagship hub or regional healthcare guides should also be added to `public/llms.txt`.
+6. **MedGPT Agent Skills & WebMCP Parity**:
+   - Align clinical terminology and FAQ phrasing with the site's published Agent Skills and WebMCP tools (`search_health_topics`, `get_medical_faq`):
      - Blood/Lab tests ➔ [`blood-test-analysis`](file:///Users/mohsin/code/projects/webMedGPT/public/.well-known/agent-skills/blood-test-analysis/SKILL.md)
      - Drugs/Dosage/Interactions ➔ [`medication-information`](file:///Users/mohsin/code/projects/webMedGPT/public/.well-known/agent-skills/medication-information/SKILL.md)
      - Imaging/Terminology ➔ [`medical-jargon-simplifier`](file:///Users/mohsin/code/projects/webMedGPT/public/.well-known/agent-skills/medical-jargon-simplifier/SKILL.md)
-   - Ensure the FAQs in the post match responses retrievable by the client-side WebMCP `search_health_topics` and `get_medical_faq` tools.
 
 ---
 
-### Part D: International Localization & Multilingual SEO/AEO/GEO
+### Part D: Multilingual Top-5 Ranking Playbook (All 25 Locales)
 
-Every blog **must** be translated into all 25 supported locales. Translations are **culturally adapted, locally contextualized** adaptations of the English source.
+Every blog **must** be natively localized into all **25 supported locales** to compete for Top-5 organic rankings and localized AI Overviews / LLM citations in each target country.
 
-#### Supported Locales (25 languages)
+#### Supported Locales (25)
 `ar` · `ar-MA` · `bg` · `cs` · `da` · `de` · `el` · `en` · `es` · `fr` · `it` · `ja` · `ko` · `lt` · `lv` · `nb` · `nl` · `no` · `pl` · `pt` · `ro` · `ru` · `sv` · `tr` · `zh`
 
-#### Mandatory Localization Rules
+#### 1. Technical International SEO (Google & Bing Compliance)
+- **Subdirectory Architecture**: English lives at `/blog/<en-slug>`; all 24 localized editions live under `/{locale}/blog/{localized-slug}` (defined in `astro.config.mjs` and `src/utils/slugMap.ts`), pooling domain authority into `bloodtesthelp.com`.
+- **Strict `hreflang` Integrity (`SEO.astro` + `slugMap.ts`)**:
+  - Every page outputs **absolute URLs**, a **self-referencing `hreflang`**, **bidirectional return links** across all 25 locales, and **`x-default`** pointing to the English canonical URL.
+  - **Mandatory Registration**: Add the English slug and all 24 localized URL slugs to `slugMap` in `src/utils/slugMap.ts` (with valid ISO 639-1 / ISO 3166-1 formatting; no trailing slashes). Missing or broken entries invalidate `hreflang` return links across Google and Bing.
+- **Same-Locale Internal Linking (Critical)**: Localized articles **must** link internally to same-locale URLs (`/{locale}/blog/{localized-slug}`)—never to English `/blog/...` links, which leak link equity and confuse regional relevance signals.
 
-1. **Strictly NO Plain / Literal Translation & NO External Translation APIs**:
-   - **Autonomous Native Localization**: Never use external translation APIs (e.g., Google Translate API, DeepL API) or generic machine translation tools. Translate and localize natively using internal clinical intelligence and linguistic fluency.
-   - **Never Plain Translate**: Direct word-for-word translation produces awkward phrasing, garbles clinical terminology, destroys search intent, and creates detectable AI slop that Google and LLM crawlers demote.
-2. **Contextual Local Terms for Higher Google Search & LLM Rankings**:
-   - Use authentic contextual local terms that patients, doctors, and laboratory technicians in that specific country actually use.
-   - High-ranking local search terms ensure top organic visibility on Google, Yandex, Baidu, etc., while providing rich grounding for LLMs (Perplexity, ChatGPT, Claude) answering region-specific medical queries.
-   - Example: A CBC is called *Blutbild* (🇩🇪), *morfologia krwi* (🇵🇱), *общий анализ крови / ОАК* (🇷🇺), *пълна кръвна картина / ПКК* (🇧🇬), *krevní obraz / KO* (🇨🇿), *hemograma completo* (🇪🇸/🇵🇹), *numération formule sanguine / NFS* (🇫🇷), *emocromo completo* (🇮🇹).
-3. **Reference the Local Healthcare Ecosystem & Statutory Systems**:
-   - 🇩🇪 Mention *Krankenkasse*, *ePA (elektronische Patientenakte)*, *Hausarzt*, *Überweisung*.
-   - 🇦🇺 Reference *Medicare*, *My Health Record*, *bulk billing GP*.
-   - 🇵🇱 Reference *NFZ*, *ZUS*, *skierowanie*, *Internetowe Konto Pacjenta (IKP)*.
-   - 🇨🇿 Reference *VZP*, *pojišťovna*, *praktický lékař*, *žádanka*.
-   - 🇷🇺 Reference *ОМС*, *поликлиника*, *участковый терапевт*, *ЕМИАС*, *Госуслуги*.
-   - 🇫🇷 Reference *Sécurité sociale*, *carte vitale*, *médecin traitant*, *Mon espace santé*.
-   - 🇪🇸 Reference *Seguridad Social*, *tarjeta sanitaria*, *médico de cabecera*.
-   - 🇮🇹 Reference *SSN (Servizio Sanitario Nazionale)*, *tessera sanitaria*, *medico di base*, *Fascicolo Sanitario Elettronico (FSE)*.
-   - 🇳🇱 Reference *huisarts*, *zorgverzekering*, *eigen risico*.
-   - 🇸🇪/🇳🇴/🇩🇰 Reference *vårdcentral/legevakt/lægevagt*, *personnummer*-based systems.
-   - 🇹🇷 Reference *SGK*, *aile hekimi*, *e-Nabız*.
-   - 🇯🇵 Reference *国民健康保険*, *かかりつけ医*.
-   - 🇰🇷 Reference *국민건강보험*, *의원/병원*.
-   - 🇷🇴 Reference *CNAS*, *medic de familie*.
-   - 🇱🇹/🇱🇻 Reference *SODRA/VSAA*, *šeimos gydytojas/ģimenes ārsts*.
-   - 🇧🇬 Reference *НЗОК*, *личен лекар*.
-   - 🇬🇷 Reference *ΕΟΠΥΥ*, *οικογενειακός γιατρός*.
-   - 🇵🇹 Reference *SNS (Serviço Nacional de Saúde)*, *médico de família*.
-   - 🇸🇦/🇲🇦 (Arabic) Reference local health authority terminology relevant to the dialect.
-   - 🇨🇳 (Chinese) Reference *医保*, *社区卫生服务中心*.
-4. **Use Local Measurement Units and Lab Report Formats**:
-   - Strictly reflect the local country's clinical reporting conventions: **mmol/L** vs **mg/dL** for glucose/cholesterol; **µmol/L** vs **mg/dL** for creatinine; **g/L** vs **g/dL** for hemoglobin.
-   - Use **comma as decimal separator** where standard (e.g., `1,3 mg/dL` in 🇩🇪 🇫🇷 🇵🇱 🇮🇹 🇪🇸).
-5. **Adapt Examples and Emergency Guidance to Local Context**:
-   - Replace US-centric references (e.g., "call 911", "your PCP") with local equivalents (e.g., *112* in EU, *000* in 🇦🇺, *103* in 🇷🇺, *999* in 🇵🇱/🇬🇧).
-   - Food/diet examples should reflect local cuisine and cultural nutrition, not generic Western foods.
-6. **Localize the MedGPT CTA**:
-   - The Google Play Store link remains the same, but the surrounding copy must be in the target language and highlight native multi-language analysis.
-7. **Medical Disclaimer Translation**:
-   - Translate into proper legal/medical phrasing for each locale — not a robotic machine translation of the English version.
-8. **SEO Keyword Research for Native Search Intent**:
-   - Use authentic local-language search terms in the translated `title`, `description`, and headings. Target what local patients type into search bars (e.g., 🇩🇪 "Blutbild verstehen", 🇵🇱 "wyniki badań krwi", 🇷🇺 "расшифровка анализа крови").
-9. **MANDATORY: Register All Translated Slugs in `src/utils/slugMap.ts`**:
-   - Add English slug and all 24 localized slug mappings to `slugMap` in `src/utils/slugMap.ts` to power bidirectional routing and hreflang discovery.
+#### 2. Regional Top-5 Ranking & Local Authority Strategy
+1. **Strictly NO Plain / Literal Translation & NO External APIs**: Never use Google Translate API, DeepL API, or word-for-word translation. Machine-translated phrasing triggers Google's scaled-content / low-quality signals and loses local search intent.
+2. **Native Search Intent & Local Clinical Keywords**: Target the exact diagnostic phrases patients search in each country—not translated English keywords:
+   - *CBC*: *Blutbild* (🇩🇪), *morfologia krwi* (🇵🇱), *общий анализ крови / ОАК* (🇷🇺), *пълна кръвна картина / ПКК* (🇧🇬), *krevní obraz / KO* (🇨🇿), *hemograma completo* (🇪🇸/🇵🇹), *numération formule sanguine / NFS* (🇫🇷), *emocromo completo* (🇮🇹).
+   - Optimize localized `title` (45–58 chars), `description` (120–145 chars), `imageAlt`, H2 questions, and Answer Capsules for high-intent local queries.
+3. **Local Authoritative Citations (Regional E-E-A-T Boost)**: Pair global authorities (NIH MedlinePlus, WHO) with at least **1–2 official local national health bodies or clinical societies** in `sources` and in-body links where available (e.g., *BMG / RKI / IQWiG* in 🇩🇪, *HAS / Ameli* in 🇫🇷, *ČSKB / NZIP* in 🇨🇿, *NFZ / PZH* in 🇵🇱, *Minzdrav* in 🇷🇺, *NHS / NICE* in 🇬🇧, *Healthdirect / Medicare* in 🇦🇺, *MHLW* in 🇯🇵, *KDCA* in 🇰🇷) to establish Top-5 regional E-E-A-T authority.
+4. **Regional Search Engine Considerations**:
+   - **Google** (Global / EU / MENA / LATAM / APAC): Driven by `hreflang` accuracy, local E-E-A-T citations, same-locale internal links, and Answer-Capsule clarity.
+   - **Bing & Yahoo** (US, UK, EU, Japan): Driven by IndexNow freshness, clean static HTML, exact-match local keywords in title/H1, and structured tables.
+   - **Yandex (`ru`)**: Heavily weights user engagement, mobile speed, and natural Russian medical terminology (*ОАК*, *СОЭ*, *ммоль/л*, *мкмоль/л*, *ОМС*, *ЕМИАС*, *Госуслуги*).
+   - **Naver (`ko`) & Baidu (`zh`)**: Prioritize scannable, structured static HTML answers, Simplified Chinese (`zh`) / native Korean (`ko`) clinical terms, and clear unit formatting.
+5. **Reference the Local Healthcare Ecosystem & Statutory Systems**:
+   - 🇩🇪 *Krankenkasse (GKV/PKV)*, *ePA (elektronische Patientenakte)*, *Hausarzt*, *Überweisung*.
+   - 🇦🇺 *Medicare*, *My Health Record*, *bulk billing GP*.
+   - 🇵🇱 *NFZ*, *ZUS*, *e-skierowanie*, *Internetowe Konto Pacjenta (IKP)*.
+   - 🇨🇿 *VZP*, *pojišťovna*, *praktický lékař*, *žádanka*, *NZIP*.
+   - 🇷🇺 *ОМС*, *поликлиника*, *участковый терапевт*, *ЕМИАС*, *Госуслуги*.
+   - 🇫🇷 *Sécurité sociale*, *carte Vitale*, *médecin traitant*, *Mon espace santé*.
+   - 🇪🇸 *Seguridad Social*, *tarjeta sanitaria*, *médico de cabecera*.
+   - 🇮🇹 *SSN (Servizio Sanitario Nazionale)*, *tessera sanitaria*, *medico di base*, *Fascicolo Sanitario Elettronico (FSE)*.
+   - 🇳🇱 *huisarts*, *zorgverzekering*, *eigen risico*.
+   - 🇸🇪/🇳🇴/🇩🇰 *vårdcentral / fastlege / praktiserende læge*, *personnummer*-based portals (*1177*, *Helsenorge*, *sundhed.dk*).
+   - 🇹🇷 *SGK*, *aile hekimi*, *e-Nabız*.
+   - 🇯🇵 *国民健康保険*, *かかりつけ医*.
+   - 🇰🇷 *국민건강보험*, *의원/병원*.
+   - 🇷🇴 *CNAS*, *medic de familie*.
+   - 🇱🇹/🇱🇻 *SODRA/VSAA*, *šeimos gydytojas / ģimenes ārsts*.
+   - 🇧🇬 *НЗОК*, *личен лекар*.
+   - 🇬🇷 *ΕΟΠΥΥ*, *οικογενειακός γιατρός*.
+   - 🇵🇹 *SNS (Serviço Nacional de Saúde)*, *médico de família*.
+   - 🇸🇦/🇲🇦 (`ar` / `ar-MA`) Local ministry of health portals and regional dialect/clinical terminology.
+   - 🇨🇳 (`zh`) *医保*, *社区卫生服务中心*.
+6. **Local Measurement Units, Number Formats & Cultural Context**:
+   - Match local clinical units (**mmol/L** vs **mg/dL** for glucose/lipids; **µmol/L** vs **mg/dL** for creatinine; **g/L** vs **g/dL** for hemoglobin; **µkat/L** vs **U/L** where used like 🇨🇿) and use **comma decimal separators** where standard (`1,3 mg/dL` in 🇩🇪 🇫🇷 🇵🇱 🇮🇹 🇪🇸 🇨🇿).
+   - Localize emergency numbers (*112* in EU, *000* in 🇦🇺, *103* in 🇷🇺, *999* in 🇬🇧/🇵🇱, *155* in 🇨🇿, *119* in 🇯🇵/🇰🇷, *120* in 🇨🇳) and dietary/lifestyle examples.
+   - Localize the MedGPT Google Play CTA copy (keep the exact Play Store URL + UTM) and translate the Medical Disclaimer into natural local legal-medical phrasing.
 
 ---
 
-### Part E: Content Quality & Anti-AI-Slop Writing Standard
+### Part E: Anti-AI-Slop & Editorial Quality Standard
 
-To ensure maximum organic search dominance in Google and authoritative citation indexing across LLMs (Perplexity, ChatGPT, Claude, Gemini, Copilot), every article must strictly adhere to the following quality rules:
+Every article across all 25 languages must read like a consultation with an empathetic, precise physician—never an automated text generator:
 
-1. **Scientific Factuality & Zero Hallucination**:
-   - Every clinical claim, biomarker threshold, physiological explanation, and diagnostic reference range must be grounded strictly in proven medical literature from certified organizations (NIH, WHO, CDC, FDA, accredited specialty colleges).
-   - **Zero Tolerance for Hallucinations**: Never fabricate statistics, invent physiological pathways, or guess reference intervals. If clinical consensus varies between labs, explicitly state the range variation.
-
-2. **Simplicity & Patient Accessibility (Don't Make It Too Long)**:
-   - **Clarity Over Complexity**: Explain sophisticated clinical mechanisms using intuitive, everyday language that non-medical readers can effortlessly digest.
-   - **Conciseness & High Density**: Avoid fluff, repetitive padding, and bloated word counts. Do not make articles excessively long. Focus with laser precision on the actionable answers, diagnostic benchmarks, and doctor-discussion points patients actually need.
-
-3. **Anti-AI-Slop Standard (Strict Ban on Robotic Clichés)**:
-   - **Prohibited Clichés**: Strictly eliminate formulaic AI patterns:
-     - ❌ *"In today's fast-paced world..."* or *"In the realm of modern medicine..."*
-     - ❌ *"Navigating medical lab results can feel like a daunting journey..."*
-     - ❌ *"It is crucial / vital to remember that..."* (overused AI emphasis)
-     - ❌ *"Furthermore...", "Moreover...", "Delving into..."* (monotonous transitional crutches)
-     - ❌ Formulaic conclusions that merely repeat previous paragraphs without adding insight.
-   - **Authentic Voice**: Write with empathetic, professional, human clinical clarity that reads like a consultation with an experienced physician, not an automated text generator.
-
-4. **Tri-Optimization Terminology Integration (SEO, GEO & AEO Words)**:
-   - **SEO Words**: Seamlessly embed high-volume, high-intent patient search queries (e.g., *"how to read lab results"*, *"what does high ALT mean"*, *"normal reference range"*).
-   - **GEO Words (Generative Engine Optimization)**: Explicitly integrate Schema.org clinical entity terms (`MedicalCondition: ...`, `MedicalTest: ...`, `Substance: ...`) so RAG retrievers, vector databases, and LLM reasoning engines readily index and cite the article.
-   - **AEO Words (Answer Engine Optimization)**: Craft fact-dense direct answers in the first 100 words and `shortAnswer` field using direct definition patterns (*"X is Y"*, *"A normal range is Z"*) to dominate Google Featured Snippets, Voice Assistants, and AI Overviews.
+- **Strictly Prohibited AI Clichés** (and their localized equivalents):
+  - ❌ *"In today's fast-paced world..."* / *"In the realm of modern medicine..."*
+  - ❌ *"Navigating medical lab results can feel like a daunting journey..."*
+  - ❌ *"It is crucial / vital / essential to remember that..."*
+  - ❌ *"Furthermore...", "Moreover...", "Additionally...", "Delving into..."* as repetitive paragraph crutches
+  - ❌ Generic wrap-up conclusions that merely restate earlier paragraphs without clinical value
+- **High-Signal Writing**: Prefer concrete verbs, exact biomarker intervals, clear "normal vs. borderline vs. emergency" distinctions, and short, scannable paragraphs (2–4 sentences max).
 
 ---
 
@@ -527,63 +453,61 @@ All future blog posts (Blog 31, Blog 33 through Blog 50) **must** be selected fr
 Refer to `idea_blog.md` for complete keyword metrics, long-tail variants, target GEOs, and MedGPT feature mappings:
 - **Cluster A (Blog 9–18)**: Blood & Lab Report Deep Dives *(Blogs 9–18 completed; Cluster A 100% complete)*
 - **Cluster B (Blog 19–25)**: X-Ray & Imaging Reports *(Blogs 19–25 completed; Cluster B 100% complete)*
-- **Cluster C (Blog 26–32)**: Multilingual & GEO-Targeted Health Systems (Multilingual Assistant, German ePA/Blutbild, Polish NFZ/Morfologia, Russian ОМС, Czech VZP, Australian My Health Record completed; Bulgarian НЗОК pending)
-- **Cluster D (Blog 33–37)**: Medication, Drug Interactions & Safety (Drug-Food Interactions, Polypharmacy, Antibiotic Resistance, Supplements & Drugs, Missed Dose Guide)
-- **Cluster E (Blog 38–44)**: Chronic Conditions & Preventive Health (CKD Stages, Fatty Liver/NAFLD, Allergy IgE Panels, Stool/Gut Tests, PSA/Prostate, STI Panels, Pregnancy Labs)
-- **Cluster F (Blog 45–50)**: Digital Health, AI & Patient Empowerment (AI vs Google, Blood Test Prep/Fasting, Reference Ranges by Age, Health Insurance Coverage, Mental Health & Blood Markers, Beginner's Guide)
+- **Cluster C (Blog 26–32)**: Multilingual & GEO-Targeted Health Systems *(Blogs 26–30 & 32 completed; Blog 31 Bulgarian НЗОК pending)*
+- **Cluster D (Blog 33–37)**: Medication, Drug Interactions & Safety *(Drug-Food Interactions, Polypharmacy, Antibiotic Resistance, Supplements & Drugs, Missed Dose Guide)*
+- **Cluster E (Blog 38–44)**: Chronic Conditions & Preventive Health *(CKD Stages, Fatty Liver/NAFLD, Allergy IgE Panels, Stool/Gut Tests, PSA/Prostate, STI Panels, Pregnancy Labs)*
+- **Cluster F (Blog 45–50)**: Digital Health, AI & Patient Empowerment *(AI vs Google, Blood Test Prep/Fasting, Reference Ranges by Age, Health Insurance Coverage, Mental Health & Blood Markers, Beginner's Guide)*
 
 ### Top Priority Queue from `idea_blog.md`
-If producing high-conversion / high-volume posts out of sequential order, prioritize from the Top 10 list:
-1. **Blog 17**: Abnormal Blood Test — When to Worry (10K–20K/mo, universal anxiety query)
+Prioritize remaining unpublished high-volume / high-conversion topics from the queue below:
+1. ~~**Blog 17**: Abnormal Blood Test — When to Worry~~ *(Completed)*
 2. **Blog 46**: How to Prepare for a Blood Test: Fasting, Hydration, and Timing Tips (10K–20K/mo, evergreen)
-3. **Blog 25**: What Does "Unremarkable" Mean on a Radiology Report? (8K–15K/mo, high fear query)
+3. ~~**Blog 25**: What Does "Unremarkable" Mean on a Radiology Report?~~ *(Completed)*
 4. **Blog 49**: Mental Health and Lab Tests: Blood Markers That Affect Anxiety and Mood (8K–15K/mo)
-5. **Blog 29**: Russian Blood Test Guide: Расшифровка Анализа Крови (10K–20K/mo)
+5. ~~**Blog 29**: Russian Blood Test Guide: Расшифровка Анализа Крови~~ *(Completed)*
 6. **Blog 43**: STI Testing: How to Read Your Sexual Health Lab Results (8K–15K/mo)
 7. **Blog 44**: Pregnancy Blood Tests Explained: hCG, Blood Type, Glucose Tolerance (8K–12K/mo)
-8. **Blog 19**: How to Read a Chest X-Ray Report: A Patient's Plain-English Guide (6K–10K/mo)
+8. ~~**Blog 19**: How to Read a Chest X-Ray Report: A Patient's Plain-English Guide~~ *(Completed)*
 9. **Blog 33**: Common Drug-Food Interactions You Need to Know: Beyond Grapefruit (8K–12K/mo)
+10. **Blog 31**: Bulgarian Healthcare Lab Guide: ПКК, Биохимия, and НЗОК *(Completes Cluster C)*
 
 ---
 
-## 5. Agent Checklist for Creating the Next Blog Post
+## 5. Agent Checklist for Creating & Publishing the Next Blog Post
 
-Before and during the generation of a new blog post, the agent **must** follow and verify this checklist:
+Before, during, and after generating a new blog post, verify every item below:
 
 - [ ] **1. Topic Selection & Uniqueness**:
-  - Consult `idea_blog.md` to select the next topic (e.g., Blog 15 or top priority).
-  - Verify that the topic does NOT duplicate any entry in Section 3 (Master Topic Index) above.
-- [ ] **2. Frontmatter Complete & Tri-Optimized**:
-  - **SEO Fields**: `title` (under 60 chars with primary keyword), `description` (120–140 chars), `pubDate`, `author: "MedGPT Team"` (strictly "MedGPT Team" across all blogs), `image` (unique Unsplash), `imageAlt` (descriptive), `tags` (3–5), `readingTime`, `featured`.
-  - **AEO Fields**: `shortAnswer` (25–45 word standalone direct answer targeting voice/AI overviews).
-  - **GEO Fields**: `about` (array of Schema.org `Type: Name` entities), `mentions` (secondary entities), and `sources` (array of 2–5 authoritative medical citations with exact, working, deep-linked URLs; STRICTLY NO general homepages).
-- [ ] **3. Quality, Accuracy & Anti-AI-Slop Verification**:
-  - **Scientific Facts & Zero Hallucination**: Every clinical claim, biomarker threshold, and diagnostic guideline is verified against primary medical literature; zero hallucinated data or fabricated cutoffs.
-  - **Simple & Accessible (Not Overly Long)**: Complex medical concepts are explained simply for patients; unnecessary filler and bloated paragraphs are pruned for high informational density.
-  - **Anti-AI-Slop Audit**: Content is free of robotic clichés, formulaic openers ("In today's fast-paced world..."), repetitive transitional crutches, and monotonous sentence rhythm.
-  - **SEO, GEO & AEO Words**: Strategically embeds primary/secondary keywords (SEO), Schema medical entities (GEO), and direct definition answers (AEO) to dominate Google and LLM search rankings.
-- [ ] **4. Body Structure & Multi-Engine Readability**:
-  - Opening paragraph contains primary keyword in the first 100 words.
-  - Headings (`##`, `###`) framed as conversational natural-language queries.
-  - At least one structured Markdown table with standard clinical units (`mg/dL`, `mmol/L`) serving as a linkable asset.
-  - **Internal Backlinks (2–4 In-Body Links)**: Contextual links to related MedGPT articles using descriptive, entity-rich anchor text.
-  - **External Authoritative Sources (E-E-A-T, 2–4 In-Body Links)**: Direct citations to recognized medical authorities. MUST be exact, working, deep-linked URLs; strictly NO generic homepage links.
-  - Bulleted or numbered lists for symptoms/steps (Featured Snippet targets).
-  - Emergency Red Flags blockquote (`> **Emergency Red Flags:** ...`).
-  - Actionable Questions for the Doctor (4–6 items).
-  - MedGPT app integration section with trackable Play Store link.
-  - Standalone FAQ section (3–5 Q&As matching `FAQPage` & WebMCP format).
-  - Mandatory Medical Disclaimer at the end.
+  - Select the next unpublished topic from `idea_blog.md` / Section 4 (e.g., Blog 31, Blog 33, or Top Priority Queue).
+  - Verify it does NOT duplicate any entry in Section 3 (Master Topic Index).
+- [ ] **2. Frontmatter Complete & Codebase-Aligned**:
+  - **SEO Fields**: `title` (45–58 chars with primary keyword; do NOT append `| MedGPT`), `description` (120–145 chars), `pubDate` (and `updatedDate` if revised), `author: "MedGPT Team"`, unique `image` (1200×630 Unsplash URL unused elsewhere), `imageAlt` (descriptive & localized), `tags` (3–5), `readingTime`, `featured`.
+  - **AEO Fields**: `shortAnswer` (25–45 word standalone factual answer).
+  - **GEO Fields**: `about` & `mentions` using ONLY safe Schema.org types (`MedicalCondition`, `MedicalTest`, `Substance`, `MedicalTherapy`, `AnatomicalStructure`, `MedicalSpecialty`, `MedicalEntity` — never `Drug`, `DietarySupplement`, `Product`, or `HealthTopic`), plus `sources` (2–5 deep-linked `.gov`/`.edu`/`.org`/national health ministry URLs; zero generic homepages).
+- [ ] **3. Quality, Clinical Accuracy & Anti-AI-Slop Audit**:
+  - Zero hallucinations or unverified cutoffs; state lab variations clearly.
+  - Answer-first conciseness; free of prohibited AI clichés and robotic transitions.
+- [ ] **4. Body Structure & Tri-Optimization Readability**:
+  - Opening paragraph includes primary keyword in the first 100 words.
+  - Question-based `##` / `###` headings, each `##` opening with a 40–60 word Answer Capsule.
+  - At least one structured Markdown table specifying both US conventional and SI international units.
+  - **2–4 Same-Locale Internal Links**: Descriptive anchor text, **no trailing slash**, and pointing to the same locale's localized slug (`/{locale}/blog/{localized-slug}` in non-English posts).
+  - **2–4 In-Body External Citations**: Exact working deep-linked monographs/guidelines; zero generic homepages.
+  - Featured Snippet lists, localized Emergency Red Flags blockquote, 4–6 Doctor Questions, and MedGPT Play Store CTA with `utm_medium=<topic-slug>`.
+  - Standalone FAQ section (3–5 Q&As) using a recognized localized `FAQ_HEADING_KEYWORDS` H2 and `###` questions with clean 40–60 word paragraphs (no blockquotes/`---` inside FAQ) for `src/utils/faqExtractor.ts`.
+  - Mandatory localized Medical Disclaimer at the end.
 - [ ] **5. File Location & Naming**:
-  - Saved as `src/content/blog/en/<slug>.mdx`.
-  - Slug matches the primary keyword in kebab-case.
-- [ ] **6. Localization & SlugMap Registration (If translating)**:
-  - **Strictly Autonomous & Native**: Translate and adapt natively without external APIs (Google Translate, DeepL).
-  - **NO Plain Translation**: Never do literal word-for-word translation.
-  - **Contextual Local Terms**: Incorporate authentic regional healthcare terminology (statutory insurance, local lab report formats, and native clinical units) to maximize regional Google and LLM rankings.
-  - Strictly adhere to the 9 Mandatory Localization Rules in Part D.
-  - Register the base English slug and all localized slugs in `src/utils/slugMap.ts`.
-- [ ] **7. Build Verification**:
-  - Run `npm run build` to ensure 0 build errors, valid frontmatter parsing, and proper route generation across all locales.
-- [ ] **8. Update Topic Index**:
-  - Add the new blog entry (number, title, slug, tags, image, topics covered) to Section 3 (Master Topic Index) in this file (`blog_rule.md`).
+  - Saved as `src/content/blog/en/<en-slug>.mdx` (and `src/content/blog/<locale>/<en-slug>.mdx` for all 24 localized editions).
+- [ ] **6. Native 25-Locale Localization & `slugMap.ts` Registration**:
+  - Natively adapt into all 25 locales without external translation APIs or literal translation.
+  - Include authentic local lab terminology, statutory healthcare systems, local units/comma decimals, local emergency numbers, and 1–2 local national health authority citations where available.
+  - Register the English slug and all 24 localized slugs in `src/utils/slugMap.ts` (no trailing slashes) to guarantee bidirectional `hreflang` integrity.
+- [ ] **7. Discovery & LLM Index Update**:
+  - Add the new guide to `public/llms-full.txt` (and `public/llms.txt` for flagship hub or regional healthcare guides).
+- [ ] **8. Build Verification**:
+  - Run `npm run build` and confirm 0 errors, valid frontmatter schema parsing, clean static HTML output, and complete `hreflang`/sitemap generation across all 25 locales.
+- [ ] **9. Post-Deploy Indexing (Google Search Console & Bing IndexNow)**:
+  - After production deployment, run `npm run indexnow` (`scripts/submit-indexnow.mjs`) to notify Bing & IndexNow for rapid Bing/Copilot indexing.
+  - Verify sitemap ingestion and inspect key new/localized URLs in Google Search Console and Bing Webmaster Tools.
+- [ ] **10. Update Master Topic Index**:
+  - Add the new blog entry (number, title, slug, tags, image, topics covered) to Section 3 and mark it completed in Section 4 of `blog_rule.md`.
