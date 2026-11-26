@@ -40,6 +40,7 @@ All educational articles are grounded in peer-reviewed clinical guidelines, nati
 
 ### Medication & Drug Safety
 - **[Understanding Medicine Side Effects & Drug Interactions](https://bloodtesthelp.com/blog/understanding-medicine-side-effects)**: Distinguishing mild vs. severe adverse drug reactions, food/supplement interactions, and emergency warning signs.
+- **[Drug-Food Interactions Beyond Grapefruit: Safety Guide](https://bloodtesthelp.com/blog/common-drug-food-interactions-guide)**: Mechanisms (chelation, CYP3A4/OATP inhibition, antagonism), 8 everyday food/drink triggers (dairy, vitamin K greens, coffee, potassium, tyramine, black licorice, fiber/soy, alcohol), lab monitoring impacts (INR, TSH, K+, ALT/AST, glucose, creatinine), and timing rules.
 
 ### Radiology & Imaging
 - **[Chest X-Ray Reports](https://bloodtesthelp.com/blog/how-to-read-chest-x-ray-report)**: Infiltrates, cardiomegaly, and costophrenic angles.

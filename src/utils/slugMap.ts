@@ -702,6 +702,33 @@ export const slugMap: Record<string, Record<string, string>> = {
     'ja': 'best-blood-test-tracking-apps',
     'ko': 'best-blood-test-tracking-apps',
     'zh': 'best-blood-test-tracking-apps'
+  },
+  'common-drug-food-interactions-guide': {
+    'en': 'common-drug-food-interactions-guide',
+    'fr': 'common-drug-food-interactions-guide',
+    'es': 'common-drug-food-interactions-guide',
+    'de': 'common-drug-food-interactions-guide',
+    'nl': 'common-drug-food-interactions-guide',
+    'pt': 'common-drug-food-interactions-guide',
+    'ro': 'common-drug-food-interactions-guide',
+    'it': 'common-drug-food-interactions-guide',
+    'sv': 'common-drug-food-interactions-guide',
+    'da': 'common-drug-food-interactions-guide',
+    'no': 'common-drug-food-interactions-guide',
+    'nb': 'common-drug-food-interactions-guide',
+    'pl': 'common-drug-food-interactions-guide',
+    'cs': 'common-drug-food-interactions-guide',
+    'lt': 'common-drug-food-interactions-guide',
+    'lv': 'common-drug-food-interactions-guide',
+    'tr': 'common-drug-food-interactions-guide',
+    'bg': 'common-drug-food-interactions-guide',
+    'ru': 'common-drug-food-interactions-guide',
+    'el': 'common-drug-food-interactions-guide',
+    'ar': 'common-drug-food-interactions-guide',
+    'ar-MA': 'common-drug-food-interactions-guide',
+    'ja': 'common-drug-food-interactions-guide',
+    'ko': 'common-drug-food-interactions-guide',
+    'zh': 'common-drug-food-interactions-guide'
   }
 };
 

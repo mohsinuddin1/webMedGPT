@@ -1,4 +1,4 @@
-# MedGPT Blog Ideas — Blog 9 to Blog 50
+# MedGPT Blog Ideas — Blog 9 to Blog 51
 
 > **Research Date**: July 2025  
 > **Target GEOs**: 🇺🇸 United States · 🇩🇪 Germany · 🇪🇺 All European (incl. France, Italy, Spain, Netherlands) · 🇵🇱🇨🇿🇷🇺🇧🇬 Slavic Countries (Poland, Czech Republic, Russia, Bulgaria) · 🇦🇺 Australia  
@@ -288,18 +288,9 @@
 
 ---
 
-## 💊 CLUSTER D — Medication, Drug Interactions & Safety (Blog 33–37)
+## 💊 CLUSTER D — Medication, Drug Interactions & Safety (Blog 34–37, Blog 51)
 
-### Blog 33 — Common Drug-Food Interactions You Need to Know: Beyond Grapefruit
-- **Primary Keyword**: `drug food interactions list`
-- **Long-tail Variants**: "foods to avoid with blood pressure medicine", "can I eat dairy with antibiotics", "alcohol and medication interactions", "what foods affect blood thinners"
-- **Target GEO**: 🇺🇸 🇦🇺 🇩🇪 🇵🇱 — **ALL GEOs**
-- **Competition**: Low-Medium — existing Blog 4 covers side effects; this deep-dives into FOOD interactions specifically
-- **Volume**: ~8K–12K/mo global
-- **MedGPT Angle**: Type any food + medication into MedGPT → instant interaction check
-- **Tags**: Drug Interactions, Nutrition, Medication Safety, Health Guide
-
----
+> **Note:** Blog 33 was assigned to **8 Best Blood Test Tracking Apps in 2026, Compared** (`best-blood-test-tracking-apps`, Cluster F). *Common Drug-Food Interactions You Need to Know: Beyond Grapefruit* was moved to **Blog 51**.
 
 ### Blog 34 — How to Safely Manage Multiple Medications: A Guide to Polypharmacy
 - **Primary Keyword**: `taking multiple medications safely`
@@ -424,7 +415,18 @@
 
 ---
 
-## 📱 CLUSTER F — Digital Health, AI & Patient Empowerment (Blog 45–50)
+## 📱 CLUSTER F — Digital Health, AI & Patient Empowerment (Blog 33, Blog 45–50)
+
+### Blog 33 — 8 Best Blood Test Tracking Apps in 2026, Compared *(Completed)*
+- **Primary Keyword**: `best blood test tracking apps`
+- **Long-tail Variants**: "blood test tracker app", "biomarker tracking app", "upload blood test PDF AI", "best app to track lab results over time"
+- **Target GEO**: 🇺🇸 🇦🇺 🇩🇪 🇬🇧 🇪🇺 — **ALL GEOs**
+- **Competition**: Low-Medium — high commercial/product intent comparison query
+- **Volume**: ~5K–9K/mo global
+- **MedGPT Angle**: Lab-agnostic PDF/photo biomarker extraction + multi-year trend charts + interactive AI chat
+- **Tags**: Blood Tests, Lab Results, Biomarker Tracking, Health Apps
+
+---
 
 ### Blog 45 — AI vs. Google: Why an AI Medical Report Analyzer Gives Better Answers Than Searching Symptoms
 - **Primary Keyword**: `AI medical report analyzer vs Google`
@@ -492,6 +494,17 @@
 
 ---
 
+### Blog 51 — Common Drug-Food Interactions You Need to Know: Beyond Grapefruit
+- **Primary Keyword**: `drug food interactions` / `foods to avoid with medications`
+- **Long-tail Variants**: "grapefruit drug interactions list", "foods to avoid when taking antibiotics", "vitamin K foods and warfarin", "coffee and levothyroxine interaction", "dairy and antibiotics", "alcohol and medication interactions", "potassium foods and blood pressure medicine"
+- **Target GEO**: 🇺🇸 🇦🇺 🇩🇪 🇵🇱 🇫🇷 🇪🇸 🇮🇹 🇯🇵 🇰🇷 — **ALL GEOs**
+- **Competition**: Low-Medium — existing Blog 4 covers general side effects; Blog 51 deep-dives into **drug-food, beverage, and mineral interactions** with timing rules and affected lab markers
+- **Volume**: ~8K–12K/mo global (high evergreen & seasonal Google Trends / Ahrefs volume)
+- **MedGPT Angle**: Upload prescription or ask MedGPT about any food, drink, or supplement + medication → instant interaction & timing guidance
+- **Tags**: Drug Interactions, Food Interactions, Medication Safety, Nutrition, Health Guide
+
+---
+
 ## 📊 Summary: GEO Coverage Matrix
 
 | Blog # | 🇺🇸 US | 🇩🇪 DE | 🇪🇺 EU | 🇵🇱🇨🇿🇷🇺🇧🇬 Slavic | 🇦🇺 AU | Cluster |
@@ -520,7 +533,7 @@
 | 30 | — | — | ✅ | ✅ | — | Multilingual |
 | 31 | — | ✅ | ✅ | ✅ | — | Multilingual |
 | 32 | — | — | — | — | ✅ | Multilingual |
-| 33 | ✅ | ✅ | ✅ | ✅ | ✅ | Medication |
+| 33 | ✅ | ✅ | ✅ | ✅ | ✅ | Digital Health |
 | 34 | ✅ | ✅ | ✅ | ✅ | ✅ | Medication |
 | 35 | ✅ | ✅ | ✅ | — | ✅ | Medication |
 | 36 | ✅ | ✅ | — | ✅ | ✅ | Medication |
@@ -538,6 +551,7 @@
 | 48 | ✅ | ✅ | — | ✅ | ✅ | Digital Health |
 | 49 | ✅ | ✅ | ✅ | ✅ | ✅ | Digital Health |
 | 50 | ✅ | ✅ | ✅ | ✅ | ✅ | Digital Health |
+| 51 | ✅ | ✅ | ✅ | ✅ | ✅ | Medication |
 
 ---
 
@@ -554,7 +568,7 @@
 | 7 | 43 | STI Testing Results Explained | 8K–15K | Low |
 | 8 | 44 | Pregnancy Blood Tests Explained | 8K–12K | Low |
 | 9 | 19 | How to Read a Chest X-Ray Report | 6K–10K | Low |
-| 10 | 33 | Drug-Food Interactions Beyond Grapefruit | 8K–12K | Low-Med |
+| 10 | 51 | Drug-Food Interactions Beyond Grapefruit | 8K–12K | Low-Med |
 
 ---
 

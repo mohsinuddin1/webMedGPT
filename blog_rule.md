@@ -445,24 +445,30 @@ Every article across all 25 languages must read like a consultation with an empa
 - **Image**: `https://images.unsplash.com/photo-1639772823849-6efbd173043c?q=80&w=1200&auto=format&fit=crop`
 - **Topics Covered**: 8-app comparison (MedGPT, InsideTracker, Function Health, SiPhox Health, Carrot Care, Soka, Biotracker, Apple Health), 7 transparent evaluation criteria, lab-agnostic PDF/photo/any-document upload, automatic biomarker extraction, multi-year longitudinal trend tracking, interactive AI chat, dual US/SI unit reference table (`Hb`, fasting glucose, `HbA1c`, `LDL-C`, `ApoB`, `hs-CRP`, ferritin, creatinine/`eGFR`, `TSH`), decision guide, emergency panic thresholds, doctor questions, MedGPT privacy/cross-platform overview.
 
+### Blog 51 — Common Drug-Food Interactions You Need to Know: Beyond Grapefruit
+- **Slug**: `common-drug-food-interactions-guide`
+- **Tags**: Drug Interactions, Medication Safety, Nutrition, Health Guide
+- **Image**: `https://images.unsplash.com/photo-1587854692152-cbe660dbde88?q=80&w=1200&auto=format&fit=crop`
+- **Topics Covered**: 3 biological mechanisms (gut chelation, CYP3A4 & OATP transporter inhibition/induction, pharmacodynamic antagonism & additive toxicity), grapefruit/Seville orange/pomelo furanocoumarins (statins, calcium channel blockers, immunosuppressants, fexofenadine), 8 everyday triggers beyond grapefruit (dairy/calcium/iron with tetracyclines/fluoroquinolones/levothyroxine, vitamin K consistency rule with warfarin/coumarins, coffee/tea with levothyroxine, potassium-rich foods & KCl salt substitutes with ACEi/ARBs/spironolactone, tyramine with MAOIs/linezolid, black licorice glycyrrhizin, high-fiber/soy meals, alcohol with acetaminophen/insulin/metronidazole/metformin), dual-unit US/SI lab monitoring table (PT/INR, Serum Potassium, TSH, ALT/AST, Fasting Glucose, Creatinine/eGFR), 5-step safe meal-medication timing rules, emergency red flags, doctor/pharmacist questions, MedGPT interaction & lab tracking.
+
 ---
 
 ## 4. Upcoming Topic Roadmap (`idea_blog.md`)
 
-All future blog posts (Blog 31, Blog 33 through Blog 50) **must** be selected from the comprehensive research roadmap documented in `idea_blog.md`.
+All future blog posts (Blog 31, Blog 34 through Blog 50) **must** be selected from the comprehensive research roadmap documented in `idea_blog.md`.
 
 ### Next Topics in Queue
 - **Blog 31** — Bulgarian Healthcare Lab Guide: ПКК, Биохимия, and НЗОК (`bulgarian-healthcare-pkk-guide`)
-- **Blog 33** — Common Drug-Food Interactions You Need to Know: Beyond Grapefruit (`common-drug-food-interactions-guide`)
+- **Blog 46** — How to Prepare for a Blood Test: Fasting, Hydration, and Timing Tips (`how-to-prepare-for-a-blood-test`)
 
 ### Topic Clusters Overview
 Refer to `idea_blog.md` for complete keyword metrics, long-tail variants, target GEOs, and MedGPT feature mappings:
 - **Cluster A (Blog 9–18)**: Blood & Lab Report Deep Dives *(Blogs 9–18 completed; Cluster A 100% complete)*
 - **Cluster B (Blog 19–25)**: X-Ray & Imaging Reports *(Blogs 19–25 completed; Cluster B 100% complete)*
 - **Cluster C (Blog 26–32)**: Multilingual & GEO-Targeted Health Systems *(Blogs 26–30 & 32 completed; Blog 31 Bulgarian НЗОК pending)*
-- **Cluster D (Blog 33–37)**: Medication, Drug Interactions & Safety *(Drug-Food Interactions, Polypharmacy, Antibiotic Resistance, Supplements & Drugs, Missed Dose Guide)*
+- **Cluster D (Blog 34–37, Blog 51)**: Medication, Drug Interactions & Safety *(Polypharmacy, Antibiotic Resistance, Supplements & Drugs, Missed Dose Guide; Blog 51 Common Drug-Food Interactions completed; Blog 33 reassigned to Best Blood Test Tracking Apps)*
 - **Cluster E (Blog 38–44)**: Chronic Conditions & Preventive Health *(CKD Stages, Fatty Liver/NAFLD, Allergy IgE Panels, Stool/Gut Tests, PSA/Prostate, STI Panels, Pregnancy Labs)*
-- **Cluster F (Blog 45–50)**: Digital Health, AI & Patient Empowerment *(AI vs Google, Blood Test Prep/Fasting, Reference Ranges by Age, Health Insurance Coverage, Mental Health & Blood Markers, Beginner's Guide)*
+- **Cluster F (Blog 33, Blog 45–50)**: Digital Health, AI & Patient Empowerment *(Best Blood Test Tracking Apps [Blog 33 completed], AI vs Google, Blood Test Prep/Fasting, Reference Ranges by Age, Health Insurance Coverage, Mental Health & Blood Markers, Beginner's Guide)*
 
 ### Top Priority Queue from `idea_blog.md`
 Prioritize remaining unpublished high-volume / high-conversion topics from the queue below:
@@ -474,7 +480,7 @@ Prioritize remaining unpublished high-volume / high-conversion topics from the q
 6. **Blog 43**: STI Testing: How to Read Your Sexual Health Lab Results (8K–15K/mo)
 7. **Blog 44**: Pregnancy Blood Tests Explained: hCG, Blood Type, Glucose Tolerance (8K–12K/mo)
 8. ~~**Blog 19**: How to Read a Chest X-Ray Report: A Patient's Plain-English Guide~~ *(Completed)*
-9. **Blog 33**: Common Drug-Food Interactions You Need to Know: Beyond Grapefruit (8K–12K/mo)
+9. ~~**Blog 51**: Common Drug-Food Interactions You Need to Know: Beyond Grapefruit (8K–12K/mo)~~ *(Completed)*
 10. **Blog 31**: Bulgarian Healthcare Lab Guide: ПКК, Биохимия, and НЗОК *(Completes Cluster C)*
 
 ---
