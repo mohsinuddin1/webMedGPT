@@ -26,6 +26,7 @@ const translations: Record<string, { title: string; subtitle: string; button: st
 
 const t = translations[lang] || translations.en;
 const playStoreUrl = `https://play.google.com/store/apps/details?id=com.medgptai.app&referrer=utm_source%3Dwebsite%26utm_medium%3Dsticky_mobile_bar`;
+const appStoreUrl = 'https://apps.apple.com/us/app/health-assistant-ai-wellness/id6837951020';
 ---
 
 <div class="mobile-sticky-bar" id="mobile-sticky-bar" aria-label="MedGPT App Banner">
@@ -35,7 +36,7 @@ const playStoreUrl = `https://play.google.com/store/apps/details?id=com.medgptai
     <span class="mobile-sticky-bar__title">{t.title}</span>
     <span class="mobile-sticky-bar__sub">{t.subtitle}</span>
   </div>
-  <a href={playStoreUrl} target="_blank" rel="noopener noreferrer" class="mobile-sticky-bar__btn">
+  <a href={playStoreUrl} target="_blank" rel="noopener noreferrer" class="mobile-sticky-bar__btn" id="mobile-sticky-download-btn">
     {t.button}
   </a>
 </div>
@@ -127,16 +128,24 @@ const playStoreUrl = `https://play.google.com/store/apps/details?id=com.medgptai
   }
 </style>
 
-<script is:inline>
-  const closeBtn = document.getElementById('mobile-sticky-close');
-  const bar = document.getElementById('mobile-sticky-bar');
-  if (closeBtn && bar) {
-    closeBtn.addEventListener('click', () => {
-      bar.style.display = 'none';
-      sessionStorage.setItem('medgpt_bar_closed', '1');
-    });
-    if (sessionStorage.getItem('medgpt_bar_closed') === '1') {
-      bar.style.display = 'none';
+<script is:inline define:vars={{ appStoreUrl }}>
+  (function () {
+    var ua = navigator.userAgent || '';
+    if (/iPad|iPhone|iPod|Macintosh|Mac OS/i.test(ua)) {
+      var dlBtn = document.getElementById('mobile-sticky-download-btn');
+      if (dlBtn) dlBtn.setAttribute('href', appStoreUrl);
     }
-  }
+
+    var closeBtn = document.getElementById('mobile-sticky-close');
+    var bar = document.getElementById('mobile-sticky-bar');
+    if (closeBtn && bar) {
+      closeBtn.addEventListener('click', function () {
+        bar.style.display = 'none';
+        sessionStorage.setItem('medgpt_bar_closed', '1');
+      });
+      if (sessionStorage.getItem('medgpt_bar_closed') === '1') {
+        bar.style.display = 'none';
+      }
+    }
+  })();
 </script>

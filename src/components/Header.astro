@@ -16,6 +16,7 @@ const navLinks = [
   { href: '/terms', label: 'Terms' },
 ];
 const playStoreUrl = 'https://play.google.com/store/apps/details?id=com.medgptai.app&referrer=utm_source%3Dwebsite%26utm_medium%3Dheader';
+const appStoreUrl = 'https://apps.apple.com/us/app/health-assistant-ai-wellness/id6837951020';
 ---
 
 <header class="header" id="site-header">
@@ -43,6 +44,16 @@ const playStoreUrl = 'https://play.google.com/store/apps/details?id=com.medgptai
     </div>
   </nav>
 </header>
+
+<script is:inline define:vars={{ appStoreUrl }}>
+  (function () {
+    var ua = navigator.userAgent || '';
+    if (/iPad|iPhone|iPod|Macintosh|Mac OS/i.test(ua)) {
+      var btn = document.getElementById('header-download-btn');
+      if (btn) btn.setAttribute('href', appStoreUrl);
+    }
+  })();
+</script>
 
 <style>
   .header {

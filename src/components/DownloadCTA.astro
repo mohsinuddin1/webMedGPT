@@ -12,32 +12,65 @@ const {
 } = Astro.props;
 
 const playStoreUrl = `https://play.google.com/store/apps/details?id=com.medgptai.app&referrer=utm_source%3Dwebsite%26utm_medium%3D${utmMedium}`;
+const appStoreUrl = 'https://apps.apple.com/us/app/health-assistant-ai-wellness/id6837951020';
 ---
 
-<div class="download-cta-wrapper">
-  <a
-    href={playStoreUrl}
-    target="_blank"
-    rel="noopener noreferrer"
-    class:list={['download-cta', `download-cta--${variant}`, size === 'large' && 'download-cta--large']}
-    id={`download-cta-${utmMedium}`}
-    aria-label="Download MedGPT on Google Play"
-  >
-    <svg class="download-cta__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zM17.458 8.7L20.29 12l-2.832 3.3L14.799 12l2.66-3.3zM5.864 3.357l10.937 6.334-2.302 2.302-8.635-8.636z" fill="currentColor"/>
-    </svg>
-    <div class="download-cta__text">
-      <span class="download-cta__small">GET IT ON</span>
-      <span class="download-cta__big">Google Play</span>
+<div class="download-cta-group">
+  <div class="download-cta-wrapper">
+    <a
+      href={playStoreUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class:list={['download-cta', `download-cta--${variant}`, size === 'large' && 'download-cta--large']}
+      id={`download-cta-${utmMedium}`}
+      aria-label="Download MedGPT on Google Play"
+    >
+      <svg class="download-cta__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zM17.458 8.7L20.29 12l-2.832 3.3L14.799 12l2.66-3.3zM5.864 3.357l10.937 6.334-2.302 2.302-8.635-8.636z" fill="currentColor"/>
+      </svg>
+      <div class="download-cta__text">
+        <span class="download-cta__small">GET IT ON</span>
+        <span class="download-cta__big">Google Play</span>
+      </div>
+    </a>
+    <div class="download-cta-qr-popover">
+      <img src="/images/medgpt-playstore-qr.svg" alt="Scan to download MedGPT on Google Play" class="download-cta-qr-image" />
+      <span class="download-cta-qr-text">Scan to Download</span>
     </div>
-  </a>
-  <div class="download-cta-qr-popover">
-    <img src="/images/medgpt-playstore-qr.svg" alt="Scan to download MedGPT" class="download-cta-qr-image" />
-    <span class="download-cta-qr-text">Scan to Download</span>
+  </div>
+
+  <div class="download-cta-wrapper">
+    <a
+      href={appStoreUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class:list={['download-cta', `download-cta--${variant}`, size === 'large' && 'download-cta--large']}
+      id={`download-cta-ios-${utmMedium}`}
+      aria-label="Download MedGPT on the App Store"
+    >
+      <svg class="download-cta__icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.96 6.33c.67-.81 1.12-1.94.99-3.08-.96.04-2.12.64-2.81 1.45-.61.71-1.15 1.87-1 2.98 1.07.08 2.15-.54 2.82-1.35z"/>
+      </svg>
+      <div class="download-cta__text">
+        <span class="download-cta__small">Download on the</span>
+        <span class="download-cta__big">App Store</span>
+      </div>
+    </a>
+    <div class="download-cta-qr-popover">
+      <img src="/images/medgpt-appstore-qr.svg" alt="Scan to download MedGPT on the App Store" class="download-cta-qr-image" />
+      <span class="download-cta-qr-text">Scan to Download</span>
+    </div>
   </div>
 </div>
 
 <style>
+  .download-cta-group {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
   .download-cta-wrapper {
     position: relative;
     display: inline-flex;

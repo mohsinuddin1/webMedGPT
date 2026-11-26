@@ -5,6 +5,7 @@
 MedGPT is an AI-powered health educational assistant designed to translate complex medical reports, laboratory panels, prescriptions, and health queries into clear, easy-to-understand language.
 
 Download MedGPT on Google Play: https://play.google.com/store/apps/details?id=com.medgptai.app
+Download MedGPT on the App Store: https://apps.apple.com/us/app/health-assistant-ai-wellness/id6837951020
 
 ---
 

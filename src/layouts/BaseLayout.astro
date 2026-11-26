@@ -165,7 +165,7 @@ const htmlDir = dir || (lang.startsWith('ar') ? 'rtl' : 'ltr');
         },
         {
           name: 'get_app_info',
-          description: 'Get MedGPT app capabilities, clinical reference scope, and download link on Google Play.',
+          description: 'Get MedGPT app capabilities, clinical reference scope, and download links on Google Play and the App Store.',
           inputSchema: {
             type: 'object',
             properties: {}
@@ -175,6 +175,7 @@ const htmlDir = dir || (lang.startsWith('ar') ? 'rtl' : 'ltr');
               appName: 'MedGPT',
               tagline: 'AI Health Assistant for Medical Reports & Lab Results',
               playStoreUrl: 'https://play.google.com/store/apps/details?id=com.medgptai.app',
+              appStoreUrl: 'https://apps.apple.com/us/app/health-assistant-ai-wellness/id6837951020',
               supportedPanels: ['Complete Blood Count (CBC)', 'Lipid Profile', 'Comprehensive Metabolic Panel (CMP)', 'Thyroid Panel (TSH, T3, T4)', 'Urinalysis'],
               disclaimer: 'Informational only. Not a substitute for professional medical diagnosis or clinical treatment.'
             };

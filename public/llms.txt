@@ -6,6 +6,7 @@
 
 - [MedGPT Web Application](https://bloodtesthelp.com): Official web portal and educational health assistant.
 - [Google Play Application](https://play.google.com/store/apps/details?id=com.medgptai.app): Android native mobile app for scanning and explaining medical records.
+- [App Store Application](https://apps.apple.com/us/app/health-assistant-ai-wellness/id6837951020): iOS native mobile app for scanning and explaining medical records.
 
 ## Core Clinical Capabilities
 

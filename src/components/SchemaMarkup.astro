@@ -38,7 +38,7 @@ const appSchema = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
   name: 'MedGPT — AI Health Assistant',
-  operatingSystem: 'Android, Web',
+  operatingSystem: 'Android, iOS, Web',
   applicationCategory: 'HealthApplication',
   applicationSubCategory: 'MedicalInformatics',
   description: 'AI-powered educational health companion. Analyze medical reports, blood tests, understand medications, explore symptoms, and prepare for doctor visits.',
@@ -48,6 +48,10 @@ const appSchema = {
     priceCurrency: 'USD',
   },
   installUrl: 'https://play.google.com/store/apps/details?id=com.medgptai.app',
+  sameAs: [
+    'https://play.google.com/store/apps/details?id=com.medgptai.app',
+    'https://apps.apple.com/us/app/health-assistant-ai-wellness/id6837951020',
+  ],
   author: {
     '@type': 'Organization',
     name: 'PureScan AI',
