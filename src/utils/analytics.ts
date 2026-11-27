@@ -16,13 +16,13 @@ declare global {
 }
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyCk3Wq08YqcgnwGWQQkvSFxaEr2F-ALCIk',
-  authDomain: 'medgptbloodtest.firebaseapp.com',
-  projectId: 'medgptbloodtest',
-  storageBucket: 'medgptbloodtest.firebasestorage.app',
-  messagingSenderId: '1020572800335',
-  appId: '1:1020572800335:web:a200999be83aa4852b213a',
-  measurementId: 'G-YCV442S5S1',
+  apiKey: import.meta.env.WEBMEDGPT_FIREBASE_API_KEY,
+  authDomain: import.meta.env.WEBMEDGPT_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.WEBMEDGPT_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.WEBMEDGPT_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.WEBMEDGPT_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.WEBMEDGPT_FIREBASE_APP_ID,
+  measurementId: import.meta.env.WEBMEDGPT_FIREBASE_MEASUREMENT_ID,
 };
 
 type DeviceOS = 'ios' | 'android' | 'macos' | 'windows' | 'linux' | 'other';
@@ -127,6 +127,10 @@ function computeScrollPercent(): number {
 }
 
 async function initFirebaseAnalytics(): Promise<void> {
+  if (!firebaseConfig.apiKey || !firebaseConfig.projectId || !firebaseConfig.appId) {
+    return;
+  }
+
   try {
     const supported = await isSupported();
     if (!supported) return;

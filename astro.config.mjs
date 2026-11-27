@@ -109,6 +109,7 @@ export default defineConfig({
     domains: [],
   },
   vite: {
+    envPrefix: ['PUBLIC_', 'WEBMEDGPT_'],
     build: {
       cssMinify: true,
     },
