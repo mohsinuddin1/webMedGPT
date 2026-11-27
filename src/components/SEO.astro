@@ -38,7 +38,8 @@ const DANGLING_WORDS = new Set([
   'de', 'et', 'en', 'pour', 'dans', 'sur', 'avec', 'par', 'sans', 'sous',
   'und', 'mit', 'für', 'im', 'von', 'bei', 'zu', 'ohne', 'über', 'unter',
   'y', 'e', 'para', 'con', 'por', 'sobre', 'sin', 'bajo', 'hacia',
-  'da', 'per', 'su', 'senza', 'sotto'
+  'da', 'per', 'su', 'senza', 'sotto',
+  'og', 'eller', 'kan', 'som', 'til', 'av', 'på', 'er', 'och', 'att', 'är', 'det', 'den', 'af', 'med', 'för', 'fra'
 ]);
 
 function cleanDangling(text: string): string {
@@ -162,13 +163,15 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : new URL(ogImage, siteU
 const langToOgLocale: Record<string, string> = {
   'en': 'en_US', 'fr': 'fr_FR', 'es': 'es_ES', 'de': 'de_DE',
   'it': 'it_IT', 'pt': 'pt_PT', 'nl': 'nl_NL', 'sv': 'sv_SE',
-  'da': 'da_DK', 'no': 'no_NO', 'nb': 'nb_NO', 'pl': 'pl_PL',
+  'da': 'da_DK', 'no': 'nb_NO', 'nb': 'nb_NO', 'pl': 'pl_PL',
   'cs': 'cs_CZ', 'ro': 'ro_RO', 'lt': 'lt_LT', 'lv': 'lv_LV',
   'bg': 'bg_BG', 'el': 'el_GR', 'tr': 'tr_TR', 'ru': 'ru_RU',
-  'ar': 'ar_SA', 'ar-MA': 'ar_MA', 'ja': 'ja_JP', 'ko': 'ko_KR',
+  'ar': 'ar_SA', 'ar-ma': 'ar_MA', 'ar-MA': 'ar_MA', 'ja': 'ja_JP', 'ko': 'ko_KR',
   'zh': 'zh_CN',
 };
-const currentOgLocale = langToOgLocale[lang] || 'en_US';
+const resolveOgLocale = (code: string) =>
+  langToOgLocale[code] || langToOgLocale[code.toLowerCase()] || 'en_US';
+const currentOgLocale = resolveOgLocale(lang);
 ---
 
 <!-- Primary Meta -->
@@ -195,8 +198,8 @@ const currentOgLocale = langToOgLocale[lang] || 'en_US';
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:locale" content={currentOgLocale} />
-{hreflangAlternates.filter(a => a.lang !== lang).map(alt => (
-  <meta property="og:locale:alternate" content={langToOgLocale[alt.lang] || alt.lang} />
+{hreflangAlternates.filter(a => a.lang.toLowerCase() !== lang.toLowerCase()).map(alt => (
+  <meta property="og:locale:alternate" content={resolveOgLocale(alt.lang)} />
 ))}
 
 <!-- Twitter/X Card -->

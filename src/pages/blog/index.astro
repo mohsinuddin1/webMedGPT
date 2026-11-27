@@ -2,18 +2,37 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getUITranslation } from '../../utils/uiTranslations';
 import { getCollection } from 'astro:content';
+import { getSiteUrl } from '../../utils/siteConfig';
 
+const siteUrl = Astro.site ? Astro.site.origin : getSiteUrl();
 const allPosts = await getCollection('blog');
 const posts = allPosts
   .filter(post => post.id.startsWith('en/'))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const localizedLangs = new Set<string>();
+allPosts.forEach(post => {
+  if (!post.id.startsWith('en/')) {
+    localizedLangs.add(post.id.split('/')[0]);
+  }
+});
+
+const hreflangAlternates: Array<{ lang: string; href: string }> = [
+  { lang: 'en', href: `${siteUrl}/blog` },
+  ...Array.from(localizedLangs).sort().map(l => ({
+    lang: l.toLowerCase() === 'ar-ma' ? 'ar-MA' : l.toLowerCase(),
+    href: `${siteUrl}/${l.toLowerCase()}/blog`,
+  })),
+];
 ---
 
 <BaseLayout
-  title="Health Blog — MedGPT"
-  description="Evidence-based guides on reading blood tests, lab results, and medication safety from MedGPT clinical health specialists."
-  schemaType="legal"
+  title={getUITranslation('en', 'blogMetaTitle')}
+  description={getUITranslation('en', 'blogMetaDescription')}
+  schemaType="blogIndex"
+  lang="en"
   showLanguageSwitcher={true}
+  hreflangAlternates={hreflangAlternates}
 >
   <div class="blog-index">
     <div class="container">
@@ -27,12 +46,29 @@ const posts = allPosts
         <span class="label">{getUITranslation('en', 'healthResources')}</span>
         <h1 class="heading-section" style="text-align: left;">{getUITranslation('en', 'healthGuidesTitle1')}<br/><span class="text-gradient">{getUITranslation('en', 'healthGuidesTitle2')}</span></h1>
         <p class="subtitle">{getUITranslation('en', 'healthGuidesSubtitle')}</p>
+
+        <div class="blog-search" role="search">
+          <input
+            type="search"
+            id="blog-search-input"
+            class="blog-search__input"
+            placeholder={getUITranslation('en', 'searchPlaceholder')}
+            aria-label={getUITranslation('en', 'searchPlaceholder')}
+          />
+        </div>
       </div>
 
+      <p id="blog-search-empty" class="blog-search__empty" hidden>{getUITranslation('en', 'noResults')}</p>
+
       <!-- Posts Grid -->
-      <div class="grid-2">
+      <div class="grid-2" id="blog-posts-grid">
         {posts.map((post) => (
-          <a href={`/blog/${post.id.replace('en/', '')}`} class="blog-card" id={`blog-card-${post.id.replace('en/', '')}`}>
+          <a
+            href={`/blog/${post.id.replace('en/', '')}`}
+            class="blog-card"
+            id={`blog-card-${post.id.replace('en/', '')}`}
+            data-search={`${post.data.title} ${post.data.description} ${post.data.tags.join(' ')}`.toLowerCase()}
+          >
             <div class="blog-card__image">
               {post.data.image ? (
                 <img src={post.data.image} alt={post.data.imageAlt || post.data.title} loading="lazy" />
@@ -69,6 +105,39 @@ const posts = allPosts
   </div>
 </BaseLayout>
 
+<script is:inline>
+  (function () {
+    var input = document.getElementById('blog-search-input');
+    var grid = document.getElementById('blog-posts-grid');
+    var empty = document.getElementById('blog-search-empty');
+    if (!input || !grid) return;
+
+    var cards = Array.prototype.slice.call(grid.querySelectorAll('.blog-card'));
+    function filterPosts(query) {
+      var q = (query || '').trim().toLowerCase();
+      var visibleCount = 0;
+      cards.forEach(function (card) {
+        var haystack = card.getAttribute('data-search') || '';
+        var show = !q || haystack.indexOf(q) !== -1;
+        card.style.display = show ? '' : 'none';
+        if (show) visibleCount++;
+      });
+      if (empty) empty.hidden = visibleCount > 0;
+    }
+
+    var params = new URLSearchParams(window.location.search);
+    var initialQ = params.get('q') || '';
+    if (initialQ) {
+      input.value = initialQ;
+      filterPosts(initialQ);
+    }
+
+    input.addEventListener('input', function () {
+      filterPosts(input.value);
+    });
+  })();
+</script>
+
 <style>
   .blog-index {
     padding-top: calc(var(--header-height) + var(--space-12));
@@ -95,6 +164,33 @@ const posts = allPosts
 
   .blog-index__breadcrumb a:hover {
     color: var(--color-accent);
+  }
+
+  .blog-search {
+    margin-top: var(--space-6);
+    max-width: 480px;
+  }
+
+  .blog-search__input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-card);
+    color: var(--color-text-primary);
+    font-size: var(--text-base);
+    outline: none;
+    transition: border-color var(--transition-fast);
+  }
+
+  .blog-search__input:focus {
+    border-color: var(--color-accent);
+  }
+
+  .blog-search__empty {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-8);
+    font-size: var(--text-base);
   }
 
   .blog-card__image-placeholder {

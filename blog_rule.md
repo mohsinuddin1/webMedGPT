@@ -451,6 +451,12 @@ Every article across all 25 languages must read like a consultation with an empa
 - **Image**: `https://images.unsplash.com/photo-1587854692152-cbe660dbde88?q=80&w=1200&auto=format&fit=crop`
 - **Topics Covered**: 3 biological mechanisms (gut chelation, CYP3A4 & OATP transporter inhibition/induction, pharmacodynamic antagonism & additive toxicity), grapefruit/Seville orange/pomelo furanocoumarins (statins, calcium channel blockers, immunosuppressants, fexofenadine), 8 everyday triggers beyond grapefruit (dairy/calcium/iron with tetracyclines/fluoroquinolones/levothyroxine, vitamin K consistency rule with warfarin/coumarins, coffee/tea with levothyroxine, potassium-rich foods & KCl salt substitutes with ACEi/ARBs/spironolactone, tyramine with MAOIs/linezolid, black licorice glycyrrhizin, high-fiber/soy meals, alcohol with acetaminophen/insulin/metronidazole/metformin), dual-unit US/SI lab monitoring table (PT/INR, Serum Potassium, TSH, ALT/AST, Fasting Glucose, Creatinine/eGFR), 5-step safe meal-medication timing rules, emergency red flags, doctor/pharmacist questions, MedGPT interaction & lab tracking.
 
+### Blog 43 — STI Testing: How to Read Your Sexual Health Lab Results
+- **Slug**: `sti-test-results-explained`
+- **Tags**: Sexual Health, STI Testing, Lab Tests, Health Guide
+- **Image**: `https://images.unsplash.com/photo-1579154341184-22069e4614d2?q=80&w=1200&auto=format&fit=crop`
+- **Topics Covered**: Decoding laboratory terminology (`Reactive`, `Non-Reactive`, `Detected`, `Not Detected`, `Equivocal`, `S/CO`, `RPR`/`VDRL` titers, `copies/mL` & `IU/mL`), pathogen-by-pathogen interpretation table (Chlamydia & Gonorrhea `NAAT`/`PCR` including pharyngeal/rectal site specificity, 4th-gen `HIV Ag/Ab` vs. `HIV-1 RNA NAT`, two-step Syphilis `RPR` titer tracking vs. lifelong `TPPA`/`FTA-ABS` memory, `HSV-1`/`HSV-2` lesion `PCR` vs. low-positive `IgG` `1.10–3.00` false-positive caveats, `HBV` immunity vs. infection, `HCV` reflex `RNA`, Trichomoniasis), CDC window periods (10–33d NAT, 18–45d lab Ag/Ab, 7–14d bacterial NAAT, 6–12w syphilis/HSV), 72-hour emergency `PEP` rule, biologic false positives & `U=U`, emergency red flags (PID, testicular torsion, neurosyphilis, <72h HIV exposure), 5 post-result action steps, 5 doctor questions, private MedGPT analysis across all 25 locales.
+
 ---
 
 ## 4. Upcoming Topic Roadmap (`idea_blog.md`)
@@ -467,7 +473,7 @@ Refer to `idea_blog.md` for complete keyword metrics, long-tail variants, target
 - **Cluster B (Blog 19–25)**: X-Ray & Imaging Reports *(Blogs 19–25 completed; Cluster B 100% complete)*
 - **Cluster C (Blog 26–32)**: Multilingual & GEO-Targeted Health Systems *(Blogs 26–30 & 32 completed; Blog 31 Bulgarian НЗОК pending)*
 - **Cluster D (Blog 34–37, Blog 51)**: Medication, Drug Interactions & Safety *(Polypharmacy, Antibiotic Resistance, Supplements & Drugs, Missed Dose Guide; Blog 51 Common Drug-Food Interactions completed; Blog 33 reassigned to Best Blood Test Tracking Apps)*
-- **Cluster E (Blog 38–44)**: Chronic Conditions & Preventive Health *(CKD Stages, Fatty Liver/NAFLD, Allergy IgE Panels, Stool/Gut Tests, PSA/Prostate, STI Panels, Pregnancy Labs)*
+- **Cluster E (Blog 38–44)**: Chronic Conditions & Preventive Health *(CKD Stages, Fatty Liver/NAFLD, Allergy IgE Panels, Stool/Gut Tests, PSA/Prostate, Blog 43 STI Panels completed, Pregnancy Labs)*
 - **Cluster F (Blog 33, Blog 45–50)**: Digital Health, AI & Patient Empowerment *(Best Blood Test Tracking Apps [Blog 33 completed], AI vs Google, Blood Test Prep/Fasting, Reference Ranges by Age, Health Insurance Coverage, Mental Health & Blood Markers, Beginner's Guide)*
 
 ### Top Priority Queue from `idea_blog.md`
@@ -477,7 +483,7 @@ Prioritize remaining unpublished high-volume / high-conversion topics from the q
 3. ~~**Blog 25**: What Does "Unremarkable" Mean on a Radiology Report?~~ *(Completed)*
 4. **Blog 49**: Mental Health and Lab Tests: Blood Markers That Affect Anxiety and Mood (8K–15K/mo)
 5. ~~**Blog 29**: Russian Blood Test Guide: Расшифровка Анализа Крови~~ *(Completed)*
-6. **Blog 43**: STI Testing: How to Read Your Sexual Health Lab Results (8K–15K/mo)
+6. ~~**Blog 43**: STI Testing: How to Read Your Sexual Health Lab Results (8K–15K/mo)~~ *(Completed)*
 7. **Blog 44**: Pregnancy Blood Tests Explained: hCG, Blood Type, Glucose Tolerance (8K–12K/mo)
 8. ~~**Blog 19**: How to Read a Chest X-Ray Report: A Patient's Plain-English Guide~~ *(Completed)*
 9. ~~**Blog 51**: Common Drug-Food Interactions You Need to Know: Beyond Grapefruit (8K–12K/mo)~~ *(Completed)*

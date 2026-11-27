@@ -30,13 +30,13 @@ const appStoreUrl = 'https://apps.apple.com/us/app/health-assistant-ai-wellness/
 ---
 
 <div class="mobile-sticky-bar" id="mobile-sticky-bar" aria-label="MedGPT App Banner">
-  <button type="button" class="mobile-sticky-bar__close" id="mobile-sticky-close" aria-label="Dismiss banner">×</button>
+  <button type="button" class="mobile-sticky-bar__close" id="mobile-sticky-close" data-track-location="mobile_sticky_bar" data-track-button="mobile-sticky-close" aria-label="Dismiss banner">×</button>
   <img src="/appLogo.png" alt="MedGPT Logo" class="mobile-sticky-bar__logo" width="40" height="40" loading="lazy" />
   <div class="mobile-sticky-bar__info">
     <span class="mobile-sticky-bar__title">{t.title}</span>
     <span class="mobile-sticky-bar__sub">{t.subtitle}</span>
   </div>
-  <a href={playStoreUrl} target="_blank" rel="noopener noreferrer" class="mobile-sticky-bar__btn" id="mobile-sticky-download-btn">
+  <a href={playStoreUrl} target="_blank" rel="noopener noreferrer" class="mobile-sticky-bar__btn" id="mobile-sticky-download-btn" data-track-location="mobile_sticky_bar" data-track-button="mobile-sticky-download-btn">
     {t.button}
   </a>
 </div>

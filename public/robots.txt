@@ -61,7 +61,6 @@ User-agent: Bytespider
 Allow: /
 
 # Sitemaps
-Sitemap: https://bloodtesthelp.com/sitemap.xml
 Sitemap: https://bloodtesthelp.com/sitemap-index.xml
 
 # Machine-readable discovery index:

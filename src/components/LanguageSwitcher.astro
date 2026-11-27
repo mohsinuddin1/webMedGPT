@@ -13,7 +13,6 @@ const locales = [
   { code: 'sv', label: 'Svenska' },
   { code: 'da', label: 'Dansk' },
   { code: 'no', label: 'Norsk' },
-  { code: 'nb', label: 'Norsk Bokmål' },
   { code: 'pl', label: 'Polski' },
   { code: 'cs', label: 'Čeština' },
   { code: 'lt', label: 'Lietuvių' },
@@ -40,7 +39,7 @@ const locales = [
 <script>
   const select = document.getElementById('lang-select') as HTMLSelectElement;
   if (select) {
-    const locales = ['fr', 'es', 'de', 'nl', 'pt', 'ro', 'it', 'sv', 'da', 'no', 'nb', 'pl', 'cs', 'lt', 'lv', 'tr', 'bg', 'ru', 'el', 'ar', 'ar-ma', 'ja', 'ko', 'zh'];
+    const locales = ['fr', 'es', 'de', 'nl', 'pt', 'ro', 'it', 'sv', 'da', 'no', 'pl', 'cs', 'lt', 'lv', 'tr', 'bg', 'ru', 'el', 'ar', 'ar-ma', 'ja', 'ko', 'zh'];
     
     // Set initial value based on URL
     const pathParts = window.location.pathname.split('/').filter(Boolean);
@@ -55,7 +54,7 @@ const locales = [
     if (!hasRedirected) {
       const browserLangRaw = navigator.language || (navigator as any).userLanguage;
       if (browserLangRaw) {
-        // e.g. "es-ES" -> "es", "ar-ma" -> "ar-ma" or "ar"
+        // e.g. "es-ES" -> "es", "ar-ma" -> "ar-ma", "nb-NO"/"nn-NO" -> "no"
         const fullLang = browserLangRaw.toLowerCase();
         let matchedLang = 'en';
         
@@ -66,8 +65,12 @@ const locales = [
         } else {
           // Base language match
           const baseLang = browserLangRaw.split('-')[0].toLowerCase();
-          const baseMatch = locales.find(l => l.toLowerCase() === baseLang);
-          if (baseMatch) matchedLang = baseMatch;
+          if (baseLang === 'nb' || baseLang === 'nn') {
+            matchedLang = 'no';
+          } else {
+            const baseMatch = locales.find(l => l.toLowerCase() === baseLang);
+            if (baseMatch) matchedLang = baseMatch;
+          }
         }
 
         if (matchedLang !== 'en' && matchedLang !== currentLang) {
@@ -125,9 +128,13 @@ const locales = [
                 break;
               }
             }
-            // Forward lookup for new language slug
-            if (slugMap[baseSlug] && slugMap[baseSlug][newLang]) {
-              newSlug = slugMap[baseSlug][newLang];
+            // Forward lookup for new language slug (case-insensitive for ar-ma / ar-MA)
+            const entry = slugMap[baseSlug];
+            if (entry) {
+              const matchedKey = Object.keys(entry).find(
+                (k) => k.toLowerCase() === newLang.toLowerCase()
+              );
+              newSlug = matchedKey ? entry[matchedKey] : baseSlug;
             } else {
               // Fallback to base slug if translation not found
               newSlug = baseSlug;

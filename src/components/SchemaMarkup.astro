@@ -1,6 +1,6 @@
 ---
 export interface Props {
-  type: 'homepage' | 'article' | 'legal';
+  type: 'homepage' | 'article' | 'legal' | 'blogIndex' | 'techDoc';
   title?: string;
   description?: string;
   publishedDate?: string;
@@ -11,13 +11,33 @@ export interface Props {
   about?: string[];
   mentions?: string[];
   sources?: Array<{ name: string; url: string; description?: string }>;
+  lang?: string;
 }
 
 import { getSiteUrl, SITE_EMAIL } from '../utils/siteConfig';
+import { getUITranslation } from '../utils/uiTranslations';
 
-const { type, title, description, publishedDate, modifiedDate, author, image, faqs, about = [], mentions = [], sources = [] } = Astro.props;
+const {
+  type,
+  title,
+  description,
+  publishedDate,
+  modifiedDate,
+  author,
+  image,
+  faqs,
+  about = [],
+  mentions = [],
+  sources = [],
+  lang = 'en',
+} = Astro.props;
+
 const siteUrl = Astro.site ? Astro.site.origin : getSiteUrl();
-const pageUrl = new URL(Astro.url.pathname, siteUrl).toString();
+const rawPath = Astro.url.pathname;
+const cleanPath = rawPath === '/' ? '/' : rawPath.replace(/\/+$/, '');
+const pageUrl = new URL(cleanPath, siteUrl).toString();
+const langLower = (lang || 'en').toLowerCase();
+const blogIndexUrl = langLower === 'en' ? `${siteUrl}/blog` : `${siteUrl}/${langLower}/blog`;
 
 // Organization schema (always present)
 const organizationSchema = {
@@ -25,7 +45,7 @@ const organizationSchema = {
   '@type': 'Organization',
   name: 'PureScan AI',
   url: siteUrl,
-  logo: `${siteUrl}/favicon.svg`,
+  logo: `${siteUrl}/appLogo.png`,
   contactPoint: {
     '@type': 'ContactPoint',
     email: SITE_EMAIL,
@@ -63,7 +83,7 @@ const appSchema = {
     'Radiology report simplifier (X-ray, CT, MRI, Ultrasound)',
     'Medication indications & side effect verification',
     'Doctor appointment preparation checklist',
-    'Multilingual medical translation in 25 languages',
+    'Multilingual medical translation in 24 languages',
   ],
 };
 
@@ -73,6 +93,7 @@ const websiteSchema = {
   '@type': 'WebSite',
   name: 'MedGPT',
   url: siteUrl,
+  inLanguage: 'en',
   publisher: {
     '@type': 'Organization',
     name: 'PureScan AI',
@@ -114,11 +135,12 @@ const parseEntity = (item: string) => {
 };
 
 // Article schema
-const articleSchema = publishedDate ? {
+const articleSchema = type === 'article' && publishedDate ? {
   '@context': 'https://schema.org',
   '@type': 'Article',
   headline: title,
   description: description,
+  inLanguage: lang,
   datePublished: publishedDate,
   dateModified: modifiedDate || publishedDate,
   author: {
@@ -131,7 +153,7 @@ const articleSchema = publishedDate ? {
     name: 'PureScan AI',
     logo: {
       '@type': 'ImageObject',
-      url: `${siteUrl}/favicon.svg`,
+      url: `${siteUrl}/appLogo.png`,
     },
   },
   isAccessibleForFree: true,
@@ -147,11 +169,6 @@ const articleSchema = publishedDate ? {
     cssSelector: ['.prose h1', '.prose h2', '.blog-post__short-answer', '.prose p:first-of-type'],
   },
   ...(sources.length > 0 ? {
-    reviewedBy: {
-      '@type': 'Organization',
-      name: sources[0].name,
-      url: sources[0].url,
-    },
     citation: sources.map(s => ({
       '@type': 'CreativeWork',
       name: s.name,
@@ -161,13 +178,14 @@ const articleSchema = publishedDate ? {
   } : {}),
 } : null;
 
-// MedicalWebPage (for health articles)
+// MedicalWebPage (for health articles only)
 const medicalWebPageSchema = type === 'article' ? {
   '@context': 'https://schema.org',
   '@type': 'MedicalWebPage',
   name: title,
   url: pageUrl,
   description: description,
+  inLanguage: lang,
   lastReviewed: modifiedDate || publishedDate,
   author: {
     '@type': 'Organization',
@@ -180,6 +198,39 @@ const medicalWebPageSchema = type === 'article' ? {
   ...(sources.length > 0 ? {
     citation: sources.map(s => s.url),
   } : {}),
+} : null;
+
+// CollectionPage schema (for blog indexes)
+const blogIndexSchema = type === 'blogIndex' ? {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: title,
+  url: pageUrl,
+  description: description,
+  inLanguage: lang,
+  isPartOf: {
+    '@type': 'WebSite',
+    url: siteUrl,
+  },
+} : null;
+
+// TechArticle schema (for developer/API docs)
+const techDocSchema = type === 'techDoc' ? {
+  '@context': 'https://schema.org',
+  '@type': 'TechArticle',
+  headline: title,
+  description: description,
+  url: pageUrl,
+  inLanguage: lang,
+  author: {
+    '@type': 'Organization',
+    name: 'PureScan AI',
+    url: siteUrl,
+  },
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': pageUrl,
+  },
 } : null;
 
 // FAQ schema
@@ -196,13 +247,13 @@ const faqSchema = faqs && faqs.length > 0 ? {
   })),
 } : null;
 
-// BreadcrumbList schema matching visible hierarchy (Home -> Blog -> Article)
+// BreadcrumbList schema matching visible hierarchy
 const breadcrumbListItems = [
   {
     '@type': 'ListItem',
     position: 1,
-    name: 'Home',
-    item: siteUrl,
+    name: getUITranslation(lang, 'home'),
+    item: `${siteUrl}/`,
   },
 ];
 
@@ -211,8 +262,8 @@ if (type === 'article') {
     {
       '@type': 'ListItem',
       position: 2,
-      name: 'Blog',
-      item: `${siteUrl}/blog`,
+      name: getUITranslation(lang, 'blog'),
+      item: blogIndexUrl,
     },
     {
       '@type': 'ListItem',
@@ -221,6 +272,13 @@ if (type === 'article') {
       item: pageUrl,
     }
   );
+} else if (type === 'blogIndex') {
+  breadcrumbListItems.push({
+    '@type': 'ListItem',
+    position: 2,
+    name: getUITranslation(lang, 'blog'),
+    item: pageUrl,
+  });
 } else if (type !== 'homepage') {
   breadcrumbListItems.push({
     '@type': 'ListItem',
@@ -242,6 +300,8 @@ const schemas = [
   ...(type === 'homepage' ? [appSchema, websiteSchema] : []),
   ...(articleSchema ? [articleSchema] : []),
   ...(medicalWebPageSchema ? [medicalWebPageSchema] : []),
+  ...(blogIndexSchema ? [blogIndexSchema] : []),
+  ...(techDocSchema ? [techDocSchema] : []),
   ...(faqSchema ? [faqSchema] : []),
 ];
 ---

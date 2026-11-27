@@ -14,7 +14,7 @@ export interface Props {
   publishedTime?: string;
   modifiedTime?: string;
   author?: string;
-  schemaType?: 'homepage' | 'article' | 'legal';
+  schemaType?: 'homepage' | 'article' | 'legal' | 'blogIndex' | 'techDoc';
   faqs?: Array<{ question: string; answer: string }>;
   image?: string;
   about?: string[];
@@ -56,6 +56,34 @@ const htmlDir = dir || (lang.startsWith('ar') ? 'rtl' : 'ltr');
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Cookieless Google Consent Mode v2 default (no cookie banner, no cookie storage) -->
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){window.dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: 'denied',
+      functionality_storage: 'denied',
+      personalization_storage: 'denied',
+      security_storage: 'denied'
+    });
+  </script>
+
+  <!-- Microsoft Clarity (cookieless ConsentV2 mode, no cookie storage) -->
+  <script is:inline>
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "zjotowvb3a");
+    window.clarity("consentv2", {
+      ad_Storage: "denied",
+      analytics_Storage: "denied"
+    });
+  </script>
   
   <!-- Preconnect to Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -86,6 +114,7 @@ const htmlDir = dir || (lang.startsWith('ar') ? 'rtl' : 'ltr');
     about={about}
     mentions={mentions}
     sources={sources}
+    lang={lang}
   />
 
   <!-- AI Agent Discovery Links (RFC 8288 / RFC 9727 / ARD / MCP) -->
@@ -97,7 +126,10 @@ const htmlDir = dir || (lang.startsWith('ar') ? 'rtl' : 'ltr');
   <link rel="mcp-server-card" href="/.well-known/mcp/server-card.json" type="application/mcp-server-card+json" />
   <link rel="agent-skills" href="/.well-known/agent-skills/index.json" />
   <link rel="ai-catalog" href="/.well-known/ai-catalog.json" type="application/json" />
-  <link rel="alternate" type="text/markdown" href="/index.md" title="Markdown Content" />
+  {schemaType === 'homepage' && (
+    <link rel="alternate" type="text/markdown" href="/index.md" title="Markdown Content" />
+  )}
+  <link rel="alternate" type="application/rss+xml" title="MedGPT Health Blog RSS" href="/rss.xml" />
   <link rel="alternate" type="text/markdown" href="/llms.txt" title="LLM Knowledge Index" />
   <link rel="alternate" type="text/markdown" href="/llms-full.txt" title="LLM Full Knowledge Graph" />
 
@@ -236,6 +268,10 @@ const htmlDir = dir || (lang.startsWith('ar') ? 'rtl' : 'ltr');
     document.querySelectorAll('.animate-on-scroll').forEach((el) => {
       observer.observe(el);
     });
+  </script>
+  <script>
+    import { initAnalytics } from '../utils/analytics';
+    initAnalytics();
   </script>
   <Analytics />
 </body>

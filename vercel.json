@@ -50,6 +50,32 @@
       ]
     },
     {
+      "source": "/llms.txt",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
+      ]
+    },
+    {
+      "source": "/llms-full.txt",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
+      ]
+    },
+    {
       "source": "/.well-known/api-catalog",
       "headers": [
         {
@@ -164,6 +190,41 @@
     }
   ],
   "redirects": [
+    {
+      "source": "/nb/blog/forsta-bivirkninger-av-medisiner",
+      "destination": "/no/blog/forsta-medisinbivirkninger",
+      "statusCode": 301
+    },
+    {
+      "source": "/nb/blog/forsta-diabetes-og-hba1c-nivaer",
+      "destination": "/no/blog/forsta-diabetes-og-hba1c",
+      "statusCode": 301
+    },
+    {
+      "source": "/nb/blog/forsta-kolesterol-og-lipidpanel",
+      "destination": "/no/blog/forsta-kolesterol-og-lipidprofil",
+      "statusCode": 301
+    },
+    {
+      "source": "/nb/blog/handtere-hoyt-blodtrykk",
+      "destination": "/no/blog/handtering-av-hoyt-blodtrykk",
+      "statusCode": 301
+    },
+    {
+      "source": "/nb/blog/hvordan-forsta-blodprovesvar",
+      "destination": "/no/blog/hvordan-lese-blodproevesvar",
+      "statusCode": 301
+    },
+    {
+      "source": "/nb/blog",
+      "destination": "/no/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/nb/blog/:slug",
+      "destination": "/no/blog/:slug",
+      "statusCode": 301
+    },
     {
       "source": "/download",
       "has": [

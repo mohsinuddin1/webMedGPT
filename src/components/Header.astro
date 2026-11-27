@@ -38,7 +38,7 @@ const appStoreUrl = 'https://apps.apple.com/us/app/health-assistant-ai-wellness/
       {navLinks.map(link => (
         <a href={link.href} class="header__link">{link.label}</a>
       ))}
-      <a href={playStoreUrl} class="btn btn--primary btn--header" target="_blank" rel="noopener noreferrer" id="header-download-btn">
+      <a href={playStoreUrl} class="btn btn--primary btn--header" target="_blank" rel="noopener noreferrer" id="header-download-btn" data-track-location="header" data-track-button="header-download-btn">
         {getUITranslation(lang, 'downloadApp')}
       </a>
     </div>

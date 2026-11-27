@@ -29,7 +29,8 @@ if (slugTranslations) {
     if (lang === 'en') {
       hreflangAlternates.push({ lang: 'en', href: `${siteUrl}/blog/${localizedSlug}` });
     } else {
-      hreflangAlternates.push({ lang: lang.toLowerCase(), href: `${siteUrl}/${lang.toLowerCase()}/blog/${localizedSlug}` });
+      const hreflangCode = lang.toLowerCase() === 'ar-ma' ? 'ar-MA' : lang.toLowerCase();
+      hreflangAlternates.push({ lang: hreflangCode, href: `${siteUrl}/${lang.toLowerCase()}/blog/${localizedSlug}` });
     }
   }
 } else {

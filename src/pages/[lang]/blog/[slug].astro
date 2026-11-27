@@ -43,12 +43,15 @@ if (baseSlug && slugMap[baseSlug]) {
     if (altLang === 'en') {
       hreflangAlternates.push({ lang: 'en', href: `${siteUrl}/blog/${altSlug}` });
     } else {
-      hreflangAlternates.push({ lang: altLang.toLowerCase(), href: `${siteUrl}/${altLang.toLowerCase()}/blog/${altSlug}` });
+      const hreflangCode = altLang.toLowerCase() === 'ar-ma' ? 'ar-MA' : altLang.toLowerCase();
+      hreflangAlternates.push({ lang: hreflangCode, href: `${siteUrl}/${altLang.toLowerCase()}/blog/${altSlug}` });
     }
   }
 } else {
-  // Fallback
-  hreflangAlternates.push({ lang: lang || 'en', href: `${siteUrl}/${lang}/blog/${localizedSlug}` });
+  // Fallback: always include English base URL so x-default points to English
+  const currentHreflang = (lang || 'en').toLowerCase() === 'ar-ma' ? 'ar-MA' : (lang || 'en').toLowerCase();
+  hreflangAlternates.push({ lang: 'en', href: `${siteUrl}/blog/${baseSlug || localizedSlug}` });
+  hreflangAlternates.push({ lang: currentHreflang, href: `${siteUrl}/${(lang || 'en').toLowerCase()}/blog/${localizedSlug}` });
 }
 ---
 
